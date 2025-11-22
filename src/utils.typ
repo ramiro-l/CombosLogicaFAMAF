@@ -32,6 +32,10 @@
   ($>>$, $chevron.r$),
   ($!|-$, $tack.not$),
   ($|-$, math.tack),
+  ("HIP", "HIPOTESIS"),
+  ($"HIPk"$, $"HIPOTESIS"overline(k)$),
+  // ("TESIS", "TESIS"),
+  ($"TESISk"$, $"TESIS"overline(k)$),
 )
 
 /*
@@ -97,6 +101,8 @@
 #let T_nm = $italic(T)^(n,m)$
 #let AutoHalt = $italic("AutoHalt")^Sigma$
 */
+#let s = $med bold(mono(s)) med$
+#let i = $med bold(i) med$
 #let estrella = $#sym.ast.op$
 #let fin_demo = [#h(1fr) #text(fill: luma(18%))[$qed$]]
 #let linea_dashed = [ #line(length: 100%, stroke: (paint: luma(80%), thickness: 1pt, dash: "dashed"))]
