@@ -77,7 +77,7 @@
 
   #definitionStructure(
     4,
-    [Dados $phi =_d phi(v_1, ..., v_n)$, *A* una estructura de tipo $tau$ y $a_1, ..., a_n in A$, defina qué significa \ $A |= phi[a_1, ..., a_n]$ (i.e. Convención notacional 4).],
+    [Dados $phi =_d phi(v_1, ..., v_n)$, *A* una estructura de tipo $tau$ y $a_1, ..., a_n in A$, defina qué significa \ $A |= phi[a_1, ..., a_n]$ (i.e. Convención notacional 4 y parte del #link(<combo-def-6>)[Combo 6]).],
     [
       Si declaramos $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$ entonces $bold(A) |= phi[a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.
     ],
@@ -190,7 +190,7 @@
 
 #definitionStructure(
   1,
-  [Dados $t =_d t(v_1, ..., v_n) in T^tau$, *A* una estructura de tipo $tau$ y $a_1, ..., a_n in A$, defina $t^A [a_1, ..., a_n]$ (i.e. Convención notacional 2).],
+  [Dados $t =_d t(v_1, ..., v_n) in T^tau$, *A* una estructura de tipo $tau$ y $a_1, ..., a_n in A$, defina $t^A [a_1, ..., a_n]$ \ (i.e. Convención notacional 2 y parte del #link(<combo-def-5>)[Combo 5]).],
   [
     Si declaramos $t =_d t(v_1, ..., v_n)$, *A* es una estructura de tipo $tau$ y $a_1, ..., a_n in A$ entonces con $t^A [a_1, ..., a_n]$ denotaremos al elemento $t^bold(A)[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.
   ],
@@ -203,11 +203,11 @@
     Sean $(L, s, i,^c, 0, 1)$ y $(L', s', i',^c', 0', 1')$ reticulados complementados. Una función $F: L -> L'$ será llamada un _homomorfismo de_ $(L, s, i,^c, 0, 1)$ _en_ $(L', s', i',^c', 0', 1')$ si para todo $x, y in L$ se cumplen que: \
     #box(width: 100%)[
       $
-        F(x #s y) & = F(x) #s' F(y) \
-        F(x #i y) & = F(x) #i' F(y) \
-           F(x^c) & = F(x)^c' \
-             F(0) & = 0' \
-             F(1) & = 1'
+        F(x #s y) = F(x) #s' F(y) quad quad
+        F(x #i y) = F(x) #i' F(y) quad quad
+        F(x^c) = F(x)^c' #v(18pt) \
+        F(0) = 0' quad quad
+        F(1) = 1'
       $
     ]
   ],
@@ -220,7 +220,7 @@
     Dado un conjunto $S c= L$, denotaremos con $[S)$ el siguiente conjunto\
     #box(width: 100%)[
       $
-        {y in L: y >= s_1 #i ... #i s_n, "para algunos" s_1,...,s_n in S, n>=1}
+        #v(18pt) [S)= {y in L: y >= s_1 #i ... #i s_n, "para algunos" s_1,...,s_n in S, n>=1}
       $
     ] \
     Llamaremos a $[S)$ el _filtro generado por_ $S$ _en_ $(L, s, i)$. \
@@ -249,9 +249,9 @@
 
 #definitionStructure(
   1,
-  [Defina "$(L, s, i,^c, 0, 1)$ es un subreticulado complementado de $(L', s', i',^c', 0', 1')$".],
+  [Defina "$(L, #s, #i,^c, 0, 1)$ es un subreticulado complementado de $(L', #s', #i',^c', 0', 1')$".],
   [
-    Dados reticulados complementados $(L, s, i,^c, 0, 1)$ y $(L', s', i',^c', 0', 1')$, diremos que _$(L, s, i,^c, 0, 1)$ es un subreticulado complementado de_ $(L', s', i',^c', 0', 1')$ si se dan las siguiente condiciones: \
+    Dados reticulados complementados $(L, #s, #i,^c, 0, 1)$ y $(L', #s', #i',^c', 0', 1')$, diremos que _$(L, #s, #i,^c, 0, 1)$ es un subreticulado complementado de_ $(L', #s', #i',^c', 0', 1')$ si se dan las siguiente condiciones: \
     #box(width: 100%)[
       #set enum(numbering: "(1)", indent: 12.8pt)
       + $L c= L'$. \
@@ -259,7 +259,7 @@
           Es decir, para todo $x, y in L$ se cumple que $x #s' y in L$, $x #i' y in L$ y $x^c' in L$.
         ] \
       + $0 = 0'$ y $1 = 1'$.
-      + $s = s'|_(L times L)$ , $i = i'|_(L times L)$ y $""^c = ""^c'|_L$.
+      + $#s = #s'|_(L times L) med$ , $med #i = #i'|_(L times L) med$ y $med ""^c = ""^c'|_L$.
     ]
   ],
 )
@@ -269,7 +269,7 @@
   [Defina $A |= phi[a->]$ (versión absoluta, no dependiente de una declaración previa, i.e. $a-> in A^NN$).],
   note: [No hace falta definir $t^A [a->]$.],
   [
-    Ahora si definamos recursivamente la relación $A |= phi[a->]$, donde *A* es una estructura de tipo $tau$, $phi in F^tau$ y $a->$ una asignación de *A* como: \
+    Definamos recursivamente la relación $A |= phi[a->]$, donde *A* es una estructura de tipo $tau$, $phi in F^tau$ y $a->$ una asignación de *A* como: \
     #box(width: 100%)[
       #let size_phi = 80pt
       #let centro = [
@@ -306,7 +306,7 @@
   3,
   [Defina la relación _"$v$ ocurre libremente en $phi$ a partir de $i$"_.],
   [
-    Definamos recursivamente la relación _”v ocurre libremente en $phi$ a partir de $i$”_, donde $v in "Var"$, $phi in F^tau$ y $i in \{1, ..., |phi|\}$, de la siguiente manera: \
+    Definamos recursivamente la relación _”v ocurre libremente en $phi$ a partir de $i$”_, donde $v in "Var"$, $phi in F^tau$ e \ $i in \{1, ..., |phi|\}$, como: \
     #box(width: 100%)[
       #let size_phi = 70pt
       #let centro = [
@@ -340,7 +340,7 @@
   4,
   [Defina "reticulado cuaterna".],
   [
-    Un reticulado cuaterna es una $4$-upla $(L, s, i, <=)$ tal que $L$ es un conjunto no vacío, $s$ e $i$ son operaciones binarias sobre $L$, $<=$ es una relación binaria y se cumplen las siguientes propiedades: \
+    Un reticulado cuaterna es una $4$-upla $(L, #s, #i, <=)$ tal que $L$ es un conjunto no vacío, $#s$ e $#i$ son operaciones binarias sobre $L$, $<=$ es una relación binaria y se cumplen las siguientes propiedades: \
     #box(width: 100%)[
       #set enum(numbering: "(1)", indent: 12.8pt)
       + $x <= x$, cualquiera sea $x in L$.
@@ -362,7 +362,7 @@
 
   #definitionStructure(
     1,
-    [Explique la notación declaratoria para *términos* con sus 3 convenciones notacionales.],
+    [Explique la notación declaratoria para *términos* con sus 3 convenciones notacionales. <combo-def-5>],
     [
       Supongamos $v_1, ..., v_n in "Var"$ y  $t$ un termino de tipo $tau$. Entonces escribimos $t =_d t(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que toda variable que ocurre en $t$ pertenecen a ${v_1,...,v_n}$. \
       Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
@@ -539,37 +539,115 @@
 
 #pagebreak()
 
-#combo_title(9)
+#page(margin: (bottom: 0.9cm))[
 
-#definitionStructure(
-  1,
-  [Defina "término elemental de tipo $tau$".],
-  [],
-)
+  #combo_title(9)
 
-#definitionStructure(
-  2,
-  [Defina $-||-_T$.],
-  [],
-)
+  #definitionStructure(
+    1,
+    [Defina "término elemental de tipo $tau$".],
+    [
+      // Guía 8, pag 11
+      Dado un tipo $tau = (~C~, ~F~, ~R~, a)$ los _términos elementales de tipo $tau$_ se definen con las siguientes clausulas:
+      #box(width: 100%)[
+        #set list(indent: 8pt)
+        - Cada palabra de $~C~$ es un _término elemental de tipo $tau$_.
+        - Las variables $x,y,z,w,...$ son _términos elementales de tipo $tau$_.
+        - Los nombres de elementos fijos $a,b,c,d,...$ son _términos elementales de tipo $tau$_.
+        - Si $f in ~F~_n$, con $n>=1$ y $t_1,...,t_n$ son términos elementales de tipo $tau$, entonces $f(t_1,...,t_n)$ es un _término elemental de tipo $tau$_.
+        - Una palabra es un _término elemental de tipo $tau$_ sii puede construirse usando las cláusulas anteriores.
+      ]
+    ],
+  )
 
-#definitionStructure(
-  3,
-  [Defina $bold("s")^T$ (explique por qué la definición es inambigua).],
-  [],
-)
+  #definitionStructure(
+    2,
+    [Defina $-||-_T$.],
+    [
+      Sea $T = (Sigma, tau)$ una teoría. Definimos la siguiente relación binaria sobre $S^tau$#footnote[$S^tau = {phi in F^tau: "Li"(phi) = emptyset}$. es decir el conjunto de las sentencias.] como: \
+      #box(width: 100%)[
+        $
+          #v(15pt) phi -||-_T psi " sii " (Sigma, tau) |- (phi <-> psi)
+        $
+      ] \
+      Es decir, $-||-_T = { (phi, psi) in S^tau^2: (Sigma, tau) |- (phi <-> psi) }$
+    ],
+  )
 
-#definitionStructure(
-  4,
-  [Defina $~A~_T$.],
-  [],
-)
+  #definitionStructure(
+    3,
+    [Defina $bold("s")^T$ (explique por qué la definición es inambigua).],
+    [
+      Lema. El conjunto _$-||-_T$ es una relación de equivalencia
+      #footnote[
+        Una _relación $R$ de equivalencia sobre $A$_ es una relación binaria, reflexiva #text([($x R x$)], size: 8pt), simétrica #text([($x R y => y R x$)], size: 8pt) y transitiva #text([($x R y " e " y R z => x R z$)], size: 8pt).
+      ]
+      sobre $S^tau$_. \
+      Gracias al Lema anterior, podemos definir sobre $S^tau \/ -||-_T$
+      #footnote[
+        $S^tau \/ -||-_T = { phi\/-||-_T: phi in S^tau }$, donde $phi\/-||-_T = {psi in S^tau: phi -||-_T psi }= {psi in S^tau: T |- (phi <-> psi) }$.
+      ]
+      la siguiente operación binaria $bold("s")^tau$: \
+      #box(width: 100%)[
+        $
+          #v(15pt)
+          [phi]_T bold("s")^T [psi]_T = [ (phi or psi) ]_T
+        $
+      ] \
+      Finalmente la definición anterior es inambigua ya que vale la siguiente propiedad:\
+      #box(width: 100%)[
+        $
+          #v(15pt)
+          "Si" T |- (phi <-> phi') med med "y" med med T |- (psi <-> psi') med med "entonces" med med T |- ((phi or psi) <-> (phi' or psi'))
+        $
+      ]\
+      garantizando que las clases de equivalencia son iguales independientemente de los representantes elegidos.
+      // Para que la definición anterior sea inambigua debemos probar la siguiente propiedad:\
+      // #box(width: 100%)[
+      //   #align(center)[
+      //     Si $[phi]_T = [phi']_T$ y $[psi]_T = [psi']_T$ entonces $[ (phi or psi) ]_T = [ (phi' or psi') ]_T$
+      //   ]
+      // ]\
+      // es decir, probar \
+      // #box(width: 100%)[
+      //   #align(center)[
+      //     Si $T |- (phi <-> phi')$ y $T |- (psi <-> psi')$ entonces $T |- ((phi or psi) <-> (phi' or psi'))$
+      //   ]
+      // ]\
+    ],
+  )
 
-#definitionStructure(
-  5,
-  [Defina "$S$ es un subuniverso del reticulado complementado $(L, s, i,^c, 0, 1)$".],
-  [],
-)
+  #definitionStructure(
+    4,
+    [Defina $~A~_T$.],
+    [
+      Dada una teoría $T = (Sigma, tau)$, denotaremos con $~A~_T$ al algebra de Boole $(S^tau \/ -||-_T, bold("s")^T, bold(i)^T, ""^c^T, 0^T, 1^T)$, donde \
+      #box(width: 100%)[
+        $
+          #v(15pt)
+          [phi]_T #s^T [psi]_T = [ (phi or psi) ]_T quad quad quad quad
+          [phi]_T #i^T [psi]_T = [ (phi and psi) ]_T quad quad quad quad
+          [phi]_T^c^T = [ not phi ]_T \
+          0^T = {phi in S^tau: (Sigma, tau) |- not phi #comentario([(i.e. $phi$ es refutable)])} quad med
+          1^T = {phi in S^tau: (Sigma, tau) |- phi #comentario([(i.e. $phi$ es un teorema)])}
+        $
+      ]
+      El algebra $~A~_T$ sera llamada el _algebra de Lindenbaum de_ $T$.
+    ],
+  )
+
+  #definitionStructure(
+    5,
+    [Defina "$S$ es un subuniverso del reticulado complementado $(L, #s, #i,^c, 0, 1)$".],
+    [
+      // Guía 5, pág 5
+      Dado $(L, #s, #i,^c, 0, 1)$ un reticulado complementado. Un conjunto $S c= L$ es llamado _subuniverso de_ $(L, #s, #i,^c, 0, 1)$ si $0,1 in S$ y ademas $S$ es cerrado bajo las operaciones $#s, #i,^c$. $med$ #footnote[
+        Es decir, para todo $x, y in S$ se cumple que $x #s y in S$, $x #i y in S$ y $x^c in S$.
+      ]
+    ],
+  )
+
+]
 
 #pagebreak()
 
@@ -578,30 +656,88 @@
 #definitionStructure(
   1,
   [Defina "tesis del bloque $<<i, j>>$ en $(phi, bold(J))$".],
-  [],
+  [
+    Sea $(bold(phi), bold(J))$ un par adecuado de tipo $tau$. Si $<<i,j>> in ~B~^(bold(J))$, entonces $bold(phi)_j$ es la _tesis del bloque_ $<<i, j>>$ en $(bold(phi), bold(J))$.
+  ],
 )
 
 #definitionStructure(
   2,
   [Defina cuando una teoría de primer orden $(Sigma, tau)$ es consistente.],
-  [],
+  [
+    Una teoría de primer orden $(Sigma, tau)$ es _inconsistente_ cuando haya una sentencia $phi$ tal que $(Sigma, tau) |- (phi and not phi)$.
+    Una teoría de primer orden $(Sigma, tau)$ es llamada _consistente_ cuando *no* sea _inconsistente_.
+  ],
 )
 
 #definitionStructure(
   3,
   [Dada una teoría elemental $(Sigma, tau)$ y una sentencia elemental pura $phi$ de tipo $tau$, defina \ "prueba elemental de $phi$ en $(Sigma, tau)$".],
-  [],
+  [
+    Dada una teoría elemental $(Sigma, tau)$ y una sentencia elemental pura $phi$ de tipo $tau$, una _prueba elemental de_ $phi$ en $(Sigma, tau)$ es una prueba de $phi$ que posea las siguientes características: \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)(a)", indent: 12.8pt)
+      + En la prueba se parte de una estructura de tipo $tau$ , fija pero arbitraria en el sentido que lo único que sabemos es que ella es una estructura que satisface los axiomas de $Sigma$ (o sea esta es la única información particular que podemos usar).
+      + Las deducciones en la prueba son muy simples y obvias de justificar con mínimas frases en castellano.
+      + En la escritura de la prueba lo concerniente a la matemática misma se expresa usando solo sentencias elementales de tipo $tau$.
+    ]
+    #comentario(
+      [Notar que el concepto de prueba elemental en una teoría $(Sigma, tau)$ no es un concepto definido en forma precisa.],
+    )
+  ],
 )
 
 #pagebreak()
 
-#combo_title(11)
+#page(margin: (bottom: 0.4cm))[
 
-#definitionStructure(
-  1,
-  [Enuncie el *programa de lógica matemática* dado al final de la Guía 8 y explique brevemente con qué definiciones matemáticas se van resolviendo los tres primeros puntos, y qué teoremas garantizan la resolución del cuarto punto de dicho programa.],
-  [],
-)
+  #combo_title(11)
+
+  #definitionStructure(
+    1,
+    [Enuncie el *programa de lógica matemática* dado al final de la Guía 8 y explique brevemente con qué definiciones matemáticas se van resolviendo los tres primeros puntos, y qué teoremas garantizan la resolución del cuarto punto de dicho programa.],
+    [
+      #text([*Programa de lógica matemática*], size: 13pt) \
+      #box(width: 100%)[
+        #set enum(numbering: "(1)", indent: 12.8pt)
+        + Dar un modelo matemático del concepto de formula elemental de tipo $tau$.
+        + Dar una definición matemática de cuando una formula elemental de tipo $tau$ es verdadera en una estructura de tipo $tau$ para una asignación dada de valores a las variables libres y a los nombres de elementos fijos de dicha formula elemental.
+        + Dar un modelo matemático del concepto de prueba elemental en una teoría elemental. A estos objetos matemáticos los llamaremos pruebas formales.
+        + Intentar probar matemáticamente que nuestro concepto de prueba formal es una correcta modelización matemática de la idea intuitiva de prueba elemental en una teoría elemental.
+      ]
+
+      *(1)*
+
+      Con las definiciones de _variables_, _términos de tipo $tau$_ y _formulas de tipo $tau$_ logramos modelizar correctamente el concepto de _formula elemental puras de tipo $tau$_. #comentario([Entonces, si modelizamos los nombres de elementos fijos, listo.])
+
+      En particular el matemático al momento de hacer una prueba elemental en una teoría elemental $(Sigma, tau)$, comienza imaginando una estructura de tipo $tau$ que lo único que sabe es que satisface las sentencias de $Sigma$. Luego, cuando fija un elemento le pone un nombre, digamos $b$, y podemos pensar que expandió su estructura imaginaria a una de tipo $(~C~ union {b}, ~F~, ~R~, a)$ y continua con su razonamiento, claramente esto lo puede hacer las veces que quiera en una prueba.
+
+      Esta mecánica de prueba del matemático nos deja ver que es natural modelizar las _fórmulas elementales de tipo $tau$_ con fórmulas de tipo $tau'$, donde $tau'$ es alguna extensión de $tau$ por nombres de constante #footnote[
+        Dado $tau = (~C~, ~F~, ~R~, a)$ un tipo, definimos que un tipo $tau'$ es una _extensión de $tau$ por nombres de constantes_ si $tau'$ es de la forma $(~C~', ~F~, ~R~, a)$ con $~C~'$ tal que $~C~' c= ~C~$.
+
+      ].
+
+      *(2)*
+
+      Dado un tipo $tau$, una _estructura *A* de tipo _ $tau$ , una fórmula elemental $phi$ y una asignación $arrow(a) in A^NN$. \ Usando la relación $bold(A) |= phi[arrow(a)]$ definimos cuándo es verdadera.
+
+      *(3)*
+
+      La definición de _prueba formal_ en una _teoría de primer orden_ soluciona este punto.
+
+      *(4)*
+
+      El _Teorema de Corrección_ garantiza que las pruebas formales de nuestro modelo matemático son efectivamente pruebas elementales en alguna teoría elemental. \
+
+      Pero podría pasar que sea incompleto, es decir que existan cosas que no podamos probar formalmente pero que si tengan pruebas elementales en alguna teoría elemental. \
+
+      El _Teorema de Completitud_ garantiza que para todo lo que pueda ser probado elementalmente en una teoría elemental, exista una prueba formal en nuestro modelo matemático.
+
+      #COMPLETAR / REVISAR.
+    ],
+  )
+
+]
 
 #pagebreak()
 
@@ -610,7 +746,44 @@
 #definitionStructure(
   1,
   [Defina el concepto de *función* y desarrolle las tres *Convenciones Notacionales* asociadas a dicho concepto (i.e en la Guía 0).],
-  [],
+  link_apunte: "https://granlogico.com/apunteweb/1.7-el-concepto-de-funcion.html",
+  [
+    #set enum(numbering: "(1)", indent: 12.8pt)
+    Una *función* es un conjunto *$f$* de pares ordenados con la siguiente propiedad
+    $ "Si" (x,y) in f med"y"med (x,z) in f", entonces" y = z $
+    Además, dada una función $f$ definimos
+    $
+      D_f & = "dominio de "f = {x : (x,y) in f "para algún " y} \
+      I_f & = "imagen de "f = {y : (x,y) in f "para algún " x}
+    $
+    A veces escribimos Dom($f$) y Im($f$) en lugar de $D_f$ e $I_f$, respectivamente. \
+    Las *convenciones notacionales* son \
+    + Dado $x in D_f$ usaremos $f(x)$ para denotar el único $y in I_f$ tal que $(x,y) in f$. \
+    + Escribimos $f: S c= A -> B$ para expresar que $f$ es una función tal que $D_f = S c= A$ y $I_f c= B$. \
+      Escribimos $f: A -> B$ para expresar que $f$ es una función tal que $D_f = A$ y $I_f c= B$. \
+      En ese contexto llamaremos a $B$ _conjunto de llegada_ ($B$ no está determinado por $f$, ya que $I_f c= B$).
+    + Muchas veces, para definir una función $f$, lo que haremos es dar su dominio y su regla de asignación. Básicamente daremos precisamente el conjunto que es $D_f$ y quién es $f(x)$ para cada $x in D_f$. Esto determina por completo a $f$, ya que $f = {(x,f(x)): x in D_f}$. Algunos ejemplos son
+      #align(center)[
+        #table(
+          columns: 3,
+          stroke: none,
+          column-gutter: 32pt,
+          [Básico], [Con _conjunto de llegada_ y flechas], [Con flechas y por casos],
+          $
+             D_f & = omega \
+            f(x) & = 23 dot x
+          $,
+          $
+            f: omega & -> omega \
+                   x & -> 23 dot x
+          $,
+          $
+            f: NN & -> omega \
+                x & -> cases(x+1 quad "si x es par", x+2 quad "si x es impar")
+          $,
+        )
+      ]
+  ],
 )
 
 #pagebreak()
