@@ -23,6 +23,7 @@
   ($c=$, $subset.eq$),
   ($=_d$, $med "="_d med$),
   ($|=$, $tack.r.double$),
+  // ($!|=$, $tack.r.double.not$),
   ($-||-$, $tack.l tack.r$),
   ($~P~$, $cal(P)$),
   ($~B~$, $cal(B)$),
