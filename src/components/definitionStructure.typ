@@ -8,6 +8,7 @@
   short_title: none,
   note: none,
   plural_def: false,
+  empty_def: false,
   def,
 ) = {
   box(width: 100%, inset: (left: 15pt, right: 15pt, top: 8pt, bottom: 8pt), fill: color_gray_block)[
@@ -37,17 +38,17 @@
         }
       ]
     }
-
-
   ]
 
-  box(width: 100%, inset: (left: 30pt))[
-    #stack(spacing: 8pt)[_Definición#if plural_def { "es" }:_][
-      #if def == [] {
-        COMPLETAR
-      } else {
-        def
-      }
+  if not empty_def {
+    box(width: 100%, inset: (left: 30pt))[
+      #stack(spacing: 8pt)[_Definición#if plural_def { "es" }:_][
+        #if def == [] {
+          COMPLETAR
+        } else {
+          def
+        }
+      ]
     ]
-  ]
+  }
 }

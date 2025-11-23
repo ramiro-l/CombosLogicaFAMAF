@@ -85,7 +85,7 @@
 
   #definitionStructure(
     5,
-    [Defina $(L, s, i,^c, 0, 1)\/theta$ (con $theta$ una congruencia del reticulado complementado $(L, s, i,^c, 0, 1)$).],
+    [Defina $(L, s, i,^c, 0, 1)\/theta$ (con $theta$ una congruencia del reticulado complementado $(L, s, i,^c, 0, 1)$) <combo-def-1.5>.],
     [
       Sea $(L, s, i,^c, 0, 1)$ un reticulado complementado. Una _congruencia sobre_ $(L, s, i,^c, 0, 1)$ sera una relación de equivalencia sobre $L$ la cual cumpla \
       #box(width: 92%)[
@@ -229,7 +229,7 @@
 
 #definitionStructure(
   4,
-  [Defina cuando $bold(J) in italic("Just")^+$ es balanceada.],
+  [Defina cuando $bold(J) in italic("Just")^+$ es balanceada. <combo-def-3.4>],
   note: [No hace falta que defina $~B~^(bold(J))$.],
   [
     Definimos $bold(J)$ es _balanceada_ si se dan las siguientes condiciones:\
@@ -272,18 +272,32 @@
     Ahora si definamos recursivamente la relación $A |= phi[a->]$, donde *A* es una estructura de tipo $tau$, $phi in F^tau$ y $a->$ una asignación de *A* como: \
     #box(width: 100%)[
       #let size_phi = 80pt
+      #let centro = [
+        #box(width: 100pt)[
+          #align(center)[
+            , entonces $med med$ $bold(A) |= phi[a->]$
+          ]
+        ]
+      ]
+      #let sii = [
+        #box(width: 18pt)[
+          #align(center)[
+            sii
+          ]
+        ]
+      ]
       #set enum(numbering: "(1)", indent: 12.8pt)
-      + Si #box(width: size_phi)[#align(center)[$phi = (t equiv s)$]], entonces  $bold(A) |= phi[a->] med med$ sii $med med$ $t^bold(A) [a->] = s^bold(A) [a->]$
-      + Si #box(width: size_phi)[#align(center)[$phi = r(t_1,...,t_m)$]], entonces  $bold(A) |= phi[a->] med med$ sii $med med$ $(t_1^(bold(A))[arrow(a)],...,t_m^(bold(A))[arrow(a)]) in i(r)$.
-      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 and phi_2)$]], entonces  $bold(A) |= phi[a->] med med$ sii $med med$ $bold(A) |= phi_1[a->]$ y $bold(A) |= phi_2[a->]$
-      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 or phi_2)$]], entonces  $bold(A) |= phi[a->] med med$ sii $med med$ $bold(A) |= phi_1[a->]$ o $bold(A) |= phi_2[a->]$
-      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 -> phi_2)$]], entonces  $bold(A) |= phi[a->] med med$ sii $med med$ $bold(A) tack.r.double.not phi_1[a->]$ o $bold(A) |= phi_2[a->]$
-      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 <-> phi_2)$]], entonces  $bold(A) |= phi[a->] med med$ sii $med med$ \ #h(140pt) se dan $bold(A) |= phi_1[a->]$ y $bold(A) |= phi_2[a->]$ $med med$ o $med med$ se dan $bold(A) tack.r.double.not phi_1[a->]$ y $bold(A) tack.r.double.not phi_2[a->]$
-      + Si #box(width: size_phi)[#align(center)[$phi = not phi_1$]], entonces  $bold(A) |= phi[a->] med med$ sii $med med$ $bold(A) tack.r.double.not phi_1[a->]$
-      + Si #box(width: size_phi)[#align(center)[$phi = forall x_1 phi_1$]], entonces  $bold(A) |= phi[a->] med med$ sii $med med$ para cada $a in A$, se da que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]$ #footnote[
+      + Si #box(width: size_phi)[#align(center)[$phi = (t equiv s)$]] #centro #sii $t^bold(A) [a->] = s^bold(A) [a->]$
+      + Si #box(width: size_phi)[#align(center)[$phi = r(t_1,...,t_m)$]] #centro #sii $(t_1^(bold(A))[arrow(a)],...,t_m^(bold(A))[arrow(a)]) in i(r)$.
+      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 and phi_2)$]] #centro #sii $bold(A) |= phi_1[a->]$ y $bold(A) |= phi_2[a->]$
+      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 or phi_2)$]] #centro #sii $bold(A) |= phi_1[a->]$ o $bold(A) |= phi_2[a->]$
+      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 -> phi_2)$]] #centro #sii $bold(A) tack.r.double.not phi_1[a->]$ o $bold(A) |= phi_2[a->]$
+      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 <-> phi_2)$]] #centro #sii se dan $bold(A) |= phi_1[a->]$ y $bold(A) |= phi_2[a->]$ \ #h(218pt) o $med med$  se dan $bold(A) tack.r.double.not phi_1[a->]$ y $bold(A) tack.r.double.not phi_2[a->]$
+      + Si #box(width: size_phi)[#align(center)[$phi = not phi_1$]] #centro #sii $bold(A) tack.r.double.not phi_1[a->]$
+      + Si #box(width: size_phi)[#align(center)[$phi = forall x_1 phi_1$]] #centro #sii para cada $a in A$, se da que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]$ #footnote[
           Dada una estructura *A* de tipo $tau$, una asignación $arrow(a) in A^NN$ y $a in A$, con $arrow.b ""_i^a (arrow(a))$ denotaremos la asignación que resulta de reemplazar en $arrow(a)$ el i-ésimo elemento por $a$.
         ]
-      + Si #box(width: size_phi)[#align(center)[$phi = exists x_1 phi_1$]], entonces  $bold(A) |= phi[a->] med med$ sii $med med$ hay un $a in A$ tal que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]^(#text("5", size: 8pt))$
+      + Si #box(width: size_phi)[#align(center)[$phi = exists x_1 phi_1$]] #centro #sii hay un $a in A$ tal que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]^(#text("5", size: 8pt))$
     ]
   ],
 )
@@ -294,16 +308,30 @@
   [
     Definamos recursivamente la relación _”v ocurre libremente en $phi$ a partir de $i$”_, donde $v in "Var"$, $phi in F^tau$ y $i in \{1, ..., |phi|\}$, de la siguiente manera: \
     #box(width: 100%)[
-      #let size_phi = 65pt
-      #set enum(numbering: "(1)(a)", indent: 12.8pt)
-      + Si #box(width: size_phi)[#align(center)[$phi$ es atómica]], entonces _v ocurre libremente en $phi$ a partir de $i$_ $med med$ sii $med med$ $v$ ocurre en $phi$ a partir de $i$. #footnote[
-        Si $alpha, beta in Sigma^#estrella$, con $|alpha|,|beta| >= 1$ y un natural $i in {1,...,|beta|}$, se dice que _$alpha$ ocurre a partir de $i$ en $beta$_ cuando se de que existan palabras $delta, gamma$ tales que $beta = delta alpha gamma$ y $|delta| >= i-1$.
+      #let size_phi = 70pt
+      #let centro = [
+        #box(width: 210pt)[
+          #align(center)[
+            , entonces $med med$ _$v$ ocurre libremente en $phi$ a partir de $i$_
+          ]
+        ]
       ]
-      + Si #box(width: size_phi)[#align(center)[$phi = phi_1 eta phi_2$]], entonces _v ocurre libremente en $phi$ a partir de $i$_ $med med$ sii $med med$ se da alguna de las siguientes
+      #let sii = [
+        #box(width: 18pt)[
+          #align(center)[
+            sii
+          ]
+        ]
+      ]
+      #set enum(numbering: "(1)(a)", indent: 12.8pt)
+      + Si #box(width: size_phi)[#align(center)[$phi$ es atómica]] #centro #sii $v$ ocurre en $phi$ a partir de $i$. #footnote[
+          Si $alpha, beta in Sigma^#estrella$, con $|alpha|,|beta| >= 1$ y un natural $i in {1,...,|beta|}$, se dice que _$alpha$ ocurre a partir de $i$ en $beta$_ cuando se de que existan palabras $delta, gamma$ tales que $beta = delta alpha gamma$ y $|delta| >= i-1$.
+        ]
+      + Si #box(width: size_phi)[#align(center)[$phi = phi_1 eta phi_2$]] #centro #sii se da alguna de las siguientes:
         + $v$ ocurre libremente en $phi_1$ a partir de $i-1$.
         + $v$ ocurre libremente en $phi_2$ a partir de $i- |phi_1eta|$.
-      + Si #box(width: size_phi)[#align(center)[$phi = not phi_1$]], entonces _v ocurre libremente en $phi$ a partir de $i$_ $med med$ sii $med med$  $v$ ocurre libremente en $phi_1$ a partir de $i-1$.
-      + Si #box(width: size_phi)[#align(center)[$phi = Q w phi_1$]], entonces _v ocurre libremente en $phi$ a partir de $i$_ $med med$ sii $med med$  $v != w$ y $v$ ocurre libremente en $phi_1$ a partir de $i - |Q w|$.
+      + Si #box(width: size_phi)[#align(center)[$phi = not phi_1$]] #centro #sii  $v$ ocurre libremente en $phi_1$ a \ #h(318pt) partir de $i-1$.
+      + Si #box(width: size_phi)[#align(center)[$phi = Q w phi_1$]] #centro #sii  $v != w$ y $v$ ocurre libremente \ #h(318pt) en $phi_1$ a partir de $i - |Q w|$.
     ]
   ],
 )
@@ -322,7 +350,7 @@
       + $x <= z$ y $y <= z$ implica $x #s y <= z$, cualquiera sean $x, y, z in L$.
       + $x <= x #i y$ y $y <= x #i y$, cualquiera sean $x, y in L$.
       + $z <= x$ y $z <= y$ implica $z <= x #i y$, cualquiera sean $x, y, z in L$.
-    ] 
+    ]
   ],
 )
 
@@ -330,54 +358,54 @@
 
 #page(margin: (bottom: 0cm))[
 
-#combo_title(5)
+  #combo_title(5)
 
-#definitionStructure(
-  1,
-  [Explique la notación declaratoria para *términos* con sus 3 convenciones notacionales.],
-  [
-    Supongamos $v_1, ..., v_n in "Var"$ y  $t$ un termino de tipo $tau$. Entonces escribimos $t =_d t(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que toda variable que ocurre en $t$ pertenecen a ${v_1,...,v_n}$. \
-    Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
-    #text([*Convención notacional 1*], size: 12pt):
-    Si hemos declarado $t =_d t(v_1, ..., v_n)$, si $P_1,...,P_n$ son palabras cualquieras, entonces $t(P_1,...,P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de  $v_1$ en $t$ por $P_1$, cada ocurrencia de $v_2$ en $t$ por $P_2$, etc. \
-    #text([*Convención notacional 2*], size: 12pt):
-    Si hemos declarado $t =_d t(v_1, ..., v_n)$, si *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces con $t^A [a_1, ..., a_n]$ denotaremos al elemento $t^bold(A)[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$. \
-    #text([*Convención notacional 5*], size: 12pt):
-    Si hemos declarado $t =_d t(v_1, ..., v_n)$, y se da que $t = f(t_1,...,t_m)$, con $f in F_m, m>=1$ y $t_1,...,t_m in T_k^tau$, supondremos tácitamente que también hemos echo las declaraciones $t_1 =_d t_1(v_1,...,v_k), ..., t_m =_d t_m (v_1,...,v_k)$. Esto lo podemos hacer ya que obviamente las variables que ocurren en los $t_1,...,t_m$ están en ${v_1,...,v_k}$.
-  ],
-)
+  #definitionStructure(
+    1,
+    [Explique la notación declaratoria para *términos* con sus 3 convenciones notacionales.],
+    [
+      Supongamos $v_1, ..., v_n in "Var"$ y  $t$ un termino de tipo $tau$. Entonces escribimos $t =_d t(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que toda variable que ocurre en $t$ pertenecen a ${v_1,...,v_n}$. \
+      Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
+      #h(7pt) #text([*Convención notacional 1*], size: 12pt):
+      Si hemos declarado $t =_d t(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $t(P_1,...,P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de  $v_1$ en $t$ por $P_1$, cada ocurrencia de $v_2$ en $t$ por $P_2$, etc. \
+      #h(7pt) #text([*Convención notacional 2*], size: 12pt):
+      Si hemos declarado $t =_d t(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces con $t^A [a_1, ..., a_n]$ denotaremos al elemento $t^bold(A)[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$. \
+      #h(7pt) #text([*Convención notacional 5*], size: 12pt):
+      Si hemos declarado $t =_d t(v_1, ..., v_n)$ y se da que $t = f(t_1,...,t_m)$, con $f in F_m, m>=1$ y $t_1,...,t_m in T_k^tau$, supondremos tácitamente que también hemos echo las declaraciones $t_1 =_d t_1(v_1,...,v_k), ..., t_m =_d t_m (v_1,...,v_k)$. Esto lo podemos hacer ya que obviamente las variables que ocurren en los $t_1,...,t_m$ están en ${v_1,...,v_k}$.
+    ],
+  )
 
-#combo_title(6)
+  #combo_title(6)
 
-#definitionStructure(
-  1,
-  [Explique la notación declaratoria para *fórmulas* con sus 3 convenciones notacionales.],
-  note: [Puede asumir la notación declaratoria para términos.],
-  [
-    Supongamos $v_1, ..., v_n in "Var"$ y  $phi$ es una formula de tipo $tau$. Entonces escribimos $phi =_d phi(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que $"Li"(phi) c= {v_1,...,v_n}$. \
-    Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
-    #text([*Convención notacional 3*], size: 12pt):
-    Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, si $P_1,...,P_n$ son palabras cualquieras, entonces $phi(P_1,...,P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de $v_1$ en $phi$ por $P_1$, cada ocurrencia de $v_2$ en $phi$ por $P_2$, etc. \
-    #text([*Convención notacional 4*], size: 12pt):
-    Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, si *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces $bold(A) |= phi [a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$. 
-    En general $bold(A) tack.r.double.not  phi[arrow(b)]$ significara que no sucede $bold(A) |= phi[a_1,...,a_n]$. \
-    #text([*Convención notacional 6*], size: 12pt):
-    Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, entonces: \
-    #box(width: 100%)[
-      #set list(indent: 0pt, body-indent: 0.4em)
-      - Si $phi = (t equiv s)$, con $t, s in T_k^tau$
-        \ supondremos tácitamente que hemos hecho las declaraciones $t =_d t(v_1,...,v_n)$ y $s =_d s(v_1,...,v_n)$.
-      - Si $phi = r(t_1,...,t_m)$, con $r in R_m$ y $t_1,...,t_m in T^tau$
-        \ supondremos tácitamente que hemos hecho las declaraciones $t_1 =_d t_1(v_1,...,v_n), ..., t_m =_d t_m (v_1,...,v_n)$. 
-      - Si $phi = (phi_1 eta phi_2)$ con $eta in {and, or, ->, <->}$ y $phi_1, phi_2 in F^tau$
-        \ supondremos tácitamente que hemos hecho las declaraciones $phi_1 =_d phi_1(v_1,...,v_n)$ y $phi_2 =_d phi_2(v_1,...,v_n)$.
-      - Si $med med phi = not phi_1 med med$ o $med med phi = Q v_j phi_1 med med$ con $Q in {forall, exists}$, $j in {1,...,n}$ y $phi_1 in F^tau$
-        \ supondremos tácitamente que hemos hecho la declaración $phi_1 =_d phi_1(v_1,...,v_n)$.
-      - Si $phi = Q v phi_1$ con $Q in {forall, exists}$, $v in "Var"-{v_1,...,v_n}$ y $phi_1 in F^tau$
-        \ supondremos tácitamente que hemos hecho la declaración $phi_1 =_d phi_1(v_1,...,v_n, v)$.
-    ]
-  ],
-)
+  #definitionStructure(
+    1,
+    [Explique la notación declaratoria para *fórmulas* con sus 3 convenciones notacionales. <combo-def-6>],
+    note: [Puede asumir la notación declaratoria para términos.],
+    [
+      Supongamos $v_1, ..., v_n in "Var"$ y  $phi$ es una formula de tipo $tau$. Entonces escribimos $phi =_d phi(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que $"Li"(phi) c= {v_1,...,v_n}$. \
+      Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
+      #h(7pt) #text([*Convención notacional 3*], size: 12pt):
+      Si hemos declarado $phi =_d phi(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $phi(P_1, ..., P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de $v_1$ en $phi$ por $P_1$, cada ocurrencia de $v_2$ en $phi$ por $P_2$, etc. \
+      #h(7pt) #text([*Convención notacional 4*], size: 12pt):
+      Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces $bold(A) |= phi [a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.
+      En general $bold(A) tack.r.double.not phi[arrow(b)]$ significara que no sucede $bold(A) |= phi[a_1,...,a_n]$. \
+      #h(7pt) #text([*Convención notacional 6*], size: 12pt):
+      Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, entonces: \
+      #box(width: 100%)[
+        #set list(indent: 0pt, body-indent: 0.4em)
+        - Si $phi = (t equiv s)$, con $t, s in T_k^tau$
+          \ supondremos tácitamente que hemos hecho las declaraciones $t =_d t(v_1,...,v_n)$ y $s =_d s(v_1,...,v_n)$.
+        - Si $phi = r(t_1,...,t_m)$, con $r in R_m$ y $t_1,...,t_m in T^tau$
+          \ supondremos tácitamente que hemos hecho las declaraciones $t_1 =_d t_1(v_1,...,v_n), ..., t_m =_d t_m (v_1,...,v_n)$.
+        - Si $phi = (phi_1 eta phi_2)$ con $eta in {and, or, ->, <->}$ y $phi_1, phi_2 in F^tau$
+          \ supondremos tácitamente que hemos hecho las declaraciones $phi_1 =_d phi_1(v_1,...,v_n)$ y $phi_2 =_d phi_2(v_1,...,v_n)$.
+        - Si $med med phi = not phi_1 med med$ o $med med phi = Q v_j phi_1 med med$ con $Q in {forall, exists}$, $j in {1,...,n}$ y $phi_1 in F^tau$
+          \ supondremos tácitamente que hemos hecho la declaración $phi_1 =_d phi_1(v_1,...,v_n)$.
+        - Si $phi = Q v phi_1$ con $Q in {forall, exists}$, $v in "Var"-{v_1,...,v_n}$ y $phi_1 in F^tau$
+          \ supondremos tácitamente que hemos hecho la declaración $phi_1 =_d phi_1(v_1,...,v_n, v)$.
+      ]
+    ],
+  )
 
 ]
 
@@ -388,26 +416,79 @@
 #definitionStructure(
   1,
   [Defina recursivamente la relación _"$v$ es sustituible por $w$ en $phi$"_.],
-  [],
+  [
+    Dadas $v,w in "Var"$ y $phi in F^tau$ diremos que _$v$ es sustituible por $w$ en $phi$_ cuando ninguna ocurrencia libre de $v$ en $phi$ suceda dentro de una ocurrencia de una subformula de la forma $Q w psi$ en $phi$, tal que $Q in {forall, exists}, psi in F^tau$. \
+    Ahora si definamos recursivamente la relación _$v$ es sustituible por $w$ en $phi$_ de la siguiente manera: \
+    #box(width: 100%)[
+      #let size_cond = 115pt
+      #let entonces = [, entonces $med med$]
+      #let rel = [_$v$ es sustituible por $w$ en $phi$_]
+      #let not_rel = [_$v$ *no* es sustituible por $w$ en $phi$_]
+      #let centro(no: false) = [
+        #if (no == false) {
+          box(width: 165pt)[
+            #align(center)[
+              #entonces #rel
+            ]
+          ]
+        } else {
+          box(width: 180pt)[
+            #align(center)[
+              #entonces #not_rel
+            ]
+          ]
+        }
+      ]
+      #let sii = [
+        #box(width: 18pt)[
+          #align(center)[
+            sii
+          ]
+        ]
+      ]
+      #set enum(numbering: "(1)(a)", indent: 12.8pt)
+      + Si #box(width: size_cond)[#align(center)[$phi$ es atómica]] #centro().
+      + Si #box(width: size_cond)[#align(center)[$phi = phi_1 eta phi_2$]] #centro() #sii
+        \ #h(188pt)_$v$ es sustituible por $w$ en $phi_1$_ y _$v$ es sustituible por $w$ en $phi_2$_.
+      + Si #box(width: size_cond)[#align(center)[$phi = not phi_1$]] #centro() #sii _$v$ es sustituible por $w$ en $phi_1$_.
+      + Si #box(width: size_cond)[#align(center)[$phi = Q v phi_1$]] #centro().
+      + Si #box(width: size_cond)[#align(center)[$phi = Q w phi_1$ y $v in "Li"(phi_1)$]] #centro(no: true).
+      + Si #box(width: size_cond)[#align(center)[$phi = Q w phi_1$ y $v in.not "Li"(phi_1)$]] #centro().
+      + Si #box(width: size_cond)[#align(center)[$phi = Q v phi_1$ y $u !=,v,w$]] #centro() #sii _$v$ es sustituible por $w$ en $phi_1$_.
+    ]
+  ],
 )
 
 #definitionStructure(
   2,
-  [Defina cuando $bold(J) in italic("Just")^+$ es balanceada.],
-  note: [No hace falta que defina $~B~^(bold(J))$.],
+  [Defina cuando $bold(J) in italic("Just")^+$ es balanceada. (misma que la del #link(<combo-def-3.4>)[Combo 3.4])],
+  link_apunte: <combo-def-3.4>,
   [],
+  empty_def: true,
 )
 
 #definitionStructure(
   3,
   [Defina "filtro del reticulado terna $(L, s, i)$".],
-  [],
+  [
+    Un _filtro_ de un reticulado terna (L, #s, #i) sera un subconjunto $F c= L$ tal que:\
+    #box(width: 100%)[
+      #set enum(numbering: "(1)(a)", indent: 12.8pt)
+      + $F != emptyset$
+      + $x,y in F$ implica $x #i y in F$
+      + $x in F$ y $x <= y$ implica $y in F$
+    ]
+  ],
 )
 
 #definitionStructure(
   4,
   [Defina "teoría elemental".],
-  [],
+  [
+    Una _teoría elemental_ sera un par $(Sigma, tau)$ tal que $tau$ es un tipo cualquiera y $Sigma$ es un conjunto de sentencias elementales puras#footnote[
+      Ser _sentencia_ implica no tener variables libres y ser _pura_ implica que no ocurran nombres de elementos fijos.
+    ] de tipo $tau$.
+  ],
 )
 
 #pagebreak()
@@ -416,27 +497,44 @@
 
 #definitionStructure(
   1,
-  [Defina $(L, s, i,^c, 0, 1)\/theta$ (con $theta$ una congruencia del reticulado complementado $(L, s, i,^c, 0, 1)$).],
+  [Defina $(L, s, i,^c, 0, 1)\/theta$ (con $theta$ una congruencia del reticulado complementado $(L, s, i,^c, 0, 1)$). \ (Misma que la del #link(<combo-def-1.5>)[Combo 1.5])],
   [],
+  empty_def: true,
+  link_apunte: <combo-def-1.5>,
 )
 
 #definitionStructure(
   2,
-  [Dados $phi =_d phi(v_1, ..., v_n)$, *A* una estructura de tipo $tau$ y $a_1, ..., a_n in A$, defina qué significa \ $A |= phi[a_1, ..., a_n]$ (i.e. Convención notacional 4).],
-  [],
+  [Dados $phi =_d phi(v_1, ..., v_n)$, *A* una estructura de tipo $tau$ y $a_1, ..., a_n in A$, defina qué significa \ $A |= phi[a_1, ..., a_n]$ (i.e. Convención notacional 4 y parte del #link(<combo-def-6>)[Combo 6]).],
+  [
+    Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces $bold(A) |= phi [a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.
+    En general $bold(A) tack.r.double.not phi[arrow(b)]$ significara que no sucede $bold(A) |= phi[a_1,...,a_n]$.
+  ],
 )
 
 #definitionStructure(
   3,
-  [Dado un poset $(P, ≤)$, defina "a es supremo de $S$ en $(P, ≤)$".],
-  [],
+  [Dado un poset $(P, <=)$, defina "a es supremo de $S$ en $(P, <=)$".],
+  [
+    Sea $(P, <=)$ un poset. Dado $S c= P$, diremos que un elemento $a in P$ es _cota superior de $S$ en  $(P, <=)$_ si para todo $x in S$ se da $x<=a$. Un elemento $a in P$ sera llamado _supremo de $S$ en $(P, <=)$_ si se dan las condiciones: \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)(a)", indent: 12.8pt)
+      + $a$ es _cota superior de $S$ en $(P, <=)$_.
+      + Para cada $b in P$, si $b$ es _cota superior de $S$ en $(P, <=)$_, entonces $a <= b$.
+    ]
+  ],
 )
 
 #definitionStructure(
   4,
-  [Defina "$i$ es anterior a $j$ en $(phi, bold(J))$".],
+  [Defina "$i$ es anterior a $j$ en $(bold(phi), bold(J))$".],
   note: [No hace falta que defina $~B~^(bold(J))$.],
-  [],
+  [
+    Sea un _par adecuado $(bold(phi), bold(J))$_ e $i,j in {1,...,n(bold(phi))}$ #footnote[
+      Recordar $n(bold(phi))$ es la "cantidad de formulas" que tiene $bold(phi).$
+    ].
+    Diremos que _$i$ es anterior a $j$ en $(bold(phi), bold(J))$_ si $i<j$ y ademas para todo $B in ~B~^(bold(J))$ se tiene que $i in B => j in B$.
+  ],
 )
 
 #pagebreak()
