@@ -733,7 +733,7 @@
 
       El _Teorema de Completitud_ garantiza que para todo lo que pueda ser probado elementalmente en una teoría elemental, exista una prueba formal en nuestro modelo matemático.
 
-      #COMPLETAR / REVISAR.
+      #REVISAR
     ],
   )
 
@@ -790,6 +790,12 @@
 
 = #smallcaps[Teoremas]
 
+#let lema_prop_básicas_del_enchufe_simple = [
+  #counter(<lema-prop-básicas-del-enchufe-simple>).step()
+  #link(<lema-prop-básicas-del-enchufe-simple>)[_Lema (Propiedades básicas $|-$)_]
+]
+
+
 #combo_title(1)
 
 #proofStructure(
@@ -801,7 +807,58 @@
     Entonces hay un filtro primo $P$ tal que
     $x_0 in.not P$ y $F c= P$.
   ],
-  [],
+  [
+    // Guía 14
+    #show math.equation.where(block: true): set block(below: 1.4em, above: 1.4em)
+    Sea
+    $
+      ~F~ = {F_1: F_1 "es un filtro, " x_0 in.not F_1 " y " F c= F_1}
+    $
+    Notar que $~F~ != emptyset$, por lo cual $(~F~, c=)$ es un poset.
+    Veamos que cada cadena en $(~F~, c=)$ tiene una cota superior.
+    Sea $C$ una cadena. Si $C = emptyset$, entonces cualquier
+    elemento de $~F~$ es cota de $C$. Supongamos $C != emptyset$. Sea
+    $
+      G = {x : x in F_1, " para algún " F_1 in C}
+    $
+    Veamos que $G$ es un filtro. \
+    Es claro que $G != emptyset$.
+    Supongamos que $x, y in G$.
+    Sean $F_1,F_2 in ~F~$ tales que $x in F_1$ y $y in F_2$. \
+    Si $F_1 c= F_2$, entonces ya que $F_2$ es un filtro tenemos que $x #i y in F_2 c= G$. \
+    Si $F_2 c= F_1$, entonces ya que $F_1$ es un filtro tenemos que $x #i y in F_1 c= G$. \
+    Ya que $C$ es una cadena, tenemos que siempre $x #i y in G$. \
+    De forma análoga se prueba que si $x in G$ y $x <= y$, entonces $y in G$. \
+    Concluimos que $G$ es un filtro. \
+    Ademas $x_0 in.not G$, por lo que $G in ~F~$ es cota superior de $C$. \
+    Por el Lema de Zorn, $(~F~, c=)$ tiene un elemento maximal $P$. \
+    Veamos que $P$ es un filtro primo. \
+    Supongamos $x #s y in P$ y $x,y in.not P$.
+    Nótese que $[P union {x})$ es un filtro el cual contiene propiamente a $P$. \
+    Entonces ya que $P$ es un elemento maximal de $(~F~, c=)$, tenemos que $x_0 in [P union {x})$. \
+    Análogamente tenemos que $x_0 in [P union {y})$. \
+    Ya que $x_0 in [P union {x})$ tenemos que hay elementos $p_1,...,p_n in P$, tales que
+    $
+      x_0 >= p_1 #i ... #i p_n #i x
+    $
+    *COMPLETAR (se deja como ejercicio justificar esto) ...*\
+    Ya que $x_0 in [P union {y})$ tenemos que hay elementos $q_1,...,q_m in P$ tales que
+    $
+      x_0 >= q_1 #i ... #i q_m #i y
+    $
+    Si llamamos $p$ al siguiente elemento de $P$
+    $
+      p = p_1 #i ... #i p_n #i q_1 #i ... #i q_m
+    $
+    tenemos que
+    $
+      x_0 >= p #i x \
+      x_0 >= p #i y
+    $
+    Se tiene entonces que $x_0 >= (p #i x) #s (p #i y) = p #i (x #s y) in P$,
+    lo cual es absurdo ya que $x_0 in.not P$.
+    #REVISAR
+  ],
 )
 
 #proofStructure(
@@ -816,7 +873,74 @@
       + Si $(Sigma, tau) !|- ¬phi$, entonces $(Sigma ∪ {phi}, tau)$ es consistente.
     ]
   ],
-  [],
+  [
+    #set enum(numbering: "(1)", indent: 12.8pt)
+    + Supongamos que $(Sigma, tau)$ es inconsistente. Por lo tanto por definición $(Sigma, tau) |- (psi and not psi)$ para alguna sentencia $psi$. Ahora dada una sentencia $phi$ arbitraria pero fija, tenemos que $phi$ se deduce por la *regla del absurdo* a parir de $(psi and not psi)$. Entonces por #lema_prop_básicas_del_enchufe_simple.(2) tenemos que $(Sigma, tau) |- phi$. \
+      #comentario([
+        Como $phi$ era arbitraria pero fija, lo probamos para toda sentencia $phi$. Pero esto bajo la hipótesis de que $(Sigma, tau)$ es inconsistente. Entonces probamos "Si $(Sigma, tau)$ es inconsistente, entonces $(Sigma, tau) |- phi$, para toda sentencia $phi$". \
+      ])
+    + Supongamos que $(Sigma, tau)$ es consistente y $(Sigma, tau) |- phi$.
+      Para probarlo lo haremos por el absurdo. Supongamos que $(Sigma union {phi}, tau)$ es inconsistente. Por lo tanto tendríamos que vale \
+      #box(width: 100%)[
+        $
+          #v(16pt)
+          (Sigma, tau) |- phi " y " (Sigma union {phi}, tau) |- (psi and not psi)
+        $
+      ]
+      con $psi$ alguna sentencia. Pero entonces por #lema_prop_básicas_del_enchufe_simple.(1) tendríamos que \ $(Sigma, tau) |- (psi and not psi)$. Es decir $(Sigma, tau)$ es inconsistente, absurdo. Entonces $(Sigma union {phi}, tau)$ es consistente. \
+      #comentario([
+        Entonces probamos $(Sigma union {phi}, tau)$ es consistente. Pero esto bajo la hipótesis de que $(Sigma, tau)$ es consistente y $(Sigma, tau) |- phi$. Entonces probamos "Si $(Sigma, tau)$ es consistente y $(Sigma, tau) |- phi$, entonces $(Sigma union {phi}, tau)$ es consistente". \
+      ])
+    + Supongamos que $(Sigma, tau) !|- not phi$.\
+      Supongamos que $(Sigma union {phi}, tau)$ es inconsistente.
+      Entonces por definición tenemos que \
+      #box(width: 100%)[
+        $
+          #v(16pt)
+          Sigma union {phi}, tau) |- (psi and not psi)
+        $
+      ]
+      para algún $psi$. Pero por #lema_prop_básicas_del_enchufe_simple.(3) tendríamos \
+      #box(width: 100%)[
+        $
+          #v(16pt)
+          Sigma, tau) |- (phi -> (psi and not psi))
+        $
+      ]
+      Finalmente tenemos que $not phi$ se deduce por la *regla del absurdo* a partir de $(phi -> (psi and not psi))$. Por lo tanto tendríamos que $Sigma, tau) |- not phi$, absurdo. Entonces $(Sigma union {phi}, tau)$ es consistente. \
+      #comentario([
+        Entonces probamos $(Sigma union {phi}, tau)$ es consistente. Pero esto bajo la hipótesis de que $(Sigma, tau) !|- not phi$. Entonces probamos "Si $(Sigma, tau) !|- not phi$, entonces $(Sigma union {phi}, tau)$ es consistente". \
+      ])
+  ],
 )
 
 #pagebreak()
+
+#page(margin: (top: 1.45cm, bottom: 0pt, left: 1.2cm, right: 1.2cm))[
+
+  == Resultados Muy Usados en las Demostraciones
+
+  #text(
+    size: 10.2pt,
+  )[
+    Las *$(star)$* indican que son un combo y el *[ n ]* es la cantidad de veces que se mencionó el resultado (incluso en una misma demo).
+  ]
+
+  #statementsStructure(
+    padding_left: 5pt,
+    padding_bottom: -10pt,
+    [Lema (Propiedades básica de  $|-$) <lema-prop-básicas-del-enchufe-simple>],
+    frequency: [
+      #counter(<lema-prop-básicas-del-enchufe-simple>).update(c => c - 1)
+      #context { counter(<lema-prop-básicas-del-enchufe-simple>).display() }
+    ],
+    [
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      Sea $(Sigma, tau)$ una teoría.
+      + (Uso de Teoremas) Si $(Sigma, tau) |- phi_1,...,phi_n$ y $(Sigma union {phi_1,...,phi_n}, tau) |- phi$, entonces $(Sigma, tau) |- phi$.
+      + Supongamos $(Sigma, tau) |- phi_1,...,phi_n$. Si *R* s una regla distinta de GENERALIZACION y ELECCION y $phi$ se deduce de $phi_1,...,phi_n$ por la regla *R*, entonces $(Sigma, tau) |- phi$.
+      + $(Sigma, tau) |- (phi -> psi)$ sii $(Sigma union {phi}, tau) |- psi$.
+    ],
+  )
+
+]

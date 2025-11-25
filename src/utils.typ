@@ -140,6 +140,78 @@
     #text(size: 12pt, fill: black)[COMPLETAR ...]
   ]
 }
+#let REVISAR = {
+  box(fill: red, inset: 3pt)[
+    #text(size: 12pt, fill: white)[REVISAR ...]
+  ]
+}
 #let comentario(content) = {
   text(fill: luma(45%), size: 10pt)[#content]
+}
+
+/*
+Sea Nombres1 el conjunto formado por las siguientes palabras
+EXISTENCIA
+COMMUTATIVIDAD
+PARTICULARIZACION
+ABSURDO
+EVOCACION
+CONJUNCIONELIMINACION
+EQUIVALENCIAELIMINACION
+DISJUNCIONINTRODUCCION
+ELECCION
+GENERALIZACION
+Sea Nombres2 el conjunto formado por las siguientes palabras
+MODUSPONENS
+TRANSITIVIDAD
+CONJUNCIONINTRODUCCION
+EQUIVALENCIAINTRODUCCION
+DISJUNCIONELIMINACION
+REEMPLAZO
+*/
+
+#let JUST = (
+  CONCLUSION: [CONCLUSION],
+  AXIOMAPROPIO: [AXIOMAPROPIO],
+  AXIOMALOGICO: [AXIOMALOGICO],
+  EXISTENCIA: a => [EXISTENCIA(#a)],
+  COMMUTATIVIDAD: a => [COMMUTATIVIDAD(#a)],
+  PARTICULARIZACION: a => [PARTICULARIZACION(#a)],
+  ABSURDO: a => [ABSURDO(#a)],
+  EVOCACION: a => [EVOCACION(#a)],
+  CONJUNCIONELIMINACION: a => [CONJUNCIONELIMINACION(#a)],
+  EQUIVALENCIAELIMINACION: a => [EQUIVALENCIAELIMINACION(#a)],
+  DISJUNCIONINTRODUCCION: a => [DISJUNCIONINTRODUCCION(#a)],
+  ELECCION: a => [ELECCION(#a)],
+  GENERALIZACION: a => [GENERALIZACION(#a)],
+  MODUSPONENS: (a, b) => [MODUSPONENS(#a, #b)],
+  TRANSITIVIDAD: (a, b) => [TRANSITIVIDAD(#a, #b)],
+  CONJUNCIONINTRODUCCION: (a, b) => [CONJUNCIONINTRODUCCION(#a, #b)],
+  EQUIVALENCIAINTRODUCCION: (a, b) => [EQUIVALENCIAINTRODUCCION(#a, #b)],
+  DISJUNCIONELIMINACION: (a, b) => [DISJUNCIONELIMINACION(#a, #b)],
+  REEMPLAZO: (a, b) => [REEMPLAZO(#a, #b)],
+  DIVISIONPORCASOS: (a, b, c) => [DIVISIONPORCASOS(#a, #b, #c)],
+  HIPOTESIS: k => [HIPOTESIS$overline(#k)$],
+  TESIS: (k, alpha: "") => [TESIS$overline(#k)$#alpha],
+)
+
+#let demo_block(content) = {
+  box(width: 100%)[
+    #set enum(numbering: "1.")
+    #align(center)[
+      #content
+    ]
+  ]
+}
+#let demo_line(sentencia, just, def_width: 100pt) = {
+  box(width: def_width)[
+    #align(left)[
+      $#sentencia$
+    ]
+  ]
+  box(width: 190pt)[
+    #align(left)[
+      #just
+    ]
+  ]
 }
