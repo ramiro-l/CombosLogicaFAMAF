@@ -795,12 +795,25 @@
   #link(<lema-prop-básicas-del-enchufe-simple>)[_Lema (Propiedades básicas $|-$)_]
 ]
 
+#let lema_Zorn = [
+  #counter(<lema-Zorn>).step()
+  #link(<lema-Zorn>)[_Lema de Zorn_]
+]
+
+#let lema_igualdad_de_valor_en_términos_para_asignaciones_compartidas = [
+  #counter(<lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>).step()
+  #link(
+    <lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>,
+  )[_Lema (Igualdad de valor en términos para asignaciones compartidas)_]
+]
+
 
 #combo_title(1)
 
 #proofStructure(
   1,
   [*Teorema* (Teorema del Filtro Primo)],
+  link_apunte: "https://granlogico.com/apunteweb/5.7-teoremas-del-filtro-primo-y-de-rasiowa-sikorski.html",
   [
     \ Sea $(L, s, i)$ un reticulado terna distributivo y $F$ un filtro.
     Supongamos $x_0 in L - F$. \
@@ -814,52 +827,129 @@
     $
       ~F~ = {F_1: F_1 "es un filtro, " x_0 in.not F_1 " y " F c= F_1}
     $
-    Notar que $~F~ != emptyset$, por lo cual $(~F~, c=)$ es un poset.
-    Veamos que cada cadena en $(~F~, c=)$ tiene una cota superior.
-    Sea $C$ una cadena. Si $C = emptyset$, entonces cualquier
-    elemento de $~F~$ es cota de $C$. Supongamos $C != emptyset$. Sea
+    Notar que $~F~ != emptyset$ porque $F in ~F~$. \
+    #box(width: 100%)[
+      #align(center)[
+        $F$ es un filtro, $x_0 in.not F$ y $F c= F$. #comentario([(Si $x_0 in F => x_0 in.not L - F$, absurdo porque $x_0 in L - F$)])  \
+      ]
+    ]
+    Por lo cual $(~F~, c=)$ es un poset. \
+    Veamos que cada cadena en $(~F~, c=)$ tiene al menos una cota superior #comentario([(para aplicar el Lema de Zorn)]). \
+    Sea $C$ una cadena. \
+    Si $C = emptyset$, entonces cualquier elemento de $~F~$ es cota superior de $C$ #comentario([(ya que $emptyset c= A$ para cualquier conjunto $A$)]). \
+    Si $C != emptyset$, sea
     $
-      G = {x : x in F_1, " para algún " F_1 in C}
+      G = {x : x in F_1, " para algún " F_1 in C} \ #comentario([(notar que $C$ es una cadena de $(~F~, c=)$, por lo tanto $F_1 in ~F~$)])
     $
-    Veamos que $G$ es un filtro. \
-    Es claro que $G != emptyset$.
-    Supongamos que $x, y in G$.
-    Sean $F_1,F_2 in ~F~$ tales que $x in F_1$ y $y in F_2$. \
-    Si $F_1 c= F_2$, entonces ya que $F_2$ es un filtro tenemos que $x #i y in F_2 c= G$. \
-    Si $F_2 c= F_1$, entonces ya que $F_1$ es un filtro tenemos que $x #i y in F_1 c= G$. \
-    Ya que $C$ es una cadena, tenemos que siempre $x #i y in G$. \
-    De forma análoga se prueba que si $x in G$ y $x <= y$, entonces $y in G$. \
-    Concluimos que $G$ es un filtro. \
-    Ademas $x_0 in.not G$, por lo que $G in ~F~$ es cota superior de $C$. \
-    Por el Lema de Zorn, $(~F~, c=)$ tiene un elemento maximal $P$. \
-    Veamos que $P$ es un filtro primo. \
-    Supongamos $x #s y in P$ y $x,y in.not P$.
-    Nótese que $[P union {x})$ es un filtro el cual contiene propiamente a $P$. \
-    Entonces ya que $P$ es un elemento maximal de $(~F~, c=)$, tenemos que $x_0 in [P union {x})$. \
-    Análogamente tenemos que $x_0 in [P union {y})$. \
-    Ya que $x_0 in [P union {x})$ tenemos que hay elementos $p_1,...,p_n in P$, tales que
-    $
-      x_0 >= p_1 #i ... #i p_n #i x
-    $
-    *COMPLETAR (se deja como ejercicio justificar esto) ...*\
-    Ya que $x_0 in [P union {y})$ tenemos que hay elementos $q_1,...,q_m in P$ tales que
-    $
-      x_0 >= q_1 #i ... #i q_m #i y
-    $
-    Si llamamos $p$ al siguiente elemento de $P$
-    $
-      p = p_1 #i ... #i p_n #i q_1 #i ... #i q_m
-    $
-    tenemos que
-    $
-      x_0 >= p #i x \
-      x_0 >= p #i y
-    $
-    Se tiene entonces que $x_0 >= (p #i x) #s (p #i y) = p #i (x #s y) in P$,
-    lo cual es absurdo ya que $x_0 in.not P$.
-    #REVISAR
+    Veamos que $G$ es un filtro. Para ello hay que probar las 3 propiedades de un filtro: \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)(a)", indent: 12.8pt)
+      + *$G != emptyset$*, lo cual es claro ya que $C != emptyset$ y todo filtro es no vacío.
+      + *$x,y in G$ implica $x #i y in G$* \
+        Supongamos $x, y in G$, por definición de $G$ tenemos que hay $F_1,F_2 in ~F~$ tales que $x in F_1$ y $y in F_2$. \
+        Pero como $F_1,F_2 in C$ y $C$ es una cadena de $(~F~, c=)$, entonces $F_1 c= F_2$ o $F_2 c= F_1$. \
+        Si $F_1 c= F_2$, entonces $x,y in F_2$, pero como $F_2$ es un filtro tenemos que $x #i y in F_2 c= G$. \
+        Si $F_2 c= F_1$, entonces $x,y in F_1$, pero como $F_1$ es un filtro tenemos que $x #i y in F_1 c= G$. \
+        Por lo tanto en cualquier caso $x #i y in G$. \
+      + *$x in G$ y $x <= y$ implica $y in G$* \
+        Supongamos $x in G$ y supongamos $x <= y$ para algún $y in L$. \
+        Por definición de $G$ tenemos que hay $F_1 in ~F~$ tal que $x in F_1$. \
+        Pero como $F_1$ es filtro y $x in F_1$ y $x <= y$, entonces $y in F_1 c= G$. \
+        Por lo tanto $y in G$.
+    ]
+    Concluimos así que $G$ es un filtro. \
+    Ademas $x_0 in.not G$ ya que todo filtro $F_1 in ~F~$ usado para construir $G$ cumplían que $x_0 in.not F_1$.\
+    Ademas $F c= G$ ya que todo filtro $F_1 in ~F~$ usado para construir $G$ cumplía que $F c= F_1$ y $G!= emptyset$. \
+    Entonces como $G$ es filtro, $x_0 in.not G$ y $F c= G$ por lo tanto concluimos que $G in ~F~$. \
+    Si tomamos cualquier $F_1 in C$ por definición $F_1 c= G$. Es decir que $G$ es una cota superior de $C$ en $(~F~, c=)$. \
+    Entonces probamos que $C$ tiene al menos una cota superior de $C$.
+
+    Asi hemos probado que cada cadena en $(~F~, c=)$ tiene al menos una cota superior. \
+
+    Por el #lema_Zorn, $(~F~, c=)$ tiene un elemento maximal $P$.
+    Veamos que $P$ es un filtro primo. \ \ \
+    Claramente $P$ es un filtro ya que $P in ~F~$. \
+    Para terminar de ver que sea _primo_ debemos ver que cumpla las siguientes propiedad: \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)(a)", indent: 12.8pt)
+      + *$P != L$*, es directo ya que $P in ~F~$, entonces $x_0 in.not P$ por lo tanto $P != L$.
+      + *Si $x #s y in P$, entonces $x in P$ o $y in P$* \
+        Supongamos que $x #s y in P$.
+        Vamos a probar que $x in P$ o $y in P$ por el absurdo.
+        Supongamos $x,y in.not P$.\
+        Notar que $[P union {x})$ es un filtro el cual contiene a $P$. \
+        Pero como $P$ es un elemento maximal de $(~F~, c=)$, tenemos que $x_0 in [P union {x})$. \
+        Análogamente $x_0 in [P union {y})$. \
+        Como $x_0 in [P union {x})$ tenemos que hay $p_1,...,p_k in P union {x}$, tales que \
+        #box(width: 100%)[
+          $
+            x_0 >= p_1 #i ... #i p_k
+          $
+        ]
+        Si $p_i != x$ para $i=1,...,k$, tenemos que $p_i in P$ , entonces por propiedad de filtro (2), $p_1 #i ... #i p_k in P$. \
+        Como $p_1 #i ... #i p_k <= x_0$ de nuevo por propiedad de filtro (3) $x_0 in P$, absurdo. \
+        Si existe $p_j = x$ con $j in {1,...,k}$, entonces $p_1 #i ... #i p_k = p_1 #i ... #i p_(j-1) #i p_(j+1) #i ... #i p_k #i x$. \
+        Esto lo podemos repetir para cada $p_i$ que sea igual a $x$ y como $x #i x = x$ tenemos que claramente hay $p'_1,...,p'_n in P$ tales que $p_1 #i ... #i p_k = p'_1 #i ... #i p'_n #i x$ \
+        Concluimos entonces que hay $p_1,...,p_n in P$ tales que \
+        #box(width: 100%)[
+          $
+            p_1 #i ... #i p_n #i x <= x_0
+          $
+        ]
+        Análogamente como $x_0 in [P union {y})$ tenemos que hay $q_1,...,q_m in P$ tales que \
+        #box(width: 100%)[
+          $
+            q_1 #i ... #i q_m #i y <= x_0
+          $
+        ]
+        Si llamamos $p$ y $q$ a los siguientes elementos \
+        #box(width: 100%)[
+          $
+            p = p_1 #i ... #i p_n quad quad y quad quad q = q_1 #i ... #i q_m
+          $
+        ]
+        usando que el $#i$ es cota inferior y transitividad, tenemos que \
+        #box(width: 100%)[
+          $
+            (p #i x) #i q <= (p #i x) <= x_0 quad quad y quad quad
+            (q #i y) #i p <= (q #i y) <= x_0
+          $
+        ]
+        distribuyendo inteligentemente tenemos que \
+        #box(width: 100%)[
+          $
+            (p #i q) #i x <= x_0 quad quad y quad quad
+            (p #i q) #i y <= x_0
+          $
+        ]
+        si llamamos $h = p #i q$, tenemos que \
+        #box(width: 100%)[
+          $
+            h #i x <= x_0 quad quad y quad quad
+            h #i y <= x_0
+          $
+        ]
+        ahora por la propiedad de que el $#s$ es la menor cota superior tenemos que \
+        #box(width: 100%)[
+          $
+            (h #i x) #s (h #i y) <= x_0
+          $
+        ]
+        pero como $(L, #s, #i)$ es distributivo, tenemos que \
+        #box(width: 100%)[
+          $
+            (h #i x) #s (h #i y) = h #i (x #s y)
+          $
+        ]
+        por lo tanto #h(150pt) $h #i (x #s y) <= x_0$. \
+        Pero como $p,q in P$, entonces por la propiedad de los filtros (2) $h in P$ y por hipótesis $x #s y in P$, entonces nuevamente por la propiedad de los filtros (2) tenemos que $h #i (x #s y) in P$. \ Finalmente como $h #i (x #s y) <= x_0$ por propiedad de los filtros (3) tenemos que $x_0 in P$, absurdo. \
+    ]
+
+    Entonces $P$ es un filtro primo tal que $P in ~F~$, entonces $x_0 in.not P$ y $F c= P$. #fin_demo
   ],
 )
+
+#pagebreak()
 
 #proofStructure(
   2,
@@ -874,9 +964,10 @@
     ]
   ],
   [
-    #set enum(numbering: "(1)", indent: 12.8pt)
-    + Supongamos que $(Sigma, tau)$ es inconsistente. Por lo tanto por definición $(Sigma, tau) |- (psi and not psi)$ para alguna sentencia $psi$. Ahora dada una sentencia $phi$ arbitraria pero fija, tenemos que $phi$ se deduce por la *regla del absurdo* a parir de $(psi and not psi)$. Entonces por #lema_prop_básicas_del_enchufe_simple.(2) tenemos que $(Sigma, tau) |- phi$. \
-      #comentario([
+    #set enum(numbering: "(1)", indent: 12.8pt, spacing: 35pt)
+    + Supongamos que $(Sigma, tau)$ es inconsistente. Por lo tanto por definición $(Sigma, tau) |- (psi and not psi)$ para alguna sentencia $psi$. Ahora dada una sentencia $phi$ arbitraria pero fija, tenemos que $phi$ se deduce por la *regla del absurdo* a parir de $(psi and not psi)$. Entonces por #lema_prop_básicas_del_enchufe_simple.(2) tenemos que $(Sigma, tau) |- phi$.
+      #footnote([
+        \
         Como $phi$ era arbitraria pero fija, lo probamos para toda sentencia $phi$. Pero esto bajo la hipótesis de que $(Sigma, tau)$ es inconsistente. Entonces probamos "Si $(Sigma, tau)$ es inconsistente, entonces $(Sigma, tau) |- phi$, para toda sentencia $phi$". \
       ])
     + Supongamos que $(Sigma, tau)$ es consistente y $(Sigma, tau) |- phi$.
@@ -887,8 +978,9 @@
           (Sigma, tau) |- phi " y " (Sigma union {phi}, tau) |- (psi and not psi)
         $
       ]
-      con $psi$ alguna sentencia. Pero entonces por #lema_prop_básicas_del_enchufe_simple.(1) tendríamos que \ $(Sigma, tau) |- (psi and not psi)$. Es decir $(Sigma, tau)$ es inconsistente, absurdo. Entonces $(Sigma union {phi}, tau)$ es consistente. \
-      #comentario([
+      con $psi$ alguna sentencia. Pero entonces por #lema_prop_básicas_del_enchufe_simple.(1) tendríamos que \ $(Sigma, tau) |- (psi and not psi)$. Es decir $(Sigma, tau)$ es inconsistente, absurdo. Entonces $(Sigma union {phi}, tau)$ es consistente.
+      #footnote([
+        \
         Entonces probamos $(Sigma union {phi}, tau)$ es consistente. Pero esto bajo la hipótesis de que $(Sigma, tau)$ es consistente y $(Sigma, tau) |- phi$. Entonces probamos "Si $(Sigma, tau)$ es consistente y $(Sigma, tau) |- phi$, entonces $(Sigma union {phi}, tau)$ es consistente". \
       ])
     + Supongamos que $(Sigma, tau) !|- not phi$.\
@@ -907,14 +999,226 @@
           Sigma, tau) |- (phi -> (psi and not psi))
         $
       ]
-      Finalmente tenemos que $not phi$ se deduce por la *regla del absurdo* a partir de $(phi -> (psi and not psi))$. Por lo tanto tendríamos que $Sigma, tau) |- not phi$, absurdo. Entonces $(Sigma union {phi}, tau)$ es consistente. \
-      #comentario([
+      Finalmente tenemos que $not phi$ se deduce por la *regla del absurdo* a partir de $(phi -> (psi and not psi))$. Por lo tanto tendríamos que $Sigma, tau) |- not phi$, absurdo. Entonces $(Sigma union {phi}, tau)$ es consistente.
+      #footnote([
+        \
         Entonces probamos $(Sigma union {phi}, tau)$ es consistente. Pero esto bajo la hipótesis de que $(Sigma, tau) !|- not phi$. Entonces probamos "Si $(Sigma, tau) !|- not phi$, entonces $(Sigma union {phi}, tau)$ es consistente". \
       ])
   ],
 )
 
 #pagebreak()
+
+#combo_title(2)
+
+#proofStructure(
+  1,
+  [*Teorema* (Teorema de Dedekind)],
+  link_apunte: "https://granlogico.com/apunteweb/5.3-reticulados-terna.html#teorema%20de%20Dedekind",
+  [
+    \
+    Sea $(L, #s, #i)$ un reticulado terna.
+    La relación binaria definida por: \
+    #box(width: 100%)[
+      $
+        #v(16pt)
+        x <= y " sii " x #s y = y
+      $
+    ] \
+    es un orden parcial sobre $L$ para el cual se cumple que: \
+    #box(width: 100%)[
+      $
+        #v(16pt)
+        sup({x, y}) = x #s y quad quad quad quad
+        inf({x, y}) = x #i y
+      $
+    ] \
+    cualesquiera sean $x, y in L$.
+  ],
+  [
+    *Probemos que $<=$ es reflexiva* #comentario([(es decir $x <= x$ para cada $x in L$)]). \
+    Sea $x in L$. Por propiedad de $(L, #s, #i)$ tenemos que $x #s x = x$, entonces por definición de $<=$, se da $x <= x$. \
+    *Probemos que $<=$ es antisimétrica *#comentario([(es decir si $x <= y$ y $y <= x$ entonces $x = y$)]). \
+    Sean $x, y in L$ tales que $x <= y$ y $y <= x$.
+    Es decir por definición de $<=$ tenemos que $x #s y = y$ e $y #s x = x$. \
+    Entonces aplicando propiedad de $(L, #s, #i)$ tenemos que \
+    #box(width: 100%)[
+      $
+        x = y #s x = x #s y = y
+      $
+    ]
+    por lo tanto $x = y$. \
+    * Probemos que $<=$ es transitiva* #comentario([(es decir si $x <= y$ y $y <= z$ entonces $x <= z$)]). \
+    Sean $x, y, z in L$ tales que $x <= y$ y $y <= z$.
+    Es decir por definición de $<=$ tenemos que $x #s y = y$ e $y #s z = z$. \
+    Entonces aplicando propiedad de $(L, #s, #i)$ tenemos que \
+    #box(width: 100%)[
+      $
+        x #s z = x #s (y #s z) = (x #s y) #s z = y #s z = z
+      $
+    ]
+    por lo tanto $x <= z$. \
+    Osea que probamos que $(L, <=)$ es un poset.\
+    *Probemos que $sup({x, y}) = x #s y$*. Primero debemos ver que $x #s y$ es cota superior de ${x, y}$, es decir \
+    #box(width: 100%)[
+      $
+        #v(16pt)
+        x <= x #s y quad med "y" med quad y <= x #s y
+      $
+    ]
+    que por definición de $<=$ es equivalente a ver\
+    #box(width: 100%)[
+      $
+        #v(16pt)
+        x #s (x #s y) = x #s y quad med "y" med quad y #s (x #s y) = x #s y
+      $
+    ]
+    Notar que usando propiedad de $(L, #s, #i)$ tenemos que \
+    #box(width: 100%)[
+      $
+        #v(16pt)
+        x #s (x #s y) = (x #s x) #s y = x #s y \
+        y #s (x #s y) = y #s (y #s x) = (y #s y) #s x = y #s x = x #s y
+      $
+    ] \
+    entonces listo.
+    Falta ver que $x #s y$ es menor o igual que cualquier otra cota superior de ${x, y}$. \
+    Para ello supongamos $x,y <= z$ con $z in L$. Por definición de $<=$ tenemos que \
+    #box(width: 100%)[
+      $
+        #v(16pt)
+        x #s z = z quad med "y" med quad y #s z = z
+      $
+    ] \
+    Entonces usando propiedad de $(L, #s, #i)$ tenemos que \
+    #box(width: 100%)[
+      $
+        (x #s y) #s z = x #s (y #s z) = x #s z = z
+      $
+    ] \
+    por lo tanto por definición de $<=$ tenemos que $x #s y <= z$, lo que nos dice que $x #s y$ es la menor cota superior. \ Entonces probamos que $sup({x, y}) = x #s y$. \
+    \ \ \ \ \ \
+    *Probemos que $inf({x, y}) = x #i y$*. \
+    Para ello vamos a probar para todo $x,y in L$ vale #h(50pt) $x <= y " sii " x #i y = x$ \
+    #box(width: 100%)[
+      #set list(indent: 10pt)
+      - Supongamos $x <= y$. Por definición de $<=$ tenemos que $x #s y = y$. \
+        Entonces usando propiedad de $(L, #s, #i)$ tenemos que \
+        #box(width: 100%)[
+          $
+            x #i y = x #i (x #s y) = x
+          $
+        ]
+        por lo tanto $x #i y = x$. \
+      - Supongamos $x #i y = x$.
+        Entonces usando propiedad de $(L, #s, #i)$ tenemos que \
+        #box(width: 100%)[
+          $
+            x #s y = (x #i y) #s y = y #s (x #i y) = y
+          $
+        ]
+        por lo tanto $x #s y = y$, entonces por definición de $<=$ tenemos que $x <= y$. \
+    ]
+    Usando el resultado anterior podemos probar que $inf({x, y}) = x #i y$ de forma análoga a como probamos que $sup({x, y}) = x #s y$.  #fin_demo
+  ],
+)
+
+#proofStructure(
+  2,
+  [*Lema*],
+  [
+    Supongamos que $arrow(a), arrow(b)$ son asignaciones tales que si $x_i in "Li"(phi)$, entonces $a_i = b_i$. \
+    Entonces $bold(A) |= phi[arrow(a)]$ sii $bold(A) |= phi[arrow(b)]$.
+  ],
+  [
+    Sea $bold(A)$ una estructura de tipo $tau$. Probaremos por inducción $k$ que vale el _Lema_ para cada $phi in F_k^tau$. \
+    *Caso Base $(k=0)$:* \
+    Sea $phi in F_0^tau$. Ademas sean  $arrow(a), arrow(b)$ asignaciones tales que si $x_i in "Li"(phi)$, entonces $a_i = b_i$. \
+    Entonces tenemos dos casos para $phi$ \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)(a)", indent: 12.8pt)
+      #let lema_análogo_para_términos = [
+        #counter(<lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>).step()
+        #link(
+          <lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>,
+        )[_Lema análogo para Términos_]
+      ]
+      + $phi = (t equiv s)", con " t,s in T^tau$. Notar que todas las variables que ocurren en $phi$ son libres, entonces sabemos por el #lema_análogo_para_términos que $t^bold(A)[arrow(a)] = t^bold(A)[arrow(b)]$ y $s^bold(A)[arrow(a)] = s^bold(A)[arrow(b)]$. \ Ahora por definición y remplazando obtenemos que: \
+        #box(width: 100%)[
+          $
+            bold(A) |= (t equiv s)[arrow(a)]
+            " sii "
+            t^bold(A)[arrow(a)] = s^bold(A)[arrow(a)]
+            "sii"
+            t^bold(A)[arrow(b)] = s^bold(A)[arrow(b)]
+            " sii "
+            bold(A) |= (t equiv s)[arrow(b)]
+          $
+        ] \
+      + $phi = r(t_1,...,t_n)", con " r in R_n^tau " y " t_1,...,t_n in T^tau$, es análogo #footnote[
+          Nuevamente todas las variables que ocurren en $phi$ son libres, entonces sabemos por el #lema_análogo_para_términos que $t_i^bold(A)[arrow(a)] = t_i^bold(A)[arrow(b)]$ con $i=1,...,n$.
+          Ahora por definición y remplazando obtenemos que: \
+          #box(width: 100%)[
+            $ bold(A) |= r(t_1,...,t_n)[arrow(a)]
+            " sii "
+            (t_1^bold(A)[arrow(a)],...,t_n^bold(A)[arrow(a)]) in r^bold(A)
+            "sii"
+            (t_1^bold(A)[arrow(b)],...,t_n^bold(A)[arrow(b)]) in r^bold(A)
+            " sii "
+            bold(A) |= r(t_1,...,t_n)[arrow(b)] $
+          ]
+        ].
+    ]
+    *Caso Inductivo:* \
+    Supongamos que el lema vale para todo $phi in F_k^tau$ y probaremos que vale para todo $phi in F_(k+1)^tau$. \
+    Sea $phi in F_(k+1)^tau - F_k^tau$, ya que si $phi in F_k^tau$ sale directo. \
+    Ademas sean  $arrow(a), arrow(b)$ asignaciones tales que si $x_i in "Li"(phi)$, entonces $a_i = b_i$. \
+    Entonces tenemos varios casos para $phi$, veremos algunos: \
+    #set list(indent: 0pt)
+    - Si $phi = (phi_1 and phi_2)$.
+      Notar que $"Li"(phi_i) c= "Li"(phi), i = 1,2$, por _H.I_ tenemos que $bold(A) |= phi_i[arrow(a)] " sii " bold(A) |= phi_i[arrow(b)]$. \
+      Entonces por definición y remplazando obtenemos que \
+      #box(width: 100%)[
+        $
+          bold(A) |= phi[arrow(a)]
+          " sii "
+          bold(A) |= phi_1[arrow(a)]
+          med "y" med
+          bold(A) |= phi_2[arrow(a)]
+          " sii "
+          bold(A) |= phi_1[arrow(b)]
+          med "y" med
+          bold(A) |= phi_2[arrow(b)]
+          " sii "
+          bold(A) |= phi[arrow(b)]
+        $
+      ] \
+    - Los casos para $phi = (phi_1 or phi_2)$, $phi = (phi_1 -> phi_2)$, $phi = (phi_1 <-> phi_2)$ y $phi = not phi_1$ son análogos. \
+    - Si $phi = forall x_j phi_1$. Supongamos $bold(A) |= phi[arrow(a)]$, por definición vale que $"para todo" a in A, bold(A) |= phi_1[arrow.b ""_j^a (arrow(a))]$.
+      Notar que $arrow.b ""_j^a (arrow(a))$ y $arrow.b ""_j^a (arrow(b))$ coinciden en toda $x_i in "Li"(phi_1)$ ya que $"Li"(phi_1) c= "Li"(phi) union {x_j}$. Entonces por _H.I_ tenemos que $bold(A) |= phi_1[arrow.b ""_j^a (arrow(b))]$ para todo $a in A$, por lo que $bold(A) |= phi[arrow(b)]$. \ Luego $bold(A) |= phi[arrow(b)]$ implica $bold(A) |= phi[arrow(a)]$ es análogo, por lo que concluimos que $bold(A) |= phi[arrow(a)]$ sii $bold(A) |= phi[arrow(b)]$. \
+    - El caso para $phi = exists x_j phi_1$ es análogo.
+
+    Finalmente probamos el lema por inducción. #fin_demo
+  ],
+)
+
+#pagebreak()
+
+#combo_title(3)
+
+#proofStructure(
+    1,
+    [*Teorema* (Lectura única de términos)],
+    [
+        Dado $t in T^tau$ se da una y solo una de las siguientes: \
+        #box(width: 100%)[
+            #set enum(numbering: "(1)", indent: 12.8pt)
+            + $t in "Var" union ~C~$.
+            + Hay únicos $n >= 1$, $f in F_n^tau$, $t_1,...,t_n in T^tau$ tales que $t = f(t_1,...,t_n)$.
+        ]
+    ],
+    []
+)
 
 #page(margin: (top: 1.45cm, bottom: 0pt, left: 1.2cm, right: 1.2cm))[
 
@@ -943,4 +1247,32 @@
     ],
   )
 
+  #statementsStructure(
+    padding_left: 5pt,
+    padding_bottom: -10pt,
+    [Lema de Zorn <lema-Zorn>],
+    frequency: [
+      #counter(<lema-Zorn>).update(c => c - 1)
+      #context { counter(<lema-Zorn>).display() }
+    ],
+    [
+      Sea $(P, <=)$ un poset y supongamos que toda cadena en $P$ tiene al menos una cota superior. \
+      Entonces hay un elemento maximal en $(P, <=)$.
+    ],
+  )
+
+  #statementsStructure(
+    padding_left: 5pt,
+    padding_bottom: -10pt,
+    [Lema (Igualdad de valor en términos para asignaciones compartidas) <lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>],
+    frequency: [
+      #counter(<lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>).update(c => c - 1)
+      #context { counter(<lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>).display() }
+    ],
+    [
+      Sea *$A$* una estructura de tipo *$tau$* y sea $t in T^tau$. Supongamos que $arrow(a), arrow(b)$ son asignaciones tales que  $a_i = b_i$, cada vez que $x_i$ ocurre en $t$.
+      Entonces $t^bold(A)[arrow(a)] = t^bold(A)[arrow(b)]$.
+    ],
+  )
 ]
+
