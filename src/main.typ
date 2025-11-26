@@ -38,28 +38,28 @@
   #definitionStructure(
     2,
     [Defina "par adecuado de tipo $tau$" .],
-    note: [No hace falta que defina cuando $bold(J) in italic("Just")^+$.],
+    note: [No hace falta que defina cuando $bold(J) in italic("Just")^+$ es balanceada.],
     link_apunte: "https://granlogico.com/apunteweb/7.13-teorias-de-primer-orden.html#secuencia%20de%20justificaciones",
     [
       Un _par adecuado de tipo $tau$_ es un par $(bold(phi), bold(J)) in S^(tau+) times "Just"^+$ tal que $n(bold(phi)) = n(bold(J))$ y $bold(J)$ es balanceada.
-      #footnote[
-        \
-        Definimos $n (bold(phi))$ con $bold(phi) in S^(tau+)$ de forma análoga a la de justificaciones (con un Lema análogo también). \
-        Definimos $bold(J)$ es _balanceada_ si se dan las siguientes condiciones:\
-        #box(width: 100%)[
-          #set enum(numbering: "(1)", indent: 12.8pt)
-          + Por cada $k in NN$ a lo sumo hay un $i$ tal que $bold(J)_i = "HIPk"$ y a lo sumo hay un $i$ tal que $bold(J)_i = "TESISk"alpha$, con $alpha in "JustBas"$. \
-          + Si $bold(J)_i = "HIPk"$, entonces hay un  $l > i$ tal que $bold(J)_l = "TESISk"alpha$ con $alpha in "JustBas"$. \
-          + Si $bold(J)_i = "TESISk"alpha$ con $alpha in "JustBas"$, entonces hay un  $l < i$ tal que $bold(J)_l = "HIPk"$. \
-          + Si $B_1, B_2 in ~B~^(bold(J))$, entonces $B_1 inter B_2 = emptyset med med$  o $med med B_1 c= B_2 med med$ o $med med B_2 c= B_1 med$.
-        ] \
-        Definimos $~B~^(bold(J))$ para cada $bold(J) in "Just"^+$ como
-        $~B~^(bold(J)) = {
-          <<i, j>> : exists k med med bold(J)_i = "HIPk" med med y med bold(J)_j = "TESISk"alpha "para algún" alpha in "JustBas"
-        }$.
-        \
-        Definimos $<<i, j>>$ para $i, j in NN$ con $i < j$ como el conjunto ${i, i+1, ..., j}$.
-      ]
+      // #footnote[
+      //   \
+      //   Definimos $n (bold(phi))$ con $bold(phi) in S^(tau+)$ de forma análoga a la de justificaciones (con un Lema análogo también). \
+      //   Definimos $bold(J)$ es _balanceada_ si se dan las siguientes condiciones:\
+      //   #box(width: 100%)[
+      //     #set enum(numbering: "(1)", indent: 12.8pt)
+      //     + Por cada $k in NN$ a lo sumo hay un $i$ tal que $bold(J)_i = "HIPk"$ y a lo sumo hay un $i$ tal que $bold(J)_i = "TESISk"alpha$, con $alpha in "JustBas"$. \
+      //     + Si $bold(J)_i = "HIPk"$, entonces hay un  $l > i$ tal que $bold(J)_l = "TESISk"alpha$ con $alpha in "JustBas"$. \
+      //     + Si $bold(J)_i = "TESISk"alpha$ con $alpha in "JustBas"$, entonces hay un  $l < i$ tal que $bold(J)_l = "HIPk"$. \
+      //     + Si $B_1, B_2 in ~B~^(bold(J))$, entonces $B_1 inter B_2 = emptyset med med$  o $med med B_1 c= B_2 med med$ o $med med B_2 c= B_1 med$.
+      //   ] \
+      //   Definimos $~B~^(bold(J))$ para cada $bold(J) in "Just"^+$ como
+      //   $~B~^(bold(J)) = {
+      //     <<i, j>> : exists k med med bold(J)_i = "HIPk" med med y med bold(J)_j = "TESISk"alpha "para algún" alpha in "JustBas"
+      //   }$.
+      //   \
+      //   Definimos $<<i, j>>$ para $i, j in NN$ con $i < j$ como el conjunto ${i, i+1, ..., j}$.
+      // ]
     ],
   )
 
@@ -807,6 +807,15 @@
   )[_Lema (Igualdad de valor en términos para asignaciones compartidas)_]
 ]
 
+#let lema_menu_para_términos = [
+  #counter(<lema-menu-para-términos>).step()
+  #link(<lema-menu-para-términos>)[_Lema (Menú para términos)_]
+]
+
+#let lema_mordisqueo_de_términos = [
+  #counter(<lema-mordisqueo-de-términos>).step()
+  #link(<lema-mordisqueo-de-términos>)[_Lema (Mordisqueo de términos)_]
+]
 
 #combo_title(1)
 
@@ -1207,17 +1216,229 @@
 #combo_title(3)
 
 #proofStructure(
-    1,
-    [*Teorema* (Lectura única de términos)],
+  1,
+  [*Teorema* (Lectura única de términos)],
+  [
+    Dado $t in T^tau$ se da una y solo una de las siguientes: \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + $t in "Var" union ~C~$.
+      + Hay únicos $n >= 1$, $f in F_n^tau$, $t_1,...,t_n in T^tau$ tales que $t = f(t_1,...,t_n)$.
+    ]
+  ],
+  [
+    // Guía 9
+    Por el #lema_menu_para_términos tenemos que se dan (1) o (2) y obviamente no pueden darse ambas a la vez. Veamos que vale le unicidad de (2). Supongamos que \
+    #box(width: 100%)[
+      $
+        t = f(t_1,...,t_n) = g(s_1,...,s_m)
+      $
+    ]
+    con $n,m >= 1$, $f in F_n^tau$, $g in F_m^tau$, $t_1,...,t_n in T^tau$ y $s_1,...,s_m in T^tau$. \
+    Claramente $f = g$. Osea que $n = m$. \
+    Notar que si $t_1$ es tramo inicial de $s_1$ o $s_1$ es tramo inicial de $t_1$ el #lema_mordisqueo_de_términos nos dice que $t_1 = s_1$. Con el mismo razonamiento, podemos probar que $t_i = s_i$ para cada $i = 1,...,n$. #fin_demo
+  ],
+)
+
+#pagebreak()
+
+#page(margin: (bottom: 0cm))[
+
+  #proofStructure(
+    2,
+    [*Lema*],
     [
-        Dado $t in T^tau$ se da una y solo una de las siguientes: \
-        #box(width: 100%)[
-            #set enum(numbering: "(1)", indent: 12.8pt)
-            + $t in "Var" union ~C~$.
-            + Hay únicos $n >= 1$, $f in F_n^tau$, $t_1,...,t_n in T^tau$ tales que $t = f(t_1,...,t_n)$.
-        ]
+      Supongamos que $F : bold(A) -> bold(B)$ es un isomorfismo. Sea $phi in F^tau$. Entonces \
+      #box(width: 100%)[
+        $
+          bold(A) |= phi[(a_1, a_2, ...)] " sii " bold(B) |= phi[(F(a_1), F(a_2), ...)]
+        $
+      ] \
+      para cada $(a_1, a_2, ...) in A^N$. En particular $bold(A)$ y $bold(B)$ satisfacen las mismas sentencias de tipo $tau$.
     ],
-    []
+    [
+      // Guía 10
+      Para $arrow(a) = (a_1,a_2,...) in A^NN$, denotaremos $(F(a_1), F(a_2), ...)$ con $F(arrow(a))$. Vamos a probar por inducción $k$:
+      #box(width: 100%)[
+        - *$"Teo"_k$* : Supongamos que $F : bold(A) -> bold(B)$ es un isomorfismo. Sea $phi in F_k^tau$. Entonces \ #h(35pt)
+          $bold(A) |= phi[(a_1, a_2, ...)] " sii " bold(B) |= phi[(F(a_1), F(a_2), ...)] "  para cada" (a_1, a_2, ...) in A^N$
+      ]
+      *Caso Base $"Teo"_0$:*
+      Es decir para $phi in F_0^tau$.
+      Sea $a-> in A^N$ arbitraria.
+      Tenemos dos casos para $phi$ \
+      #box(width: 100%)[
+        #set list(indent: 0pt)
+        - $phi = (t equiv s)", con " t,s in T^tau$.
+          #box(width: 100%)[
+            $
+              bold(A) |= phi[a->] & " sii " t^bold(A)[a->] = s^bold(A)[a->] #h(79pt) ("def. de" |=) \
+              & " sii " F(t^bold(A)[a->]) = F(s^bold(A)[a->]) #h(44pt) ("F un iso") \
+              & " sii " t^bold(B)[F(a->)] = s^bold(B)[F(a->)] #h(46pt) (italic(underline("Lema análogo para términos"))) \
+              & " sii " bold(B) |= (t equiv s)[F(a->)] #h(62pt) ("def. de" |=)
+            $
+          ]
+        - $phi = r(t_1,...,t_n)", con " r in R_n^tau " y " t_1,...,t_n in T^tau$.
+          #box(width: 100%)[
+            $
+              bold(A) |= phi[a->] & " sii " (t_1^bold(A)[a->],...,t_n^bold(A)[a->]) in r^bold(A) #h(45pt) ("def. de" |=) \
+              & " sii " (F(t_1^bold(A)[a->]),...,F(t_n^bold(A)[a->])) in r^bold(B) #h(8pt) ("F un iso") \
+              & " sii " (t_1^bold(B)[F(a->)],...,t_n^bold(B)[F(a->)]) in r^bold(B) #h(10pt) (italic(underline("Lema análogo para términos"))) \
+              & " sii " bold(B) |= r(t_1,...,t_n)[F(a->)] #h(45pt) ("def. de" |=)
+            $
+          ]
+      ]
+      *Caso Inductivo $"Teo"_k$ implica $"Teo"_(k+1)$:*
+      Supongamos que vale $"Teo"_k$ y probaremos que vale $"Teo"_(k+1)$. \
+      Sea $phi in F_(k+1)^tau - F_k^tau$, ya que si $phi in F_k^tau$ sale directo. Por _#underline("Teorema de lectura única de formulas")_ hay varios casos \
+      #set list(indent: 0pt)
+      - Si $phi = (phi_1 and phi_2)$ con $phi_1, phi_2 in F_k^tau$. Entonces \
+        #box(width: 100%)[
+          $
+            bold(A) |= phi[a->] & " sii " bold(A) |= phi_1[a->] " y " bold(A) |= phi_2[a->] #h(45pt) ("def. de" |=) \
+                                & " sii " bold(B) |= phi_1[F(a->)] " y " bold(B) |= phi_2[F(a->)] #h(10pt) ("Teo"_k) \
+                                & " sii " bold(B) |= phi[F(a->)] #h(100pt) ("def. de" |=)
+          $
+        ]
+      - Los casos para $phi = (phi_1 or phi_2)$, $phi = (phi_1 -> phi_2)$, $phi = (phi_1 <-> phi_2)$ y $phi = not phi_1$ son análogos. \
+      - Si $phi = forall x_j phi_1$ con $phi_1 in F_k^tau$.
+        Sea $a-> in A^N$ arbitraria.
+        Tenemos que \
+        #box(width: 100%)[
+          $
+            bold(A) |= phi[a->] & " sii para todo" a in A", se da" bold(A) |= phi_1[arrow.b ""_j^a (a->)] #h(40pt) ("def. de" |=) \
+            & " sii para todo" a in A", se da" bold(B) |= phi_1[F(arrow.b. ""_j^a (a->))] #h(22pt) ("Teo"_k) \
+            & " sii para todo" a in A", se da" bold(B) |= phi_1[arrow.b ""_j^F(a) (F(a->))] #h(10pt) ("deducción inteligente") \
+            & " sii para todo" a in A", se da" bold(B) |= phi_1[arrow.b ""_j^F(a) (F(a->))] #h(10pt) ("F sobre" #comentario("ya que es iso")) \
+            & " sii " bold(B) |= phi[F(a->)] #h(165pt) ("def. de" |=)
+          $
+        ]
+      - El caso para $phi = exists x_j phi_1$ con $phi_1 in F_k^tau$ es análogo.
+
+      #box(width: 100%, inset: (top: -15pt))[
+        Finalmente probamos $"Teo"_k$ por inducción. #fin_demo
+      ]
+      #linea_dashed
+      _Lema análogo para términos_: Sea $F : bold(A) -> bold(B)$ un isomorfismo. Entonces \
+      #box(width: 100%, inset: (left: 50pt))[
+        $
+          F(t^bold(A)[a->]) = t^bold(B)[F(a->)] " para cada "t in T^tau" y cada "a-> in A^N.
+        $
+      ] \
+      _Teorema de lectura única de formulas_: Dado $phi in F^tau$ se da una y solo una de las siguientes: \
+      // #box(width: 100%, inset: (left: 160pt))[
+      //   #set enum(numbering: "(1)", indent: 12.8pt)
+      //   + $phi = (t equiv s)$ con $t,s in T^tau$, únicos.
+      //   + $phi = r(t_1,...,t_n)$ con $r in ~R~_n^tau$, $t_1,...,t_n in T^tau$, únicos.
+      //   + $phi = (phi_1 eta phi_2)$ con  $eta in {and, or, ->, <->}, phi_1, phi_2 in F_k^tau$, únicos.
+      //   + $phi = not phi_1$ con $phi_1 in F_k^tau$, único.
+      //   + $phi = Q v phi_1$ con $Q in {forall, exists}, phi_1 in F_k^tau$ y $v in "Var"$, únicos.
+      // ] \
+      #box(width: 100%)[
+        1) $phi = (t equiv s)$ con $t,s in T^tau$, únicos. #h(34pt)
+        (2) $phi = r(t_1,...,t_n)$ con $r in ~R~_n^tau$, $t_1,...,t_n in T^tau$, únicos. \
+        (3) $phi = not phi_1$ con $phi_1 in F_k^tau$, único. #h(50pt)
+        (4) $phi = (phi_1 eta phi_2)$ con  $eta in {and, or, ->, <->}, phi_1, phi_2 in F_k^tau$, únicos. \
+        (5) $phi = Q v phi_1$ con $Q in {forall, exists}, phi_1 in F_k^tau$ y $v in "Var"$, únicos.
+      ] \
+    ],
+  )
+]
+
+#pagebreak()
+
+#proofStructure(
+  3,
+  [*Teorema*],
+  [
+    Sea $T =(Sigma, tau)$ una teoría. Entonces $(S^tau \/ -||-_T, bold("s")^T, bold(i)^T, ""^c^T, 0^T, 1^T)$ es un álgebra de Boole.
+  ],
+  note: [Pruebe solo el item (6).],
+  [
+    Por definición de algebra de Boole, debemos probar que valen varias propiedades. En total (13), pero solo veremos la (6). Para cualquier $phi_1,phi_2,phi_3 in S^tau$ debe cumplirse la siguiente igualdad \
+    #box(width: 100%)[
+      $
+        [phi_1]_T bold("s")^T ([phi_2]_T bold("s")^T [phi_3]_T ) = ([phi_1]_T bold("s")^T [phi_2]_T ) bold("s")^T [phi_3]_T
+      $
+    ]
+    Aplicando la definición de $bold("s")^T$, básicamente tenemos que ver \
+    #box(width: 100%)[
+      $
+        [phi_1 or (phi_2 or phi_3)]_T = [(phi_1 or phi_2) or phi_3]_T
+      $
+    ]
+    Es decir, debemos probar que $quad T |- ((phi_1 or (phi_2 or phi_3)) med <-> med ((phi_1 or phi_2) or phi_3)) quad$. Su prueba formal es \
+    #demo_block[
+      + #demo_line([$(phi_1 or (phi_2 or phi_3))$], ((JUST.HIPOTESIS)(1)))
+      + #demo_line([$phi_1$], ((JUST.HIPOTESIS)(2)))
+      + #demo_line([$(phi_1 or phi_2)$], ((JUST.DISJUNCIONINTRODUCCION)(3)))
+      + #demo_line([$((phi_1 or phi_2) or phi_3)$], [
+          #((JUST.TESIS)(2))
+          #((JUST.DISJUNCIONINTRODUCCION)(3))
+        ])
+      + #demo_line([$(phi_1 -> ((phi_1 or phi_2) or phi_3))$], (JUST.CONCLUSION))
+      + #demo_line([$(phi_2 or phi_3)$], ((JUST.HIPOTESIS)(3)))
+      + #demo_line([$phi_2$], ((JUST.HIPOTESIS)(4)))
+      + #demo_line([$(phi_1 or phi_2)$], ((JUST.DISJUNCIONINTRODUCCION)(7)))
+      + #demo_line([$((phi_1 or phi_2) or phi_3)$], [
+          #((JUST.TESIS)(4))
+          #((JUST.DISJUNCIONINTRODUCCION)(8))
+        ])
+      + #demo_line([$(phi_2 -> ((phi_1 or phi_2) or phi_3))$], (JUST.CONCLUSION))
+      + #demo_line([$phi_3$], ((JUST.HIPOTESIS)(5)))
+      + #demo_line([$((phi_1 or phi_2) or phi_3)$], [
+          #((JUST.TESIS)(5))
+          #((JUST.DISJUNCIONINTRODUCCION)(11))
+        ])
+      + #demo_line([$(phi_3 -> ((phi_1 or phi_2) or phi_3))$], (JUST.CONCLUSION))
+      + #demo_line([$((phi_1 or phi_2) or phi_3)$], [
+          #((JUST.TESIS)(3))
+          #((JUST.DIVISIONPORCASOS)(6, 10, 13))
+        ])
+      + #demo_line([$((phi_2 or phi_3) -> ((phi_1 or phi_2) or phi_3))$], (JUST.CONCLUSION))
+      + #demo_line([$((phi_1 or phi_2) or phi_3)$], [
+          #((JUST.TESIS)(1))
+          #((JUST.DIVISIONPORCASOS)(1, 5, 15))
+        ])
+      + #demo_line([$( (phi_1 or (phi_2 or phi_3)) med -> med ((phi_1 or phi_2) or phi_3))$], (JUST.CONCLUSION))
+      + #demo_line([$((phi_1 or phi_2) or phi_3)$], ((JUST.HIPOTESIS)(6)))
+      + #demo_line([$(phi_1 or phi_2)$], ((JUST.HIPOTESIS)(7)))
+      + #demo_line([$phi_1$], ((JUST.HIPOTESIS)(8)))
+      + #demo_line([$(phi_1 or (phi_2 or phi_3))$], [
+          #((JUST.TESIS)(8))
+          #((JUST.DISJUNCIONINTRODUCCION)(19))
+        ])
+      + #demo_line([$(phi_1 -> (phi_1 or (phi_2 or phi_3)))$], (JUST.CONCLUSION))
+      + #demo_line([$phi_2$], ((JUST.HIPOTESIS)(9)))
+      + #demo_line([$(phi_2 or phi_3)$], ((JUST.DISJUNCIONINTRODUCCION)(23)))
+      + #demo_line([$(phi_1 or (phi_2 or phi_3))$], [
+          #((JUST.TESIS)(9))
+          #((JUST.DISJUNCIONINTRODUCCION)(24))
+        ])
+      + #demo_line([$(phi_2 -> (phi_1 or (phi_2 or phi_3)))$], (JUST.CONCLUSION))
+      + #demo_line([$(phi_1 or (phi_2 or phi_3))$], [
+          #((JUST.TESIS)(7))
+          #((JUST.DIVISIONPORCASOS)(19, 22, 16))
+        ])
+      + #demo_line([$( (phi_1 or phi_2) med -> med (phi_1 or (phi_2 or phi_3)))$], (JUST.CONCLUSION))
+      + #demo_line([$phi_3$], ((JUST.HIPOTESIS)(10)))
+      + #demo_line([$(phi_2 or phi_3)$], ((JUST.DISJUNCIONINTRODUCCION)(29)))
+      + #demo_line([$(phi_1 or (phi_2 or phi_3))$], [
+          #((JUST.TESIS)(10))
+          #((JUST.DISJUNCIONINTRODUCCION)(30))
+        ])
+      + #demo_line([$(phi_3 -> (phi_1 or (phi_2 or phi_3)))$], (JUST.CONCLUSION))
+      + #demo_line([$(phi_1 or (phi_2 or phi_3))$], [
+          #((JUST.TESIS)(6))
+          #((JUST.DIVISIONPORCASOS)(18, 28, 32))
+        ])
+      + #demo_line([$( ((phi_1 or phi_2) or phi_3) med -> med (phi_1 or (phi_2 or phi_3)))$], (JUST.CONCLUSION))
+      + #demo_line([$((phi_1 or (phi_2 or phi_3)) med <-> med ((phi_1 or phi_2) or phi_3))$], (
+          (JUST.EQUIVALENCIAINTRODUCCION)(17, 34)
+        ))
+    ] \
+    #box(width: 100%, inset: (top: -10pt))[#fin_demo]
+  ],
 )
 
 #page(margin: (top: 1.45cm, bottom: 0pt, left: 1.2cm, right: 1.2cm))[
@@ -1272,6 +1493,39 @@
     [
       Sea *$A$* una estructura de tipo *$tau$* y sea $t in T^tau$. Supongamos que $arrow(a), arrow(b)$ son asignaciones tales que  $a_i = b_i$, cada vez que $x_i$ ocurre en $t$.
       Entonces $t^bold(A)[arrow(a)] = t^bold(A)[arrow(b)]$.
+    ],
+  )
+
+  #statementsStructure(
+    padding_left: 5pt,
+    padding_bottom: -10pt,
+    [Lema (Menú para Términos) <lema-menu-para-términos>],
+    frequency: [
+      #counter(<lema-menu-para-términos>).update(c => c - 1)
+      #context { counter(<lema-menu-para-términos>).display() }
+    ],
+    [
+      Supongamos $t in T_(k+1)^tau$, con $k >= 0$. Entonces se da alguna de las siguientes: \
+      #box(width: 100%)[
+        #set enum(numbering: "(1)", indent: 12.8pt)
+        + $t in "Var" union ~C~$.
+        + $t = f(t_1,...,t_n)$, con $n >= 1$, $f in F_n^tau$ y $t_1,...,t_n in T_k^tau$.
+      ]
+    ],
+  )
+
+  #statementsStructure(
+    padding_left: 5pt,
+    padding_bottom: -10pt,
+    [Lema (Mordisqueo de Términos) <lema-mordisqueo-de-términos>],
+    frequency: [
+      #counter(<lema-mordisqueo-de-términos>).update(c => c - 1)
+      #context { counter(<lema-mordisqueo-de-términos>).display() }
+    ],
+    [
+      Sean $s, t in T^tau$ y supongamos que hay palabras $x, y, z$, con $y != epsilon$ tales que $s = x y$ y $t = y z$.
+      Entonces $x = z = epsilon$ o $s, t in ~C~$.
+      _"En particular si un término es tramo inicial o final de otro término, entonces dichos términos son iguales"_.
     ],
   )
 ]

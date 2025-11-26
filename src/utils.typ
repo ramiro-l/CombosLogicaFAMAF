@@ -191,25 +191,25 @@ REEMPLAZO
   DISJUNCIONELIMINACION: (a, b) => [DISJUNCIONELIMINACION(#a, #b)],
   REEMPLAZO: (a, b) => [REEMPLAZO(#a, #b)],
   DIVISIONPORCASOS: (a, b, c) => [DIVISIONPORCASOS(#a, #b, #c)],
-  HIPOTESIS: k => [HIPOTESIS$overline(#k)$],
-  TESIS: (k, alpha: "") => [TESIS$overline(#k)$#alpha],
+  HIPOTESIS: k => [HIPOTESIS#overline([#k])],
+  TESIS: (k, alpha: "") => [TESIS#overline([#k])#alpha],
 )
 
 #let demo_block(content) = {
   box(width: 100%)[
-    #set enum(numbering: "1.")
+    #set enum(numbering: "1.", body-indent: 14pt)
     #align(center)[
       #content
     ]
   ]
 }
-#let demo_line(sentencia, just, def_width: 100pt) = {
-  box(width: def_width)[
+#let demo_line(sentencia, just, sentencia_width: 200pt) = {
+  box(width: sentencia_width)[
     #align(left)[
       $#sentencia$
     ]
   ]
-  box(width: 190pt)[
+  box(width: 200pt)[
     #align(left)[
       #just
     ]
