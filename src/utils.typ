@@ -31,6 +31,7 @@
   ($~C~$, $cal(C)$),
   ($~F~$, $cal(F)$),
   ($~R~$, $cal(R)$),
+  ($~U~$, $cal(U)$),
   ($a->$, $arrow(a)$),
   ($<<$, $chevron.l$),
   ($>>$, $chevron.r$),
@@ -40,6 +41,7 @@
   ($"HIPk"$, $"HIPOTESIS"overline(k)$),
   // ("TESIS", "TESIS"),
   ($"TESISk"$, $"TESIS"overline(k)$),
+  ($<=^T$, $<=""^T$),
 )
 
 /*

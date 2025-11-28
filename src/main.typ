@@ -1022,7 +1022,7 @@
 
 #proofStructure(
   1,
-  [*Teorema* (Teorema de Dedekind)],
+  [*Teorema* (Teorema de Dedekind) <teo-Dedekind>],
   link_apunte: "https://granlogico.com/apunteweb/5.3-reticulados-terna.html#teorema%20de%20Dedekind",
   [
     \
@@ -1242,7 +1242,7 @@
 
 #pagebreak()
 
-#page(margin: (bottom: 0cm))[
+#page(margin: (bottom: 0.85cm))[
 
   #proofStructure(
     2,
@@ -1441,6 +1441,606 @@
   ],
 )
 
+#pagebreak()
+
+#combo_title(4)
+
+#proofStructure(
+  1,
+  [*Lema* (Propiedades básicas de la deducción $|-$) <combo-demo-4.1>],
+  link_apunte: "https://granlogico.com/apunteweb/7.13-teorias-de-primer-orden.html#prop-bas-prueb",
+  [
+    Sea $(Sigma, tau)$ una teoría. \
+    #box(width: 94%)[
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + (Uso de Teoremas) Si $(Sigma, tau) |- phi_1,...,phi_n$ y $(Sigma union {phi_1,...,phi_n}, tau) |- phi$, entonces $(Sigma, tau) |- phi$.
+      + Supongamos $(Sigma, tau) |- phi_1,...,phi_n$. Si *R* s una regla distinta de GENERALIZACION y ELECCION y $phi$ se deduce de $phi_1,...,phi_n$ por la regla *R*, entonces $(Sigma, tau) |- phi$.
+      + $(Sigma, tau) |- (phi -> psi)$ sii $(Sigma union {phi}, tau) |- psi$.
+    ]
+  ],
+  [
+    *(1)* Notar que basta con hacer el caso $n=1$. Para $n>=2$ sale aplicando $n$ veces el caso $n=1$. \
+    Supongamos que $(Sigma, tau) |- phi_1$ y $(Sigma union {phi_1}, tau) |- phi$. \
+    Sea $(alpha_1,...,alpha_n,I_h,...,I_j)$ una prueba formal de $phi_1$ en $(Sigma, tau)$. \
+    Sea $(psi_1,...,psi_m,J_h,...,J_m)$ una prueba formal de $phi$ en $(Sigma union {phi_1}, tau)$. \
+    Notar que por el #underline([ _Lema (Cambio de indice de hipótesis)_]) y el #underline([_Lema (Cambio de nombres de constante auxiliares)_]) podemos suponer que estas dos pruebas no comparten ningún nombre de constante auxiliar y que tampoco comparten números asociados a hipótesis o tesis.
+    Para cada $i=1,...,m$, definamos $tilde(J)_i$ de la siguiente manera\
+    #box(width: 100%)[
+      #h(25pt) Sea $alpha in {epsilon} union { #(JUST.TESIS)("k"): k in NN}$
+      - Si $psi_i = phi_i$ y $J_i = alpha#JUST.AXIOMAPROPIO$ entonces $tilde(J)_i = alpha#(JUST.EVOCACION)("h")$.
+      - Si $psi_i != phi_i$ y $J_i = alpha#JUST.AXIOMAPROPIO$, entonces $tilde(J)_i = J_i$.
+      - Si $J_i in {alpha#JUST.AXIOMALOGICO, alpha#JUST.CONCLUSION, alpha#(JUST.HIPOTESIS)("k")}$, entonces $tilde(J)_i = J_i$.
+      - Si $J_i = alpha R (overline(l_1),...,overline(l_k))$ y $R$ alguna regla, entonces $tilde(J)_i = alpha R (overline(l_1 + h),...,overline(l_k + h))$.
+    ]
+    Es fácil chequear que $(alpha_1...alpha_h phi_1...phi_m,I_1...I_n tilde(J_1)...tilde(J_m))$ es una prueba formal de $phi$ en $(Sigma, tau)$. \
+    *(2)*
+    Notar que \
+    #box(width: 100%, inset: (top: -12pt))[
+      $
+        & 1. quad quad med med phi_1 quad quad quad quad #JUST.AXIOMAPROPIO \
+        & 2. quad quad med med phi_2 quad quad quad quad #JUST.AXIOMAPROPIO \
+        & dots.v quad quad med med #h(12pt) dots.v quad quad quad quad #h(52pt) dots.v \
+        & n. quad quad med med phi_n quad quad quad quad #JUST.AXIOMAPROPIO \
+        & n+1. quad phi quad quad quad quad med R(overline(1),...,overline(n)) \
+      $
+    ]
+    es una prueba formal de $phi$ en $(Sigma union {phi_1,...,phi_n}, tau)$, entonces por (1) tenemos que $(Sigma, tau) |- phi$. \
+    *(3)* \
+    *($->$)* Si $(Sigma, tau) |- (phi -> psi)$, entonces $(Sigma union {phi}, tau) |- (phi -> psi), phi$ y por (2) esto implica que
+    $(Sigma union {phi}, tau) |- psi$. \
+    *($<-$)* Si $(Sigma union {phi}, tau) |- psi$. Sea $(alpha_1,...,alpha_n,J_1,...,J_n)$ una prueba formal de $psi$ en $(Sigma union {phi}, tau)$. \
+    Entonces para cada $i = 1,...,n$, definamos $tilde(J)_i$ de la siguiente manera.\
+    #box(width: 100%)[
+      #h(25pt) Sea $alpha in {epsilon} union { #(JUST.TESIS)("k"): k in NN}$
+      - Si $phi_i = phi$ y $J_i = alpha#JUST.AXIOMAPROPIO$ entonces $tilde(J)_i = alpha#(JUST.EVOCACION)(1)$.
+      - Si $phi_i != phi$ y $J_i = alpha#JUST.AXIOMAPROPIO$, entonces $tilde(J)_i = J_i$.
+      - Si $J_i in {alpha#JUST.AXIOMALOGICO, alpha#JUST.CONCLUSION, alpha#(JUST.HIPOTESIS)("k")}$, entonces $tilde(J)_i = J_i$.
+      - Si $J_i = alpha R (overline(l_1),...,overline(l_k))$ y $R$ alguna regla, entonces $tilde(J)_i = alpha R (overline(l_1 + 1),...,overline(l_k + 1))$.
+    ]
+    Notar que $tilde(J_n)$ *no* es de la forma $#(JUST.TESIS)("k") beta$ ya que si lo fuera también debería serlo $J_n$, entonces debería existir $J_(n+1) = JUST.CONCLUSION$, pero $J_n$ es la ultima. Análogamente $tilde(J_n)$, tampoco es de la forma $#(JUST.HIPOTESIS)("k")$. \
+    Sea $m$ tal que ninguna $J_i$ es igual a $#(JUST.HIPOTESIS)("m")$. Es fácil chequear que \
+    #box(width: 100%)[
+      $
+        (phi phi_1,...,phi_n, #(JUST.HIPOTESIS)("m") tilde(J)_1...tilde(J)_(n-1) #(JUST.TESIS)("m") tilde(J)_n#(JUST.CONCLUSION))
+      $
+    ]
+    es una prueba formal de $(phi -> psi)$ en $(Sigma, tau)$. #fin_demo
+    #linea_dashed
+    _Lema (Cambio de indice de hipótesis)_ : Sea $(bold(phi), bold(J))$ una prueba formal de $phi$ en $(Sigma, tau)$. Sea $m in NN$ tal que  $J_i != #(JUST.HIPOTESIS)("m")$, para cada $i=1,...,n(bold(phi))$. Supongamos que $bold(J)_i = #(JUST.HIPOTESIS)("k")$ y que $bold(J)_j = #(JUST.TESIS)("k") alpha$, con $[alpha]_1 in.not "Num"$. Sea $tilde(bold(J))$ el resultado de remplazar en $bold(J)$ la justificación $bold(J)_i$ por $#(JUST.HIPOTESIS)("m")$ y la justificación $bold(J)_j$ por $#(JUST.TESIS)("m") alpha$. Entonces $(bold(phi), tilde(bold(J)))$ es una prueba formal de $phi$ en $(Sigma, tau)$. #REVISAR \
+
+    _Lema (Cambio de nombres de constante auxiliares)_ :
+    Sea $(bold(phi), bold(J))$ una prueba formal de $phi$ en $(Sigma, tau)$.
+    Sea $C_1$ el conjunto de nombres de constante auxiliares de $(bold(phi), bold(J))$.
+    Sea $e in C_1$. Sea $tilde(e) in.not C union C_1$ tal que $(C union (C_1 - {e}) union {tilde(e)}, F, R, a)$ es un tipo.
+    Sea $tilde(phi)_i =$ resultado de remplazar en $phi_i$ cada ocurrencia de $e$ por $tilde(e)$.
+    Entonces $(tilde(phi)_1...tilde(phi)_n(bold(phi)), bold(J))$ es una prueba formal de $phi$ en $(Sigma, tau)$. #REVISAR \
+  ],
+)
+
+#proofStructure(
+  2,
+  [*Teorema*],
+  [
+    Sea $(B, #s, #i, ""^c, 0 ,1)$ un álgebra de Boole y sean $a,b in B$.Se tiene que:\
+    #box(width: 100%)[
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + $(a #i b)^c = a^c #s b^c$
+      + $a #i b = 0 " sii " b<=a^c$
+    ]
+  ],
+  [
+    *(1)* Para probar, veamos que $a^c #s b^c$ es el complemento de $a #i b$. Es decir debemos ver que \
+    #box(width: 100%)[
+      $
+        (a #i b) #s (a^c #s b^c) = 1 med y med (a #i b) #i (a^c #s b^c) = 0
+      $
+    ]
+    #grid(
+      columns: 2,
+      align: center,
+      column-gutter: 20pt,
+      box(width: 50%)[
+        $
+          & quad (a #i b) #s (a^c #s b^c) \
+          & = (a^c #s b^c) #s (a #i b)                    &      quad "(I2)" \
+          & = ((a^c #s b^c) #s a ) #i ((a^c #s b^c) #s b) &   quad ("Dis"_1) \
+          & = ((a #s a^c) #s b^c ) #i ((b #s b^c) #s a^c) & quad ("I4 e I2") \
+          & = (1 #s b^c ) #i (1 #s a^c)                   &      quad ("I9") \
+          & = 1 #i 1                                      &      quad ("I1") \
+          & = 1 \
+        $
+      ],
+      box(width: 50%)[
+        $
+          & quad (a #i b) #i (a^c #s b^c) \
+          & = ((a #i b) #i a^c) #s ((a #i b) #i b^c)     &   quad ("Dis"_2) \
+          & = ( (a #i a^c) #i b ) #s ( (b #i b^c) #i a ) & quad ("I5 e I3") \
+          & = (0 #i b ) #s ( 0 #i a )                    &      quad ("I8") \
+          & = 0 #s 0                                     &      quad ("I1") \
+          & = 0 \
+        $
+      ],
+    )
+    Entonces $a^c #s b^c$ es un complemento de $(a #i b)$ pero el #underline([_Lema (Unicidad del Complemento)_]) aplicado a $(B, #s, #i, 0 ,1)$, nos dice que es único, por lo tanto $(a #i b)^c = a^c #s b^c$. \
+    *(2)* \
+    *($->$)* Supongamos que $a #i b = 0$. Entonces \
+    #box(width: 100%)[
+      $
+        b & = (b #i a) #s (b #i a^c) quad (italic("Lema útil")) \
+          & = (a #i b) #s (b #i a^c) \
+          & = 0 #s (b #i a^c) \
+          & = b #i a^c
+      $
+    ]
+    Dado que $b #i a^c$ es cota inferior de $a^c$ tenemos que $b #i a^c <= a^c$, remplazando por lo anterior sale que $b <= a^c$. \
+    *($<-$)* Supongamos que $b <= a^c$. Por reflexividad $a<=a$ y el #underline([_Lema (Monotonía)_]) aplicado al reticulado par $(B, <=)$ nos dice que $a #i b <= a #i a^c = 0$, pero $0$ es mínimo, entonces $0 <= a #i b$. Entonces por antisimetría $a #i b = 0$. #fin_demo
+
+    #linea_dashed
+
+    _Lema (Unicidad del Complemento)_ : Sea $(L, #s, #i, 0 ,1)$ un reticulado acotado. Si $(L, #s, #i, 0 ,1)$ es distributivo, \ #h(158pt) entonces todo elemento tiene a lo sumo un complemento. \
+    _Lema (útil)_ : Sea $(B, #s, #i, ""^c, 0 ,1)$ un álgebra de Boole. Entonces para cualquiera $x,y in B$ se tiene que \ #h(60pt) $y = (y #i x) #s (y #i x^c)$. \
+    _Lema (Monotonía)_ : Sea $(L, <=)$ un reticulado par y sean $x,y,z,w in L$ tales que $x <= z$ e $y <= w$. \ #h(90pt) Entonces $x #i y <= z #i w$.
+  ],
+)
+
+#pagebreak()
+
+#proofStructure(
+  3,
+  [*Lema* <combo-demo-4.3>],
+  [
+    Sea $(L, #s, #i)$ y $(L', #s', #i')$ reticulados terna y sean $(L, <=)$ y $(L', <=')$ los posets asociados. \
+    Sea $F: L -> L'$ una función.  \
+    Entonces $F$ es un isomorfismo de $(L, #s, #i)$ en $(L', #s', #i')$
+    sii
+    $F$ es un isomorfismo de $(L, <=)$ en $(L', <=')$.
+  ],
+  [
+    *($->$)*
+    Supongamos que $F$ es un isomorfismo de $(L, #s, #i)$ en $(L', #s', #i')$. \
+    Para que $F$ sea un isomorfismo $(L, <=)$ en $(L', <=')$, debemos ver: \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + *$F$ es biyectiva*. Lo cual sale directo ya que $F$ es isomorfismo de reticulados.
+      + *$F$ es un homomorfismo de $(L, <=)$ en $(L', <=')$*. Sean $x,y in L$ tales que $x <= y$.\ Entonces $x #s y = y$, por lo cual $F(y) = F(x #s y) = F(x) #s' F(y)$ es decir $F(x) <=' F(y)$.
+      + *$F^(-1)$ es un homomorfismo de $(L', <=')$ en $(L, <=)$*. Análogo al anterior. \
+    ]
+    Entonces $F$ es un isomorfismo de $(L, <=)$ en $(L', <=')$. \
+    *($<-$)* Supongamos que $F$ es un isomorfismo de $(L, <=)$ en $(L', <=')$. \
+    Para que $F$ sea un isomorfismo de $(L, #s, #i)$ en $(L', #s', #i')$, debemos ver: \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + *$F$ es biyectiva*. Lo cual sale directo ya que $F$ es isomorfismo de posets.
+      + *$F$ es un homomorfismo de $(L, #s, #i)$ en $(L', #s', #i')$*. Sean $x,y in L$. \
+        #box(width: 100%)[
+          $
+            F(x #s y) & = F("sup"({x,y})) quad quad quad     &             (underline(italic("Teorema de Dedekind"))) \
+                      & = "sup"({F(x), F(y)}) quad quad quad & (underline(italic("Lema sup e inf en iso de posets"))) \
+                      & = F(x) #s' F(y) quad quad quad       &             (underline(italic("Teorema de Dedekind")))
+          $
+        ]
+        entonces $F(x #s y) = F(x) #s' F(y)$ y de forma similar se prueba que $F(x #i y) = F(x) #i' F(y)$.
+      + *$F^(-1)$ es un homomorfismo de $(L, #s, #i)$ en $(L', #s', #i')$*. Análogo al anterior. \
+    ]
+    Entonces $F$ es un isomorfismo de $(L, #s, #i)$ en $(L', #s', #i')$. #fin_demo
+
+    #linea_dashed
+    _Teorema de Dedekind_ (#link(<teo-Dedekind>)[Combo 2.1]) :
+    Sea $(L, #s, #i)$ un reticulado terna.
+    La relación binaria definida por: \
+    $x <= y " sii " x #s y = y$
+    es un orden parcial sobre $L$ para el cual se cumple que cualesquiera sean $x, y in L$: \
+    #box(width: 100%)[
+      $
+        sup({x, y}) = x #s y quad quad quad quad
+        inf({x, y}) = x #i y
+      $
+    ] \
+
+    _Lema (sup e inf en Isomorfismo de Posets )_ : \ Sea $(P, <=)$ y $(P', <=' )$ posets y sea $F: P -> P'$ un isomorfismo de posets. Para cada $x,y,z in P$, tenemos que \
+    #box(width: 100%)[
+      #set list(indent: 0pt)
+      $
+        z = sup({x,y}) & "  sii  " F(z) = F("sup"({x,y})) = sup({F(x), F(y)}) \
+        z = inf({x,y}) & "  sii  " F(z) = F("inf"({x,y})) = inf({F(x), F(y)})
+      $
+    ]
+  ],
+)
+
+#pagebreak()
+
+#page(margin: (bottom: 0.65cm))[
+
+  #combo_title([5 y 6])
+
+  #proofStructure(
+    1,
+    [*Teorema de Completitud*],
+    [
+      Sea $T = (Sigma, tau)$ _una teoría de primer orden_. Si $T |= phi$, entonces $T |- phi$.
+    ],
+    note: [
+      Haga solo el caso en que $tau$ tiene una cantidad infinita de nombres de cte que no ocurren en las sentencias de $Sigma$. En la prueba no es necesario que probar los items (1) y (5) (Combo 6: (1), (2), (3) y (4)).
+    ],
+    [
+      Lo probaremos por el absurdo, es decir supongamos que hay una sentencia $phi_0$ tal que $T |= phi_0$ pero $T !|- phi_0$. \
+      Notar que como $T !|- phi_0$, tenemos que $[phi_0]_T != 1^T = {phi in S^tau : T |- phi}$ y ademas $[not phi_0]_T != 0^T$. #footnote[
+        #grid(
+          inset: (top: -14pt),
+          columns: 2,
+          [Dada $T = (Sigma, tau)$ una teoría. Para toda sentencia $phi in
+            S^tau$ \
+            #box(width: 100%)[
+              #set list(indent: 0pt)
+              - $phi$ es un teorema si $T quad$ sii $quad T |- phi$.
+              - $phi$ es refutable si $T quad quad$ sii $quad T |- not phi$.
+            ]],
+          [
+            y ademas \
+            #box(width: 100%)[
+              #set list(indent: 0pt)
+              - $1^T = {phi in S^tau : phi" es un teorema de" T} = {phi in S^tau : T |- phi}$
+              - $0^T = {phi in S^tau : quad phi" es refutable en" T #h(4pt)} = {phi in S^tau : T |- not phi}$
+            ]],
+        )
+      ] \
+      Ahora por el #underline([_Lema de Enumeración_]) hay una infinitupla $(gamma_1, gamma_2, ...) in F^(tau NN)$ tal que\
+      #box(width: 100%)[
+        - $|"Li"(gamma_j)| <= 1$, para cada $j in NN$.
+        - Si $|"Li"(gamma)| <= 1$, entonces $gamma = gamma_j$, para algún $j in NN$.
+      ] \
+      Para cada $j in NN$, defino $w_j in "Var"$ tal que $"Li"(gamma_j) c= {w_j}$. Ahora, para cada $j in NN$ declaremos $gamma_j =_d gamma_j (w_j)$. \
+      Notar que por el #underline([_Lema del ínfimo_]) tenemos que $"inf"([gamma_j (t)]_T : t in T_c^tau) = [forall w_j gamma_j (w_j)]_T$ para cada $j in NN$. \
+      Por el #underline([_Teorema de Rasiova Y Sikorski_]) tenemos que hay un filtro primo $~U~$ de $~A~_T$, el cual cumple: \
+      #box(width: 100%)[
+        #set enum(numbering: "(a)", indent: 12.8pt)
+        + $[not phi_0]_T in ~U~$.
+        + Para cada $j in NN$, si ${[gamma_j (t): t in T_c^tau]} c= ~U~$, implica $[forall w_j gamma_j (w_j)]_T in ~U~$.
+      ]
+      Ya que $(gamma_1,gamma_2,...)$ cubre todas las formulas con a lo sumo una variable libre, podemos reescribir (b) como: \
+      #box(width: 100%)[
+        #set enum(numbering: "(a)'", start: 2, indent: 12.8pt)
+        + Para cada $phi =_d phi(v) in F^tau$, si ${[phi (t): t in T_c^tau]} c= ~U~$, implica $[forall v phi(v)]_T in ~U~$.
+      ] \
+      Definamos la siguiente relación sobre $T_c^tau$: \
+      #box(width: 100%)[
+        $
+          t join s " sii " [ (t = s) ]_T in ~U~
+        $
+      ]
+      Veamos entonces que: \
+      #box(width: 100%)[
+        #set enum(numbering: "(1)", indent: 12.8pt)
+        + $join$ una relación de equivalencia.
+        + Para cada $phi =_d phi(v_1, ..., v_n) in F^tau, t_1,...,t_n,s_1,...,s_n in T_c^tau$, si $t_1 join s_1, ..., t_n join s_n$. Entonces \
+          #box(width: 100%)[
+            $
+              [ phi(t_1, ..., t_n) ]_T in ~U~ " sii " [ phi(s_1, ..., s_n) ]_T in ~U~
+            $
+          ]
+        + Para cada $f in ~F~_n, t_1,...,t_n,s_1,...,s_n in T_c^tau$, se da que \
+          #box(width: 100%)[
+            $
+              t_1 join. s_1, ..., t_n join s_n " implica " f(t_1,...,t_n) join f(s_1,...,s_n)
+            $
+          ]
+      ]
+      *(2)* Notar que \
+      #box(width: 100%)[
+        $
+          T |- ( med ( med (t_1 equiv s_1) and ... and (t_n equiv s_n) and phi(t_1, ..., t_n) med ) med -> med phi(s_1, ..., s_n) med )
+        $
+      ] \
+      ahora gracias al #underline([_Lema (de $<=^T$)_]) sabemos que \
+      #box(width: 100%)[
+        $
+          [(t_1 equiv s_1) and ... and (t_n equiv s_n) and phi(t_1, ..., t_n)]_T quad <=^T quad [phi(s_1, ..., s_n)]_T
+        $
+      ]
+      y por definición de $bold(i)^T$, #comentario[($[phi]_T med bold(i)^T med [psi]_T = [phi and psi]_T$)
+      ] tenemos que \
+      #box(width: 100%)[
+        $
+          [t_1 equiv s_1]_T med bold(i)^T med ... med bold(i)^T med [t_n equiv s_n]_T med bold(i)^T med [phi(t_1, ..., t_n)]_T quad <=^T quad [phi(s_1, ..., s_n)]_T quad quad bold((*))
+        $
+      ]
+      en particular como $t_1 join s_1, ..., t_n join s_n$, por definición de $join$ tenemos que \
+      #box(width: 100%)[
+        $
+          [t_1 equiv s_1]_T, ..., [t_n equiv s_n]_T in ~U~
+        $
+      ] \
+      y por ser $~U~$ un filtro #comentario([(Item (2), $x,y in F => x #i y in F$)]) tenemos que \
+      #box(width: 100%)[
+        $
+          [t_1 equiv s_1]_T med bold(i)^T med ... med bold(i)^T med [t_n equiv s_n]_T in ~U~
+        $
+      ] \
+      pero si suponemos $[phi(t_1, ..., t_n)]_T in ~U~$, por lo mismo tenemos que \
+      #box(width: 100%)[
+        $
+          [t_1 equiv s_1]_T med bold(i)^T med ... med bold(i)^T med [t_n equiv s_n]_T med bold(i)^T med [phi(t_1, ..., t_n)]_T in ~U~
+        $
+      ] \
+      y de nuevo por ser $~U~$ un filtro #comentario([$(x in ~U~ med "y" med x <=^T y => y in ~U~)$]) y *$(*)$* tengo que $[phi(s_1, ..., s_n)]_T in ~U~$. Conclusión \
+      #box(width: 100%)[
+        $
+          [phi(t_1, ..., t_n)]_T in ~U~ quad "implica" quad [phi(s_1, ..., s_n)]_T in ~U~
+        $
+      ] \
+      La otra implicación es análoga. \ \
+      *(3)* Sea $f in ~F~_n, t_1,...,t_n,s_1,...,s_n in T_c^tau$ y supongamos $t_1 join. s_1, ..., t_n join s_n$. \ Si tomamos $phi = (f(v_1,...,v_n) equiv f(s_1,...,s_n))$ aplicando (2) obtenemos que \
+      #box(width: 100%)[
+        $
+                           [ phi(t_1, ..., t_n) ]_T in ~U~ & " sii " [ phi(s_1, ..., s_n) ]_T in ~U~ \
+          [ f(t_1,...,t_n) equiv f(s_1,...,s_n) ]_T in ~U~ & " sii " [ (f(s_1,...,s_n) equiv f(s_1,...,s_n) ]_T in ~U~ \
+        $
+      ] \
+      Pero $[ (f(s_1,...,s_n) equiv f(s_1,...,s_n) ]_T = 1^T$ y $1^T in ~U~$, entonces $[ f(s_1,...,s_n) equiv f(s_1,...,s_n) ]_T in ~U~$. \
+      Así concluimos que  $[ f(t_1,...,t_n) equiv f(s_1,...,s_n) ]_T in ~U~$, es decir $f(t_1,...,t_n) join f(s_1,...,s_n)$. \
+      \
+      #let AA_U = $bold(A)_(~U~)$
+      Definamos ahora un modelo #AA_U de tipo $tau$ de la siguiente manera: \
+      #box(width: 100%)[
+        - Universo de $#AA_U = T_c^tau \/ join$.
+        - $c^#AA_U = c \/ join$, para cada $c in ~C~$.
+        - $f^#AA_U ( t_1\/ join ,..., t_n \/ join ) = f(t_1,...,t_n) \/ join$, para cada $f in ~F~_n$ y $t_1,...,t_n in T_c^tau$.
+        - $r^#AA_U = { ( t_1\/ join ,..., t_n \/ join ): [r(t_1,...,t_n)]_T in ~U~ }$, para cada $r in ~R~_n$.
+      ]
+      Notar que la definición de $f^#AA_U$ es inambigua gracias a (3). Probemos las siguientes propiedades básicas:
+      #box(width: 100%)[
+        #set enum(numbering: "(1)", start: 4, indent: 12.8pt)
+        + Para cada $t =_d t(v_1,...,v_n) in T^tau, t_1,...,t_n in T_c^tau$, tenemos que \
+          #box(width: 100%)[
+            $
+              t^#AA_U [t_1 \/ join ,..., t_n \/ join ] = t(t_1,...,t_n) \/ join
+            $
+          ]
+        + Para cada $phi =_d phi(v_1, ..., v_n) in F^tau, t_1,...,t_n in T_c^tau$, se da que \
+          #box(width: 100%)[
+            $
+              #AA_U |= phi [t_1 \/ join ,..., t_n \/ join ] " sii " [phi(t_1, ..., t_n)]_T in ~U~
+            $
+          ]
+      ]
+      *(4)* Lo vamos a probar por inducción en el $k$ tal que $t in T_k^tau$. \
+      #underline("Caso Base"): Sea $t =_d t(v_1,...,v_n) in T_0^tau, t_1,...,t_n in T_c^tau$. Tenemos dos casos: \
+      #box(width: 100%)[
+        #set list(indent: 0pt)
+        - Si $t = c in ~C~$.  \
+          #box(width: 100%)[
+            $
+              t^#AA_U [t_1 \/ join ,..., t_n \/ join ] & = c^#AA_U & (#underline([_Lema, Carácter recursivo de la notación $t^bold(A) [a_1,...,a_n]$_])) \
+              & = c \/ join & ("def." #AA_U) \
+              & = t(t_1,...,t_n) \/ join & ("por Notación Declaratoria") \
+            $
+          ]
+        - Si $t = v_i$ para algún $i = 1,...,n$. \
+          #box(width: 100%)[
+            $
+              t^#AA_U [t_1 \/ join ,..., t_n \/ join ] & = t_i \/ join & (#underline([_Lema, Carácter recursivo de la notación $t^bold(A) [a_1,...,a_n]$_])) \
+              & = t(t_1,...,t_n) \/ join & ("por Notación Declaratoria") \
+            $
+          ]
+      ]
+      #underline("Caso Inductivo"): Supongamos que vale para cada $s in T_k^tau$ y veamos que se cumple para $t in T_(k+1)^tau$. \
+      Sea $t =_d t(v_1,...,v_n) in T_(k+1)^tau, t_1,...,t_n in T_c^tau$. Si $t in T_k^tau$, directo por HI. Si $t =_d t(v_1, ..., v_n) in T_(k+1)^tau - T_k^tau$, \
+      se da que $t =_d f(s_1,...,s_m)$ con $f in ~F~_m$ y $s_1,...,s_m in T_k^tau$. Por convención notacional $s_i =_d s_i (v_1,...,v_n)$. \
+      Entonces por el #underline([_Lema, Carácter recursivo de la notación $t^bold(A) [a_1,...,a_n]$_]) tenemos que \
+      #box(width: 100%)[
+        $
+          t^#AA_U [t_1 \/ join ,..., t_n \/ join ] = f^#AA_U ( s_1^#AA_U [t_1 \/ join ,..., t_n \/ join ],..., s_m^#AA_U [t_1 \/ join ,..., t_n \/ join ] )
+        $
+      ]
+      luego por HI $s_i^#AA_U [t_1 \/ join ,..., t_n \/ join ] = s_i (t_1,...,t_n) \/ join$, entonces \
+      #box(width: 100%)[
+        $
+          t^#AA_U [t_1 \/ join ,..., t_n \/ join ] = f^#AA_U ( s_1 (t_1,...,t_n) \/ join ,..., s_m (t_1,...,t_n) \/ join ) \
+        $
+      ] \
+      y por definición de $f^#AA_U$ \
+      #box(width: 100%)[
+        $
+          t^#AA_U [t_1 \/ join ,..., t_n \/ join ] = f( s_1 (t_1,...,t_n),..., s_m (t_1,...,t_n) ) \/ join \
+        $
+      ] \
+      y por notación declaratoria llegamos a que \
+      #box(width: 100%)[
+        $
+          t^#AA_U [t_1 \/ join ,..., t_n \/ join ] = t(t_1,...,t_n) \/ join
+        $
+      ] \
+      #REVISAR \ \ \ \ \
+
+      *(5)* Lo probaremos por inducción en el $k$ tal que $phi in F_k^tau$. \
+      #underline("Caso Base"):
+      Sea $phi =_d phi(v_1, ..., v_n) in F_0^tau, t_1,...,t_n in T_c^tau$. Tenemos dos casos: \
+      #box(width: 100%)[
+        #set list(indent: 0pt)
+        - Si $phi = (t equiv s)$ con $t,s in T^tau$. Por convención notacional tenemos $t =_d t(v_1,...,v_n)$ y $s =_d s(v_1,...,v_n)$. \
+          #box(width: 100%)[
+            $
+              #AA_U |= phi [t_1 \/ join ,..., t_n \/ join ]
+              & " sii " t^#AA_U [t_1 \/ join ,..., t_n \/ join ] = s^#AA_U [t_1 \/ join ,..., t_n \/ join ] &("def." |=)\
+              & " sii " t(t_1,...,t_n) \/ join = s(t_1,...,t_n) \/ join & ("por" 4) \
+              & " sii " t(t_1,...,t_n) join s(t_1,...,t_n) & ("def. clase equiv") \
+              & " sii " [ (t(t_1,...,t_n) equiv s(t_1,...,t_n)) ]_T in ~U~ &("def" join) \
+              & " sii " [ phi(t_1, ..., t_n) ]_T in ~U~
+            $
+          ]
+        - Si $phi = r(s_1,...,s_m)$ con $r in ~R~_m$ y $s_1,...,s_m in T^tau$. Por convención notacional $s_i =_d s_i (v_1,...,v_n)$. \
+          #box(width: 100%)[
+            $
+              #AA_U |= phi [t_1 \/ join ,..., t_n \/ join ]
+              & " sii " ( s_1^#AA_U [t_1 \/ join ,..., t_n \/ join ],..., s_m^#AA_U [t_1 \/ join ,..., t_n \/ join ] ) in r^#AA_U &("def." |=) \
+              & " sii " ( s_1 (t_1,...,t_n) \/ join ,..., s_m (t_1,...,t_n) \/ join ) in r^#AA_U &("por" 4) \
+              & " sii " [ r(s_1(t_1,...,t_n),..., s_m(t_1,...,t_n)) ]_T in ~U~ &("def" r^#AA_U) \
+              & " sii " [ phi(t_1, ..., t_n) ]_T in ~U~
+            $
+          ] \
+      ]
+      #underline("Caso Inductivo"): Supongamos que vale para cada $psi in F_k^tau$ y veamos que se cumple para $phi in F_(k+1)^tau$. \
+      Sea $phi =_d phi(v_1, ..., v_n) in F_(k+1)^tau, t_1,...,t_n in T_c^tau$. Si $phi in F_k^tau$, es directo por HI. \ Entonces veamos $phi =_d phi(v_1, ..., v_n) in F_(k+1)^tau - F_k^tau$. Tenemos varios casos para la forma de $phi$: \
+      #box(width: 100%)[
+        #set list(indent: 0pt)
+        - Si $phi = (phi_1 and phi_2)$. Por convención notacional $phi_i =_d phi_i (v_1,...,v_n)$. \
+          #box(width: 100%)[
+            $
+              #AA_U |= phi [t_1 \/ join ,..., t_n \/ join ]
+              & " sii " #AA_U |= phi_1 [t_1 \/ join ,..., t_n \/ join ] med "y" med #AA_U |= phi_2 [t_1 \/ join ,..., t_n \/ join ] &("def." |=) \
+              & " sii " [phi_1(t_1, ..., t_n)]_T in ~U~ med "y" med [phi_2(t_1, ..., t_n)]_T in ~U~ &("por" "HI") \
+              & " sii " [phi_1(t_1, ..., t_n) med bold(i)^T med phi_2(t_1, ..., t_n)]_T in ~U~ &(#box(fill: red)[#text(fill: white)[??????]]) \
+              & " sii " [phi_1(t_1, ..., t_n) and phi_2(t_1, ..., t_n)]_T in ~U~ &("def." bold(i)^T) \
+              & " sii " [phi(t_1, ..., t_n)]_T in ~U~
+            $
+          ]
+        - RESTO DE CASOS: #COMPLETAR \
+      ]
+
+
+      Pero ahora notar que (5) en particular nos dice que, #h(20pt) $#AA_U |= psi " sii " [psi]_T in ~U~ quad "para cada" psi in S^tau$. \
+      De esta forma llegamos que $#AA_U |= Sigma$ y $#AA_U |= not phi_0$, lo cual contradice la suposición de que $T |= phi_0$. #REVISAR #fin_demo \
+
+      #linea_dashed
+
+      _Lema de Enumeración_ : Sea $tau$ un tipo. Hay una infinitupla $(gamma_1,gamma,_2,...) in F^(tau NN)$ tal que \
+      #box(width: 100%, inset: (left: 100pt))[
+        - $|"Li"(gamma_j)| <= 1$, para cada $j in NN$. \
+        - Si $|"Li"(gamma)| <= 1$, entonces $gamma = gamma_j$, para algún $j in NN$. \
+      ]
+
+      _Lema del ínfimo_ : Sea $T = (Sigma, tau)$ una teoría y supongamos que $tau$ tiene una cantidad infinita de nombres de cte que no ocurren en las sentencias de $Sigma$. Entonces para cada formula $phi =_d phi(v)$, se tiene que en el algebra de Lindenbaum $~A~_T$, se cumple $quad [forall v phi]_T = inf({[phi(t)]_T} : t in T_c^tau)$ \
+
+      _Teorema de Rasiova Y Sikorski_ : Sea $B, #s, #i,^c, 0,1)$ un algebra de Boole. Sea $a in B, a != 0$. Supongamos que (A_1, A_2,...) es una infinitupla de subconjuntos de $B$ tal que existe $inf(A_j)$ para cada $j=1,2,...$. Entonces hay un filtro primo $P$ el cual cumple: \
+      #box(width: 100%)[
+        #set enum(numbering: "(a)", indent: 12.8pt)
+        + $a in P$.
+        + $A_j c= P$ implica $inf(A_j) in P$, para cada $j=1,2,...$
+      ]
+
+      _Lema (de $<=^T$)_ : Sea $T$ una teoría. Se tiene que $[phi]_T med <=^T med [psi]_T " sii " T |- (phi -> psi)$.
+    ],
+  )
+]
+
+#pagebreak()
+
+#combo_title(7)
+
+#proofStructure(
+  1,
+  [*Lema (Propiedades básicas de la deducción $|-$)*],
+  [
+    Sea $(Sigma, tau)$ una teoría. \
+    #box(width: 94%)[
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + (Uso de Teoremas) Si $(Sigma, tau) |- phi_1,...,phi_n$ y $(Sigma union {phi_1,...,phi_n}, tau) |- phi$, entonces $(Sigma, tau) |- phi$.
+      + Supongamos $(Sigma, tau) |- phi_1,...,phi_n$. Si *R* s una regla distinta de GENERALIZACION y ELECCION y $phi$ se deduce de $phi_1,...,phi_n$ por la regla *R*, entonces $(Sigma, tau) |- phi$.
+      + $(Sigma, tau) |- (phi -> psi)$ sii $(Sigma union {phi}, tau) |- psi$.
+    ].
+  ],
+  note: [Mismo que el #link(<combo-demo-4.1>)[Combo 4.1]],
+  link_apunte: "<combo-demo-4.1>",
+  empty_demo: true,
+  [],
+)
+
+#proofStructure(
+  2,
+  [*Lema*],
+  [
+    Sea $(L, #s, #i)$ reticulados terna y sea $theta$ una congruencia de $(L, #s, #i)$. Entonces \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + $(L\/theta, tilde(#s), tilde(#i))$ es un reticulado terna.
+      + El orden parcial $tilde(<=)$ asociado  al reticulado terna $(L\/theta, tilde(#s), tilde(#i))$ cumple \
+        #box(width: 100%)[
+          $
+            x\/theta tilde(<=) y\/theta " sii " y theta (x #s y)
+          $
+        ]
+    ]
+  ],
+  [
+    Recordemos las definiciones: \
+    #box(width: 100%)[
+      $
+        x\/theta tilde(#s) y\/theta = (x #s y) \/ theta quad quad "y" quad quad
+        x\/theta tilde(#i) y\/theta = (x #i y) \/ theta
+      $
+    ]
+    *(1)* Veamos entonces que $(L\/theta, tilde(#s), tilde(#i))$ cumple las I1-I7 propiedades para ser un reticulado terna. \
+    Sean $x\/theta, y\/theta, z\/theta in L\/theta$ elementos arbitrarios. \
+    #let th = $\/theta$
+    #let xth = $x th$
+    #let yth = $y th$
+    #let zth = $z th$
+    #let ss = $med tilde(#s) med$
+    #let ii = $med tilde(#i) med$
+    #let I(num) = [#h(10pt) $("I"num)$ #h(5pt)]
+    #I(1)
+    $xth ss xth = (x #s x) th = x th quad " , " quad xth ii xth = (x #i x) th = x th$ \
+    #I(2)
+    $xth ss yth = (x #s y) th = (y #s x) th = yth ss xth$ \
+    #I(3) Análogo al anterior. \
+    #I(4)
+    $(xth ss yth) ss zth = ((x #s y) th ss zth) = ((x #s y) #s z) th = (x #s (y #s z)) th$ \
+    #h(40pt) $= (xth ss (y #s z) th) = (xth ss (yth ss zth))$ \
+    #I(5) Análogo al anterior. \
+    #I(6) $xth ss (xth ii yth) = (xth ss (x #i y) th ) = (x #s (x #i y) ) th = x th$ \
+    #I(7) Análogo al anterior. \
+    #let menorEQ = $tilde(<=)$
+    *(2)* Por definición de #menorEQ tenemos que \
+    #box(width: 100%)[
+      $
+        xth menorEQ yth " sii " yth = xth ss yth
+      $
+    ] \
+    pero por definición de $ss$ tenemos que $xth ss yth = (x #s y) th$. Entonces \
+    #box(width: 100%)[
+      $
+        xth menorEQ yth " sii " yth = (x #s y) th
+      $
+    ] \
+    y como no es difícil ver que vale $yth = (x #s y) th "sii " y theta (x #s y)$ #footnote[
+      Dada una una relación de equivalencia $R$ sobre un conjunto $A$. \ Sea $a in A$ arbitrario, como R es reflexiva, tengo que $a R a$, entonces $a in a\/R$.
+      Sean $a,b in A$ arbitrarios. \
+      *($->$)* Si *$a \/ R = b \/ R$* tenemos que $b in a \/ R$ entonces *$a R b$*. \
+      *($<-$)* Si *$a R b$*. Tomamos $c in a \/ R$, entonces $a R c$, por simetría $b R a$ y por transitividad $b R c$, luego $c in b \/ R$. Por lo tanto $a \/ R c= b \/ R$.\
+      Tomamos $c in b \/ R$, entonces $b R c$, por transitividad $a R c$, luego $c in a \/ R$. Por lo tanto $b \/ R c= a \/ R$. Conclusión *$a \/ R = b \/ R$*.
+    ], tenemos que \
+    #box(width: 100%)[
+      $
+        xth menorEQ yth " sii " y theta (x #s y)
+      $
+    ]
+    #box(width: 100%, inset: (top: -100pt))[#fin_demo]
+  ],
+)
+
+#proofStructure(
+  3,
+  [*Lema*],
+  [
+    Sea $(L, #s, #i)$ y $(L', #s', #i')$ reticulados terna y sean $(L, <=)$ y $(L', <=')$ los posets asociados. \
+    Sea $F: L -> L'$ una función.  \
+    Entonces $F$ es un isomorfismo de $(L, #s, #i)$ en $(L', #s', #i')$
+    sii
+    $F$ es un isomorfismo de $(L, <=)$ en $(L', <=')$.
+  ],
+  note: [Mismo que el #link(<combo-demo-4.3>)[Combo 4.3]],
+  link_apunte: "<combo-demo-4.3>",
+  empty_demo: true,
+  [],
+)
+
+#pagebreak()
+
+#combo_title(8)
+
+#pagebreak()
+
 #page(margin: (top: 1.45cm, bottom: 0pt, left: 1.2cm, right: 1.2cm))[
 
   == Resultados Muy Usados en las Demostraciones
@@ -1452,6 +2052,7 @@
   ]
 
   #statementsStructure(
+    is_combo: true,
     padding_left: 5pt,
     padding_bottom: -10pt,
     [Lema (Propiedades básica de  $|-$) <lema-prop-básicas-del-enchufe-simple>],
