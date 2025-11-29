@@ -2083,7 +2083,7 @@
     ]
     #underline("Caso Inductivo"):
     Supongamos que vale $"Teo"_k$ y vemos $"Teo"_(k+1)$.
-    Sea $phi in F_(k+1)^tau - F_k^tau$, ya que si $phi in F_k^tau$ es directo. Sean $a_1,...,a_n in bold(A)$. Por el _Teorema de lectura única de formulas declaradas_ ,tenemos los casos: \
+    Sea $phi in F_(k+1)^tau - F_k^tau$, ya que si $phi in F_k^tau$ es directo. Sean $a_1,...,a_n in bold(A)$. Por el _Lema Lectura única de formulas declaradas_ ,para $phi$ tenemos los casos: \
     #box(width: 100%)[
       #set list(indent: 0pt)
       - Si $phi = (phi_1 and phi_2)$. Por convención notacional $phi_i =_d phi_i (v_1,...,v_n)$. Ademas claramente $phi_1, phi_2 in F_k^tau$. \
@@ -2119,17 +2119,76 @@
         ]
       - Los casos $phi = forall v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi = exists v_j phi_1$ son análogos a los anteriores. #fin_demo \
     ] \
+
+    \
     #linea_dashed
+
     _Lema análogo para términos_: Sea $F : bold(A) -> bold(B)$ un isomorfismo. Sea $t =_d t(v_1,...,v_n) in T^tau$. Entonces \
     #box(width: 100%, inset: (left: 40pt))[
       $
         F(t^bold(A)[a_1,...,a_n]) = t^bold(B)[F(a_1),...,F(a_n)] " para cada "t in T^tau" y cada " a_1,...,a_n in A
       $
     ] \
-    _Lema Carácter recursivo de la notación $bold(A) |= phi [a_1,...,a_n]$_ #COMPLETAR \
-    _Teorema de lectura única de formulas declaradas_: #COMPLETAR
+
+    _Lema Carácter recursivo de la notación $bold(A) |= phi [a_1,...,a_n]$_ : \ Supongamos $phi =_d phi(v_1, ..., v_n)$. Sea $bold(A) = (A, i)$ un modelo de tipo $tau$ y sean $a_1,...,a_n in A$. Entonces \
+    #box(width: 100%)[
+      #let size_phi = 80pt
+      #let centro = [
+        #box(width: 150pt)[
+          #align(center)[
+            , entonces $med med$ $bold(A) |= phi[a_1,...,a_n]$
+          ]
+        ]
+      ]
+      #let sii = [
+        #box(width: 18pt)[
+          #align(center)[
+            sii
+          ]
+        ]
+      ]
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + Si #box(width: size_phi)[#align(center)[$phi = (t equiv s)$]] #centro #sii $t^bold(A) [a_1,...,a_n] = s^bold(A) [a_1,...,a_n]$
+      + Si #box(width: size_phi)[#align(center)[$phi = r(t_1,...,t_m)$]] #centro #sii $(t_1^(bold(A))[arrow(a)],...,t_m^(bold(A))[arrow(a)]) in i(r)$.
+      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 and phi_2)$]] #centro #sii $bold(A) |= phi_1[a_1,...,a_n]$ y $bold(A) |= phi_2[a_1,...,a_n]$
+      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 or phi_2)$]] #centro #sii $bold(A) |= phi_1[a_1,...,a_n]$ o $bold(A) |= phi_2[a_1,...,a_n]$
+      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 -> phi_2)$]] #centro #sii $bold(A) tack.r.double.not phi_1[a_1,...,a_n]$ o $bold(A) |= phi_2[a_1,...,a_n]$
+      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 <-> phi_2)$]] #centro #sii \ se dan $bold(A) |= phi_1[a_1,...,a_n]$ y $bold(A) |= phi_2[a_1,...,a_n] med med$ o $med med$  se dan $bold(A) tack.r.double.not phi_1[a_1,...,a_n]$ y $bold(A) tack.r.double.not phi_2[a_1,...,a_n]$
+      + Si #box(width: size_phi)[#align(center)[$phi = not phi_1$]] #centro #sii $bold(A) tack.r.double.not phi_1[a_1,...,a_n]$
+      + Si #box(width: size_phi)[#align(center)[$phi = forall v_j phi_1$]] #centro #sii \ #h(170pt) para cada $a in A$, se da que $bold(A) |= phi_1[a_1,..,a_(j-1), a, a_(j+1),...,a_n]$
+      + Si #box(width: 130pt)[#align(center)[$phi = forall v phi_1$ y $v in.not {v_1,...,v_n}$]] #centro #sii \ #h(230pt) para cada $a in A$, se da que $bold(A) |= phi_1[a_1,...,a_n,a]$
+      + Si #box(width: size_phi)[#align(center)[$phi = exists v_j phi_1$]] #centro #sii \ #h(165pt) para algún $a in A$, se da que $bold(A) |= phi_1[a_1,..,a_(j-1), a, a_(j+1),...,a_n]$
+      + Si #box(width: 130pt)[#align(center)[$phi = exists v phi_1$ y $v in.not {v_1,...,v_n}$]] #centro #sii \ #h(225pt) para algún $a in A$, se da que $bold(A) |= phi_1[a_1,...,a_n,a]$
+    ] \
+
+    _Lema Lectura única de formulas declaradas_: Sea $tau$ un tipo cualquier y $phi in F^tau$. \
+    Supongamos $phi =_d phi(v_1, ..., v_n)$. Entonces se de una y solo una de las siguientes. \
+    #box(width: 100%)[
+      #grid(
+        columns: 2,
+        [
+          #set enum(numbering: "(1)", indent: 12.8pt)
+          + $phi = (t equiv s)$ con $t,s in T^tau$.
+          + $phi = r(t_1,...,t_m)$ con $r in ~R~_m$ y $t_1,...,t_m in T^tau$.
+          + $phi = (phi_1 eta phi_2)$ con $phi_i in F^tau$.
+        ],
+        [
+          #set enum(numbering: "(1)", indent: 12.8pt, start: 5)
+          + $phi = not phi_1$ con $phi_1 in F^tau$.
+          + $phi = Q v_j phi_1$ con $phi_1 in F^tau$
+          + $phi = Q v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi_1 in F^tau$.
+          //   + $phi = forall v_j phi_1$ con $phi_1 in F^tau$.
+          //   + $phi = forall v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi_1 in F^tau$.
+          //   + $phi = exists v_j phi_1$ con $phi_1 in F^tau$.
+          //   + $phi = exists v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi_1 in F^tau$.
+        ],
+      )
+    ]
+    y $eta in {and, or, ->, <->}$ y $Q in {forall, exists}$.Mas aún, si $phi in F^tau_(k+1)$, cuando se da (3), (4), (5) o (6), se tiene que $phi_i in F^tau_k$.
   ],
 )
+
+#pagebreak()
 
 #proofStructure(
   2,
@@ -2144,23 +2203,22 @@
   ],
   [
     *(a)* Sea $S c= P$ y sea $a in P$. \
-    - Supongamos que $a$ es cota superior de $S$. \
+    - Supongamos que $a$ es cota superior de $S$ #comentario[(veamos entonces que $F(a)$ es cota superior de $F(S)$)]. \
       Sea $b' in F(S)$ arbitrario, como es $F$ sobre, existe $b in S$ tal que $b' = F(b)$. \
       Entonces $b <= a$ y por ser $F$ un isomorfismo tenemos que $F(b) <=' F(a)$, es decir $b' <=' F(a)$. \
       Como $b' in F(S)$ era arbitrario, tenemos que $F(a)$ es cota superior de $F(S)$. \
-    - Supongamos ahora que $F(a)$ es cota superior de $F(S)$. \
+    - Supongamos ahora que $F(a)$ es cota superior de $F(S)$ #comentario[(veamos entonces que $a$ es cota superior de $S$)]. \
       Sea $b in S$ arbitrario. Entonces $F(b) <=' F(a)$ y por ser $F$ isomorfismo, tengo que $F^(-1)$ también es un homomorfismo. Por lo cual $F^(-1)(F(b)) <= F^(-1)(F(a))$, es decir $b <= a$. \ Como $b in S$ era arbitrario, tenemos que $a$ es cota superior de $S$. \
     #h(25pt) El caso de cotas inferiores es análogo. \ \
     *(b)* Sea $S c= P$.\
-    - Supongamos que existe $a = "sup"(S)$.\
-      Por (a) tenemos que $F(a)$ es un cota superior de $F(S)$ arbitraria. Veamos que es la menor de ellas. \
+    - Supongamos que existe $a = "sup"(S)$ #comentario[(veamos entonces que $F(a) = "sup"(F(S))$)]. \
+      Por (a) tenemos que $F(a)$ es un cota superior de $F(S)$ arbitraria #comentario[(falta ver que es la menor de ellas)]. \
       Supongamos $b' in P'$ es cota superior de $F(S)$. Como $F$ es sobre, existe $b in P$ tal que $b' = F(b)$. \
-      Es decir $F(b)$ es cota superior de $F(S)$. Entonces por (a) tenemos que $b$ es cota superior de $S$. \
-      Luego como $a = "sup"(S)$, se da que $a <= b$ y por ser $F$ un isomorfismo, tenemos que $F(a) <=' F(b)$, es decir $F(a) <=' b'$. Como $b'$ era una cota superior arbitraria de $F(S)$ probamos que es la menor de ellas. \
+      Es decir $F(b)$ es cota superior de $F(S)$, entonces por (a) tenemos que $b$ es cota superior de $S$. \
+      Como $a = "sup"(S)$, se da que $a <= b$ y como $F$ un isomorfismo, $F(a) <=' F(b)$, es decir $F(a) <=' b'$. \
+      Pero como $b'$ era una cota superior arbitraria de $F(S)$, probamos que $F(a)$ es la menor cota superior. \
       Entonces $F(a) = "sup"(F(S))$, por lo tanto existe $"sup"(F(S))$. \
-    - Supongamos ahora que existe $b' = "sup"(F(S))$. \
-      #COMPLETAR \
-
+    - Si existe $"sup"(F(S))$ entonces existe $"sup"(S)$, es análogo al anterior. \
   ],
 )
 
