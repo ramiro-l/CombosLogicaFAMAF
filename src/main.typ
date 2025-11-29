@@ -30,8 +30,7 @@
     [Defina $n(bold(J))$ para $bold(J) in italic("Just")^+$.],
     link_apunte: "https://granlogico.com/apunteweb/7.13-teorias-de-primer-orden.html#secuencia%20de%20justificaciones",
     [
-      #link("https://granlogico.com/apunteweb/7.13-teorias-de-primer-orden.html#secuencia%20de%20justificaciones")[Lema 7.43 del apunte]. Sea $bold(J) in italic("Just")^+$. Hay únicos $n >= 1$ y $J_1, dots, J_n in bold("Just")$ tales que $bold(J) = J_1 J_2 dots J_n$. \
-      Dada $bold(J) in italic("Just")^+$, usaremos $n(bold(J))$ y $bold(J)_1,..., bold(J)_(n(bold(J)))$ para denotar los únicos $n$ y $J_1,..., J_n$ cuya existencia nos garantiza el lema anterior.
+      Dada $bold(J) in italic("Just")^+$, usaremos $n(bold(J))$ y $bold(J)_1,..., bold(J)_(n(bold(J)))$ para denotar los únicos $n$ y $J_1,..., J_n$ cuyas existencias nos lo garantiza el #underline([_Lema_]): Sea $bold(J) in italic("Just")^+$. Hay únicos $n >= 1$ y $J_1, dots, J_n in bold("Just")$ tales que $bold(J) = J_1 J_2 dots J_n$.
     ],
   )
 
@@ -41,6 +40,8 @@
     note: [No hace falta que defina cuando $bold(J) in italic("Just")^+$ es balanceada.],
     link_apunte: "https://granlogico.com/apunteweb/7.13-teorias-de-primer-orden.html#secuencia%20de%20justificaciones",
     [
+      Dada $phi in S^(tau+)$, usaremos $n(bold(phi))$ y $bold(phi)_1,..., bold(phi)_(n(bold(phi)))$ para denotar los únicos $n$ y $phi_1,..., phi_n$ cuyas existencias nos lo garantiza el #underline([_Lema_]): Sea $phi in S^(tau+)$. Hay únicos $n >= 1$ y $phi_1, dots, phi_n in S^(tau+)$ tales que $bold(phi) = phi_1 phi_2 dots phi_n$.
+
       Un _par adecuado de tipo $tau$_ es un par $(bold(phi), bold(J)) in S^(tau+) times "Just"^+$ tal que $n(bold(phi)) = n(bold(J))$ y $bold(J)$ es balanceada.
       // #footnote[
       //   \
@@ -79,7 +80,7 @@
     4,
     [Dados $phi =_d phi(v_1, ..., v_n)$, *A* una estructura de tipo $tau$ y $a_1, ..., a_n in A$, defina qué significa \ $A |= phi[a_1, ..., a_n]$ (i.e. Convención notacional 4 y parte del #link(<combo-def-6>)[Combo 6]).],
     [
-      Si declaramos $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$ entonces $bold(A) |= phi[a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.
+      Si declaramos $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$ entonces $bold(A) |= phi[a_1, ..., a_n]$ significará que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.
     ],
   )
 
@@ -87,13 +88,13 @@
     5,
     [Defina $(L, s, i,^c, 0, 1)\/theta$ (con $theta$ una congruencia del reticulado complementado $(L, s, i,^c, 0, 1)$) <combo-def-1.5>.],
     [
-      Sea $(L, s, i,^c, 0, 1)$ un reticulado complementado. Una _congruencia sobre_ $(L, s, i,^c, 0, 1)$ sera una relación de equivalencia sobre $L$ la cual cumpla \
+      Sea $(L, s, i,^c, 0, 1)$ un reticulado complementado. Una _congruencia sobre_ $(L, s, i,^c, 0, 1)$ será una relación de equivalencia sobre $L$ la cual cumpla \
       #box(width: 92%)[
         #set enum(numbering: "(1)", indent: 12.8pt)
         + $theta$ es una congruencia sobre $(L, #s, #i, 0,1)$ #footnote[
             \
-            Una _congruencia sobre $(L, #s, #i, 0, 1)$_ sera una relación de equivalencia $theta$ la cual sea una _congruencia sobre $(L,s, i)$_. \
-            Una _congruencia sobre $(L, #s, #i)$_ sera una relación de equivalencia $theta$ sobre L la cual cumpla: \
+            Una _congruencia sobre $(L, #s, #i, 0, 1)$_ será una relación de equivalencia $theta$ la cual sea una _congruencia sobre $(L,s, i)$_. \
+            Una _congruencia sobre $(L, #s, #i)$_ será una relación de equivalencia $theta$ sobre L la cual cumpla: \
             #box(width: 100%, height: 1pt)[
               $ x theta x' med med y med med y theta y'
               quad "implica" quad
@@ -113,7 +114,6 @@
         $
       ] \
       La $6$-upla $(L\/theta, tilde(#s), tilde(#i), tilde(""^c), 0\/theta, 1\/theta)$ es llamada el _cociente de_ $(L, s, i,^c, 0, 1)$ sobre $theta$ y la denotamos con $(L, s, i,^c, 0, 1)\/theta$. \
-      // Entonces denotamos por $(L, s, i,^c, 0, 1)\/theta$ a la $6$-upla $(L\/theta, tilde(#s), tilde(#i), tilde(""^c), 0\/theta, 1\/theta)$.
     ],
   )
 ]
@@ -138,7 +138,7 @@
     #box(width: 100%)[
       #set enum(numbering: "(1)", indent: 12.8pt)
       + Cada elemento de $~P~$ es un subconjunto no vacío de $A$. \
-      + SI $S_1, S_2 in ~P~$ y $S_1 != S_2$, entonces $S_1 inter S_2 = emptyset$.
+      + Si $S_1, S_2 in ~P~$ y $S_1 != S_2$, entonces $S_1 inter S_2 = emptyset$.
       + $A = {a: a in S, "para algún" S in ~P~}$.
     ] \
     Dada una partición $~P~$ de un conjunto $A$, definimos la relación binaria asociada a $~P~$ como: \
@@ -155,7 +155,9 @@
   [Defina cuando "$phi_i$ está bajo la hipótesis $phi_l$ en $(phi, bold(J))$".],
   note: [No hace falta que defina $~B~^(bold(J))$.],
   [
-    Diremos que $bold(phi)_i$ _está bajo la hipótesis_ $bold(phi)_l$ en $(phi, bold(J))$ cuando haya en $~B~^(bold(J))$ un bloque de la forma $<<l, j>>$ el cual contenga a $i$ #comentario([(osea $i in <<l, j>>$)]).
+    Dado un par adecuado $(bold(phi), bold(J))$. \
+    Diremos que
+    #h(22pt) _$bold(phi)_i$ está bajo la hipótesis $bold(phi)_l$ en $(bold(phi), bold(J))$_ #h(22pt) o #h(22pt) _$bold(phi)_l$ es la hipótesis de $bold(phi)_i$  en $(bold(phi), bold(J))$_ \ cuando haya en $~B~^(bold(J))$ un bloque de la forma $<<l, j>>$ el cual contenga a $i$ #comentario([(osea $i in <<l, j>>$)]).
   ],
 )
 
@@ -164,14 +166,16 @@
   [Defina $(L, s, i)\/theta$ (con $theta$ una congruencia del reticulado terna $(L, s, i)$).],
   note: [No hace falta que defina el concepto de congruencia.],
   [
-    Sea $(L, s, i)$ un reticulado terna. Dada una congruencia $theta$ sobre $(L, s, i)$ #footnote[
-      Una _congruencia sobre $(L, #s, #i)$_ sera una relación de equivalencia $theta$ sobre L la cual cumpla: \
-      #box(width: 100%, height: 1pt)[
-        $ x theta x' med med y med med y theta y'
+    Sea $(L, s, i)$ un reticulado terna. \
+    Una _congruencia sobre $(L, #s, #i)$_ será una relación de equivalencia $theta$ sobre L la cual cumpla: \
+    #box(width: 100%)[
+      $
+        x theta x' med med y med med y theta y'
         quad "implica" quad
-        (x #s y) theta (x' #s y') med med y med med (x #i y) theta (x' #i y') $
-      ]
-    ], las condiciones de congruencia permiten definir dos operaciones binarias $tilde(#s)$ y $tilde(#i)$ como: \
+        (x #s y) theta (x' #s y') med med y med med (x #i y) theta (x' #i y')
+      $
+    ] \
+    Gracias a lo anterior podemos definir en forma inambigua dos operaciones binarias $tilde(#s)$ y $tilde(#i)$ sobre $L\/theta$ como: \
     #box(width: 100%)[
       $
         x\/theta tilde(#s) y\/theta = (x #s y)\/theta
@@ -223,7 +227,7 @@
         #v(18pt) [S)= {y in L: y >= s_1 #i ... #i s_n, "para algunos" s_1,...,s_n in S, n>=1}
       $
     ] \
-    Llamaremos a $[S)$ el _filtro generado por_ $S$ _en_ $(L, s, i)$. \
+    y lo llamaremos el _filtro generado por_ $S$ _en_ $(L, s, i)$. \
   ],
 )
 
@@ -294,11 +298,11 @@
       + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 -> phi_2)$]] #centro #sii $bold(A) tack.r.double.not phi_1[a->]$ o $bold(A) |= phi_2[a->]$
       + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 <-> phi_2)$]] #centro #sii se dan $bold(A) |= phi_1[a->]$ y $bold(A) |= phi_2[a->]$ \ #h(218pt) o $med med$  se dan $bold(A) tack.r.double.not phi_1[a->]$ y $bold(A) tack.r.double.not phi_2[a->]$
       + Si #box(width: size_phi)[#align(center)[$phi = not phi_1$]] #centro #sii $bold(A) tack.r.double.not phi_1[a->]$
-      + Si #box(width: size_phi)[#align(center)[$phi = forall x_1 phi_1$]] #centro #sii para cada $a in A$, se da que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]$ #footnote[
-          Dada una estructura *A* de tipo $tau$, una asignación $arrow(a) in A^NN$ y $a in A$, con $arrow.b ""_i^a (arrow(a))$ denotaremos la asignación que resulta de reemplazar en $arrow(a)$ el i-ésimo elemento por $a$.
-        ]
-      + Si #box(width: size_phi)[#align(center)[$phi = exists x_1 phi_1$]] #centro #sii hay un $a in A$ tal que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]^(#text("5", size: 8pt))$
-    ]
+      + Si #box(width: size_phi)[#align(center)[$phi = forall x_1 phi_1$]] #centro #sii para cada $a in A$, se da que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]$
+      + Si #box(width: size_phi)[#align(center)[$phi = exists x_1 phi_1$]] #centro #sii hay un $a in A$ tal que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]$
+    ] \
+    aclarar que $bold(A) tack.r.double.not phi$ denota que no se cumple lo anterior y ademas usamos \
+    $arrow.b ""_i^a (arrow(a))$ para denota la asignación que resulta de reemplazar en $arrow(a)$ el i-ésimo elemento por $a$.
   ],
 )
 
@@ -306,6 +310,8 @@
   3,
   [Defina la relación _"$v$ ocurre libremente en $phi$ a partir de $i$"_.],
   [
+    Recordar que dadas $alpha, beta in Sigma^#estrella$, con $|alpha|,|beta| >= 1$ y un natural $i in {1,...,|beta|}$, se dice que _$alpha$ ocurre a partir de $i$ en $beta$_ cuando se de que existan palabras $delta, gamma$ tales que $beta = delta alpha gamma$ y $|delta| >= i-1$. \
+
     Definamos recursivamente la relación _”v ocurre libremente en $phi$ a partir de $i$”_, donde $v in "Var"$, $phi in F^tau$ e \ $i in \{1, ..., |phi|\}$, como: \
     #box(width: 100%)[
       #let size_phi = 70pt
@@ -324,9 +330,7 @@
         ]
       ]
       #set enum(numbering: "(1)(a)", indent: 12.8pt)
-      + Si #box(width: size_phi)[#align(center)[$phi$ es atómica]] #centro #sii $v$ ocurre en $phi$ a partir de $i$. #footnote[
-          Si $alpha, beta in Sigma^#estrella$, con $|alpha|,|beta| >= 1$ y un natural $i in {1,...,|beta|}$, se dice que _$alpha$ ocurre a partir de $i$ en $beta$_ cuando se de que existan palabras $delta, gamma$ tales que $beta = delta alpha gamma$ y $|delta| >= i-1$.
-        ]
+      + Si #box(width: size_phi)[#align(center)[$phi$ es atómica]] #centro #sii $v$ ocurre en $phi$ a partir de $i$.
       + Si #box(width: size_phi)[#align(center)[$phi = phi_1 eta phi_2$]] #centro #sii se da alguna de las siguientes:
         + $v$ ocurre libremente en $phi_1$ a partir de $i-1$.
         + $v$ ocurre libremente en $phi_2$ a partir de $i- |phi_1eta|$.
@@ -340,7 +344,7 @@
   4,
   [Defina "reticulado cuaterna".],
   [
-    Un reticulado cuaterna es una $4$-upla $(L, #s, #i, <=)$ tal que $L$ es un conjunto no vacío, $#s$ e $#i$ son operaciones binarias sobre $L$, $<=$ es una relación binaria y se cumplen las siguientes propiedades: \
+    Un reticulado cuaterna es una $4$-upla $(L, #s, #i, <=)$ tal que $L$ es un conjunto no vacío, $#s$ e $#i$ son operaciones binarias sobre $L$, $<=$ es una relación binaria sobre $L$ y se cumplen las siguientes propiedades: \
     #box(width: 100%)[
       #set enum(numbering: "(1)", indent: 12.8pt)
       + $x <= x$, cualquiera sea $x in L$.
@@ -371,7 +375,7 @@
       #h(7pt) #text([*Convención notacional 2*], size: 12pt):
       Si hemos declarado $t =_d t(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces con $t^A [a_1, ..., a_n]$ denotaremos al elemento $t^bold(A)[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$. \
       #h(7pt) #text([*Convención notacional 5*], size: 12pt):
-      Si hemos declarado $t =_d t(v_1, ..., v_n)$ y se da que $t = f(t_1,...,t_m)$, con $f in F_m, m>=1$ y $t_1,...,t_m in T_k^tau$, supondremos tácitamente que también hemos echo las declaraciones $t_1 =_d t_1(v_1,...,v_k), ..., t_m =_d t_m (v_1,...,v_k)$. Esto lo podemos hacer ya que obviamente las variables que ocurren en los $t_1,...,t_m$ están en ${v_1,...,v_k}$.
+      Si hemos declarado $t =_d t(v_1, ..., v_n)$ y se da que $t = f(t_1,...,t_m)$, con $f in F_m, m>=1$ y $t_1,...,t_m in T_k^tau$, supondremos tácitamente que también hemos echo las declaraciones $t_1 =_d t_1(v_1,...,v_k), ..., t_m =_d t_m (v_1,...,v_k)$. Esto lo podemos hacer ya que obviamente las variables que ocurren en los $t_1,...,t_m$ están en ${v_1,...,v_k}$. #REVISAR
     ],
   )
 
@@ -403,7 +407,7 @@
           \ supondremos tácitamente que hemos hecho la declaración $phi_1 =_d phi_1(v_1,...,v_n)$.
         - Si $phi = Q v phi_1$ con $Q in {forall, exists}$, $v in "Var"-{v_1,...,v_n}$ y $phi_1 in F^tau$
           \ supondremos tácitamente que hemos hecho la declaración $phi_1 =_d phi_1(v_1,...,v_n, v)$.
-      ]
+      ] #REVISAR
     ],
   )
 
@@ -471,7 +475,7 @@
   3,
   [Defina "filtro del reticulado terna $(L, s, i)$".],
   [
-    Un _filtro_ de un reticulado terna (L, #s, #i) sera un subconjunto $F c= L$ tal que:\
+    Un _filtro_ de un reticulado terna (L, #s, #i) será un subconjunto $F c= L$ tal que:\
     #box(width: 100%)[
       #set enum(numbering: "(1)(a)", indent: 12.8pt)
       + $F != emptyset$
@@ -530,8 +534,9 @@
   [Defina "$i$ es anterior a $j$ en $(bold(phi), bold(J))$".],
   note: [No hace falta que defina $~B~^(bold(J))$.],
   [
-    Sea un _par adecuado $(bold(phi), bold(J))$_ e $i,j in {1,...,n(bold(phi))}$ #footnote[
-      Recordar $n(bold(phi))$ es la "cantidad de formulas" que tiene $bold(phi).$
+    Sea un _par adecuado $(bold(phi), bold(J))$_ e $i,j in {1,...,n(bold(phi))}$ #footnote[\
+      Recordar $n(bold(phi))$ es la "cantidad de formulas" que tiene $bold(phi).$ \
+      Dada $phi in S^(tau+)$, usaremos $n(bold(phi))$ y $bold(phi)_1,..., bold(phi)_(n(bold(phi)))$ para denotar los únicos $n$ y $phi_1,..., phi_n$ cuyas existencias nos lo garantiza el \ #underline([_Lema_]): Sea $phi in S^(tau+)$. Hay únicos $n >= 1$ y $phi_1, dots, phi_n in S^(tau+)$ tales que $bold(phi) = phi_1 phi_2 dots phi_n$.
     ].
     Diremos que _$i$ es anterior a $j$ en $(bold(phi), bold(J))$_ si $i<j$ y ademas para todo $B in ~B~^(bold(J))$ se tiene que $i in B => j in B$.
   ],
@@ -546,6 +551,7 @@
   #definitionStructure(
     1,
     [Defina "término elemental de tipo $tau$".],
+    link_apunte: "https://granlogico.com/apunteweb/7.4-terminos-y-formulas-elementales-de-tipo-tau.html#definicion%20de%20termino%20elemental%20de%20tipo%20tau",
     [
       // Guía 8, pag 11
       Dado un tipo $tau = (~C~, ~F~, ~R~, a)$ los _términos elementales de tipo $tau$_ se definen con las siguientes clausulas:
@@ -564,7 +570,7 @@
     2,
     [Defina $-||-_T$.],
     [
-      Sea $T = (Sigma, tau)$ una teoría. Definimos la siguiente relación binaria sobre $S^tau$#footnote[$S^tau = {phi in F^tau: "Li"(phi) = emptyset}$. es decir el conjunto de las sentencias.] como: \
+      Sea $T = (Sigma, tau)$ una teoría. Definimos la siguiente relación binaria sobre $S^tau med$ #footnote[$S^tau = {phi in F^tau: "Li"(phi) = emptyset}$, es decir el conjunto de las sentencias.] como: \
       #box(width: 100%)[
         $
           #v(15pt) phi -||-_T psi " sii " (Sigma, tau) |- (phi <-> psi)
@@ -689,7 +695,7 @@
 
 #pagebreak()
 
-#page(margin: (bottom: 0.4cm))[
+#page(margin: (bottom: 1.2cm))[
 
   #combo_title(11)
 
@@ -732,8 +738,6 @@
       Pero podría pasar que sea incompleto, es decir que existan cosas que no podamos probar formalmente pero que si tengan pruebas elementales en alguna teoría elemental. \
 
       El _Teorema de Completitud_ garantiza que para todo lo que pueda ser probado elementalmente en una teoría elemental, exista una prueba formal en nuestro modelo matemático.
-
-      #REVISAR
     ],
   )
 
@@ -1511,7 +1515,7 @@
       $
     ]
     es una prueba formal de $(phi -> psi)$ en $(Sigma, tau)$. #fin_demo
-    
+
     #linea_dashed
 
     _Lema (Cambio de indice de hipótesis)_ : Sea $(bold(phi), bold(J))$ una prueba formal de $phi$ en $(Sigma, tau)$. Sea $m in NN$ tal que  $J_i != #(JUST.HIPOTESIS)("m")$, para cada $i=1,...,n(bold(phi))$. Supongamos que $bold(J)_i = #(JUST.HIPOTESIS)("k")$ y que $bold(J)_j = #(JUST.TESIS)("k") alpha$, con $[alpha]_1 in.not "Num"$. Sea $tilde(bold(J))$ el resultado de remplazar en $bold(J)$ la justificación $bold(J)_i$ por $#(JUST.HIPOTESIS)("m")$ y la justificación $bold(J)_j$ por $#(JUST.TESIS)("m") alpha$. Entonces $(bold(phi), tilde(bold(J)))$ es una prueba formal de $phi$ en $(Sigma, tau)$. #REVISAR \
@@ -2210,6 +2214,7 @@
       + Para cada $S c= P$, se tiene que existe $"sup"(S)$ sii existe $"sup"(F(S))$ y en ese caso de que existan tales elementos se tiene que $F("sup"(S)) = "sup"(F(S))$.
     ]
   ],
+  note: [Aclarar que en este caso $F(S) = {F(a): a in S}$.],
   [
     *(a)* Sea $S c= P$ y sea $a in P$. \
     - Supongamos que $a$ es cota superior de $S$ #comentario[(veamos entonces que $F(a)$ es cota superior de $F(S)$)]. \
