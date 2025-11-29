@@ -1254,8 +1254,7 @@
           bold(A) |= phi[(a_1, a_2, ...)] " sii " bold(B) |= phi[(F(a_1), F(a_2), ...)]
         $
       ] \
-      para cada $(a_1, a_2, ...) in A^N$. En particular $bold(A)$ y $bold(B)$ satisfacen las mismas sentencias de tipo $tau$.
-    ],
+      para cada $(a_1, a_2, ...) in A^N$. En particular $bold(A)$ y $bold(B)$ satisfacen las mismas sentencias de tipo $tau$. <combo-demo-3.2>    ],
     [
       // Guía 10
       Para $arrow(a) = (a_1,a_2,...) in A^NN$, denotaremos $(F(a_1), F(a_2), ...)$ con $F(arrow(a))$. Vamos a probar por inducción $k$:
@@ -2037,7 +2036,134 @@
 
 #pagebreak()
 
+
 #combo_title(8)
+
+#proofStructure(
+  1,
+  [*Lema*],
+  [
+    Supongamos  que $F: bold(A) -> bold(B)$ es un isomorfismo. Sea $phi =_d phi(v_1, ..., v_n) in F^tau$. Entonces \
+    #box(width: 100%)[
+      $
+        bold(A) |= phi [a_1,...,a_n] " sii " bold(B) |= phi [F(a_1),...,F(a_n)]
+      $
+    ] \
+    para cada $a_1,...,a_n in bold(A)$. (El #link(<combo-demo-3.2>)[Como 3.2] es el mismo Lema pero para infinituplas)
+  ],
+  [
+    Llamaremos $(*)$ al _Lema Carácter recursivo de la notación $bold(A) |= phi [a_1,...,a_n]$_ y probaremos por inducción en $k$: \
+    #box(width: 100%)[
+      - *$"Teo"_k$* : Supongamos que $F : bold(A) -> bold(B)$ es un isomorfismo. Sea $phi in F_k^tau$. Entonces \ #h(35pt)
+        $bold(A) |= phi[a_1,...,a_n] " sii " bold(B) |= phi[F(a_1),...,F(a_n)] "  para cada" a_1,...,a_n in A$
+    ] \
+    #underline("Caso Base"): Sea $phi =_d phi(v_1, ..., v_n) in F_0^tau$ y $a_1,...,a_n in bold(A)$. Por definición de $F_0^tau$ tenemos dos casos: \
+    #box(width: 100%)[
+      #set list(indent: 0pt)
+      - Si $phi = (t equiv s)$ con $t,s in T^tau$. Por convención notacional tenemos $t =_d t(v_1,...,v_n)$ y $s =_d s(v_1,...,v_n)$. \
+        #box(width: 100%)[
+          $
+            bold(A) |= phi [a_1,...,a_n]
+            & " sii " t^bold(A)[a_1,...,a_n] = s^bold(A)[a_1,...,a_n] & (*) \
+            & " sii " F(t^bold(A)[a_1,...,a_n]) = F(s^bold(A)[a_1,...,a_n]) &("por ser F inyectiva") \
+            & " sii " t^bold(B)[F(a_1),...,F(a_n)] = s^bold(B)[F(a_1),...,F(a_n)]quad &("Lema análogo para términos") \
+            & " sii " bold(B) |= phi [F(a_1),...,F(a_n)] & (*)
+          $
+        ]
+      - Si $phi = r(t_1,...,t_m)$ con $r in ~R~_m$ y $t_1,...,t_m in T^tau$. Análogo #footnote[
+          Si $phi = r(t_1,...,t_m)$ con $r in ~R~_m$ y $t_1,...,t_m in T^tau$. Por convención notacional $t_i =_d t_i (v_1,...,v_n)$. \
+          #box(width: 100%)[
+            $ bold(A) |= phi [a_1,...,a_n]
+            & " sii " ( t_1^bold(A)[a_1,...,a_n],..., t_m^bold(A)[a_1,...,a_n] ) in r^bold(A) & (*) \
+            & " sii " ( F(t_1^bold(A)[a_1,...,a_n]),..., F(t_m^bold(A)[a_1,...,a_n]) ) in r^bold(B) &("por ser F iso") \
+            & " sii " ( t_1^bold(B)[F(a_1),...,F(a_n)],..., t_m^bold(B)[F(a_1),...,F(a_n)] ) in r^bold(B) quad &("Lema análogo para términos") \
+            & " sii " bold(B) |= phi [F(a_1),...,F(a_n)] & (*) $
+          ]
+        ], solo cambia que usamos $F$ isomorfismo.
+    ]
+    #underline("Caso Inductivo"):
+    Supongamos que vale $"Teo"_k$ y vemos $"Teo"_(k+1)$.
+    Sea $phi in F_(k+1)^tau - F_k^tau$, ya que si $phi in F_k^tau$ es directo. Sean $a_1,...,a_n in bold(A)$. Por el _Teorema de lectura única de formulas declaradas_ ,tenemos los casos: \
+    #box(width: 100%)[
+      #set list(indent: 0pt)
+      - Si $phi = (phi_1 and phi_2)$. Por convención notacional $phi_i =_d phi_i (v_1,...,v_n)$. Ademas claramente $phi_1, phi_2 in F_k^tau$. \
+        #box(width: 100%)[
+          $
+            bold(A) |= phi [a_1,...,a_n]
+            & " sii " bold(A) |= phi_1 [a_1,...,a_n] med "y" med bold(A) |= phi_2 [a_1,...,a_n] & (*) \
+            & " sii " bold(B) |= phi_1 [F(a_1),...,F(a_n)] med "y" med bold(B) |= phi_2 [F(a_1),...,F(a_n)] &("por Teo"_k) \
+            & " sii " bold(B) |= phi [F(a_1),...,F(a_n)] &(*)
+          $
+        ]
+      - Si $phi = (phi_1 eta phi_2)$ con $eta in {or, ->, <->}$ o $phi = not phi_1$. Son análogos al caso anterior. \
+      - Si $phi = forall v_j phi_1$. Por convención notacional $phi_1 =_d phi_1 (v_1,...,v_n)$. Claramente $phi_1 in F_k^tau$. \
+        #box(width: 100%, inset: (left: -40pt))[
+          $
+            bold(A) |= phi [a_1,...,a_n]
+            & " sii " bold(A) |= phi_1 [a_1,...,a_(j-1), a, a_(j+1),..., a_n] " para cada " a in bold(A) & (*) \
+            & " sii " bold(B) |= phi_1 [F(a_1),..., F(a_(j-1)), F(a), F(a_(j+1)),..., F(a_n)] " para cada " a in bold(A) & quad ("por Teo"_k) \
+            & " sii " bold(B) |= phi_1 [F(a_1),..., F(a_(j-1)), b, F(a_(j+1)),..., F(a_n)] " para cada " b in bold(B) & quad ("por F sobre") \
+            & " sii " bold(B) |= phi [F(a_1),...,F(a_n)] &(*)
+          $
+        ]
+      - Si $phi = exists v phi_1$ con $v in.not {v_1,...,v_n}$. Por conv. notacional $phi_1 =_d phi_1 (v_1,...,v_n,v)$. Claramente $phi_1 in F_k^tau$. \
+        #box(width: 100%)[
+          $
+            bold(A) |= phi [a_1,...,a_n]
+            & " sii " bold(A) |= phi_1 [a_1,...,a_n, a] " para algún " a in bold(A) & (*) \
+            & " sii " bold(B) |= phi_1 [F(a_1),..., F(a_n), F(a)] " para algún " a in bold(A) & quad ("por Teo"_k) \
+            & "(si tomamos tal elemento" a", tenemos que "F(a) in B "por lo tanto)" \
+            & " sii " bold(B) |= phi_1 [F(a_1),..., F(a_n), b] " para algún " b in bold(B)\
+            & " sii " bold(B) |= phi [F(a_1),...,F(a_n)] &(*)
+          $
+        ]
+      - Los casos $phi = forall v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi = exists v_j phi_1$ son análogos a los anteriores. #fin_demo \
+    ] \
+    #linea_dashed
+    _Lema análogo para términos_: Sea $F : bold(A) -> bold(B)$ un isomorfismo. Sea $t =_d t(v_1,...,v_n) in T^tau$. Entonces \
+    #box(width: 100%, inset: (left: 40pt))[
+      $
+        F(t^bold(A)[a_1,...,a_n]) = t^bold(B)[F(a_1),...,F(a_n)] " para cada "t in T^tau" y cada " a_1,...,a_n in A
+      $
+    ] \
+    _Lema Carácter recursivo de la notación $bold(A) |= phi [a_1,...,a_n]$_ #COMPLETAR \
+    _Teorema de lectura única de formulas declaradas_: #COMPLETAR
+  ],
+)
+
+#proofStructure(
+  2,
+  [*Lema*],
+  [
+    Sea $(P, <=)$ y $(P', <=')$ posets. Supongamos $F$ es un isomorfismo de $(P, <=)$ en $(P', <=')$. \
+    #box(width: 100%)[
+      #set enum(numbering: "(a)", indent: 12.8pt)
+      + Para cada $S c= P$ y para cada $a in P$, se tiene que $a$ es cota superior (resp. inferior) de $S$ sii $F(a)$ es cota superior (resp. inferior) de $F(S)$.
+      + Para cada $S c= P$, se tiene que existe $"sup"(S)$ sii existe $"sup"(F(S))$ y en ese caso de que existan tales elementos se tiene que $F("sup"(S)) = "sup"(F(S))$.
+    ]
+  ],
+  [
+    *(a)* Sea $S c= P$ y sea $a in P$. \
+    - Supongamos que $a$ es cota superior de $S$. \
+      Sea $b' in F(S)$ arbitrario, como es $F$ sobre, existe $b in S$ tal que $b' = F(b)$. \
+      Entonces $b <= a$ y por ser $F$ un isomorfismo tenemos que $F(b) <=' F(a)$, es decir $b' <=' F(a)$. \
+      Como $b' in F(S)$ era arbitrario, tenemos que $F(a)$ es cota superior de $F(S)$. \
+    - Supongamos ahora que $F(a)$ es cota superior de $F(S)$. \
+      Sea $b in S$ arbitrario. Entonces $F(b) <=' F(a)$ y por ser $F$ isomorfismo, tengo que $F^(-1)$ también es un homomorfismo. Por lo cual $F^(-1)(F(b)) <= F^(-1)(F(a))$, es decir $b <= a$. \ Como $b in S$ era arbitrario, tenemos que $a$ es cota superior de $S$. \
+    #h(25pt) El caso de cotas inferiores es análogo. \ \
+    *(b)* Sea $S c= P$.\
+    - Supongamos que existe $a = "sup"(S)$.\
+      Por (a) tenemos que $F(a)$ es un cota superior de $F(S)$ arbitraria. Veamos que es la menor de ellas. \
+      Supongamos $b' in P'$ es cota superior de $F(S)$. Como $F$ es sobre, existe $b in P$ tal que $b' = F(b)$. \
+      Es decir $F(b)$ es cota superior de $F(S)$. Entonces por (a) tenemos que $b$ es cota superior de $S$. \
+      Luego como $a = "sup"(S)$, se da que $a <= b$ y por ser $F$ un isomorfismo, tenemos que $F(a) <=' F(b)$, es decir $F(a) <=' b'$. Como $b'$ era una cota superior arbitraria de $F(S)$ probamos que es la menor de ellas. \
+      Entonces $F(a) = "sup"(F(S))$, por lo tanto existe $"sup"(F(S))$. \
+    - Supongamos ahora que existe $b' = "sup"(F(S))$. \
+      #COMPLETAR \
+
+  ],
+)
+
 
 #pagebreak()
 
