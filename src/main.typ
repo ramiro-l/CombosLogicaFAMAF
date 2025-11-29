@@ -790,33 +790,6 @@
 
 = #smallcaps[Teoremas]
 
-#let lema_prop_básicas_del_enchufe_simple = [
-  #counter(<lema-prop-básicas-del-enchufe-simple>).step()
-  #link(<lema-prop-básicas-del-enchufe-simple>)[_Lema (Propiedades básicas $|-$)_]
-]
-
-#let lema_Zorn = [
-  #counter(<lema-Zorn>).step()
-  #link(<lema-Zorn>)[_Lema de Zorn_]
-]
-
-#let lema_igualdad_de_valor_en_términos_para_asignaciones_compartidas = [
-  #counter(<lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>).step()
-  #link(
-    <lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>,
-  )[_Lema (Igualdad de valor en términos para asignaciones compartidas)_]
-]
-
-#let lema_menu_para_términos = [
-  #counter(<lema-menu-para-términos>).step()
-  #link(<lema-menu-para-términos>)[_Lema (Menú para términos)_]
-]
-
-#let lema_mordisqueo_de_términos = [
-  #counter(<lema-mordisqueo-de-términos>).step()
-  #link(<lema-mordisqueo-de-términos>)[_Lema (Mordisqueo de términos)_]
-]
-
 #combo_title(1)
 
 #proofStructure(
@@ -875,7 +848,7 @@
 
     Asi hemos probado que cada cadena en $(~F~, c=)$ tiene al menos una cota superior. \
 
-    Por el #lema_Zorn, $(~F~, c=)$ tiene un elemento maximal $P$.
+    Por el #underline([_Lema de Zorn_]), $(~F~, c=)$ tiene un elemento maximal $P$.
     Veamos que $P$ es un filtro primo. \ \ \
     Claramente $P$ es un filtro ya que $P in ~F~$. \
     Para terminar de ver que sea _primo_ debemos ver que cumpla las siguientes propiedad: \
@@ -955,6 +928,12 @@
     ]
 
     Entonces $P$ es un filtro primo tal que $P in ~F~$, entonces $x_0 in.not P$ y $F c= P$. #fin_demo
+
+    #linea_dashed
+
+    _Lema de Zorn_ :
+    Sea $(P, <=)$ un poset y supongamos que toda cadena en $P$ tiene al menos una cota superior. \
+    Entonces hay un elemento maximal en $(P, <=)$.
   ],
 )
 
@@ -973,6 +952,7 @@
     ]
   ],
   [
+    #let lema_prop_básicas_del_enchufe_simple = [#underline([_Lema (Propiedades básicas $|-$)_ ])]
     #set enum(numbering: "(1)", indent: 12.8pt, spacing: 35pt)
     + Supongamos que $(Sigma, tau)$ es inconsistente. Por lo tanto por definición $(Sigma, tau) |- (psi and not psi)$ para alguna sentencia $psi$. Ahora dada una sentencia $phi$ arbitraria pero fija, tenemos que $phi$ se deduce por la *regla del absurdo* a parir de $(psi and not psi)$. Entonces por #lema_prop_básicas_del_enchufe_simple.(2) tenemos que $(Sigma, tau) |- phi$.
       #footnote([
@@ -1012,204 +992,217 @@
       #footnote([
         \
         Entonces probamos $(Sigma union {phi}, tau)$ es consistente. Pero esto bajo la hipótesis de que $(Sigma, tau) !|- not phi$. Entonces probamos "Si $(Sigma, tau) !|- not phi$, entonces $(Sigma union {phi}, tau)$ es consistente". \
-      ])
+      ]) #fin_demo
+
+      #linea_dashed
+
+      _Lema (Propiedades básica de  $|-$)_  #link(<combo-demo-4.1>)[ es el Combo 4.1]: \ Sea $(Sigma, tau)$ una teoría. \
+      #box(width: 100%)[
+        #set enum(numbering: "(1)", indent: 12.8pt, spacing: 12pt)
+        + (Uso de Teoremas) Si $(Sigma, tau) |- phi_1,...,phi_n$ y $(Sigma union {phi_1,...,phi_n}, tau) |- phi$, entonces $(Sigma, tau) |- phi$.
+        + Supongamos $(Sigma, tau) |- phi_1,...,phi_n$. Si *R* s una regla distinta de GENERALIZACION y ELECCION y $phi$ se deduce de $phi_1,...,phi_n$ por la regla *R*, entonces $(Sigma, tau) |- phi$.
+        + $(Sigma, tau) |- (phi -> psi)$ sii $(Sigma union {phi}, tau) |- psi$.
+      ]
   ],
 )
 
 #pagebreak()
 
-#combo_title(2)
+#page(margin: (bottom: 0.8cm))[
 
-#proofStructure(
-  1,
-  [*Teorema* (Teorema de Dedekind) <teo-Dedekind>],
-  link_apunte: "https://granlogico.com/apunteweb/5.3-reticulados-terna.html#teorema%20de%20Dedekind",
-  [
-    \
-    Sea $(L, #s, #i)$ un reticulado terna.
-    La relación binaria definida por: \
-    #box(width: 100%)[
-      $
-        #v(16pt)
-        x <= y " sii " x #s y = y
-      $
-    ] \
-    es un orden parcial sobre $L$ para el cual se cumple que: \
-    #box(width: 100%)[
-      $
-        #v(16pt)
-        sup({x, y}) = x #s y quad quad quad quad
-        inf({x, y}) = x #i y
-      $
-    ] \
-    cualesquiera sean $x, y in L$.
-  ],
-  [
-    *Probemos que $<=$ es reflexiva* #comentario([(es decir $x <= x$ para cada $x in L$)]). \
-    Sea $x in L$. Por propiedad de $(L, #s, #i)$ tenemos que $x #s x = x$, entonces por definición de $<=$, se da $x <= x$. \
-    *Probemos que $<=$ es antisimétrica *#comentario([(es decir si $x <= y$ y $y <= x$ entonces $x = y$)]). \
-    Sean $x, y in L$ tales que $x <= y$ y $y <= x$.
-    Es decir por definición de $<=$ tenemos que $x #s y = y$ e $y #s x = x$. \
-    Entonces aplicando propiedad de $(L, #s, #i)$ tenemos que \
-    #box(width: 100%)[
-      $
-        x = y #s x = x #s y = y
-      $
-    ]
-    por lo tanto $x = y$. \
-    * Probemos que $<=$ es transitiva* #comentario([(es decir si $x <= y$ y $y <= z$ entonces $x <= z$)]). \
-    Sean $x, y, z in L$ tales que $x <= y$ y $y <= z$.
-    Es decir por definición de $<=$ tenemos que $x #s y = y$ e $y #s z = z$. \
-    Entonces aplicando propiedad de $(L, #s, #i)$ tenemos que \
-    #box(width: 100%)[
-      $
-        x #s z = x #s (y #s z) = (x #s y) #s z = y #s z = z
-      $
-    ]
-    por lo tanto $x <= z$. \
-    Osea que probamos que $(L, <=)$ es un poset.\
-    *Probemos que $sup({x, y}) = x #s y$*. Primero debemos ver que $x #s y$ es cota superior de ${x, y}$, es decir \
-    #box(width: 100%)[
-      $
-        #v(16pt)
-        x <= x #s y quad med "y" med quad y <= x #s y
-      $
-    ]
-    que por definición de $<=$ es equivalente a ver\
-    #box(width: 100%)[
-      $
-        #v(16pt)
-        x #s (x #s y) = x #s y quad med "y" med quad y #s (x #s y) = x #s y
-      $
-    ]
-    Notar que usando propiedad de $(L, #s, #i)$ tenemos que \
-    #box(width: 100%)[
-      $
-        #v(16pt)
-        x #s (x #s y) = (x #s x) #s y = x #s y \
-        y #s (x #s y) = y #s (y #s x) = (y #s y) #s x = y #s x = x #s y
-      $
-    ] \
-    entonces listo.
-    Falta ver que $x #s y$ es menor o igual que cualquier otra cota superior de ${x, y}$. \
-    Para ello supongamos $x,y <= z$ con $z in L$. Por definición de $<=$ tenemos que \
-    #box(width: 100%)[
-      $
-        #v(16pt)
-        x #s z = z quad med "y" med quad y #s z = z
-      $
-    ] \
-    Entonces usando propiedad de $(L, #s, #i)$ tenemos que \
-    #box(width: 100%)[
-      $
-        (x #s y) #s z = x #s (y #s z) = x #s z = z
-      $
-    ] \
-    por lo tanto por definición de $<=$ tenemos que $x #s y <= z$, lo que nos dice que $x #s y$ es la menor cota superior. \ Entonces probamos que $sup({x, y}) = x #s y$. \
-    \ \ \ \ \ \
-    *Probemos que $inf({x, y}) = x #i y$*. \
-    Para ello vamos a probar para todo $x,y in L$ vale #h(50pt) $x <= y " sii " x #i y = x$ \
-    #box(width: 100%)[
-      #set list(indent: 10pt)
-      - Supongamos $x <= y$. Por definición de $<=$ tenemos que $x #s y = y$. \
-        Entonces usando propiedad de $(L, #s, #i)$ tenemos que \
-        #box(width: 100%)[
-          $
-            x #i y = x #i (x #s y) = x
-          $
-        ]
-        por lo tanto $x #i y = x$. \
-      - Supongamos $x #i y = x$.
-        Entonces usando propiedad de $(L, #s, #i)$ tenemos que \
-        #box(width: 100%)[
-          $
-            x #s y = (x #i y) #s y = y #s (x #i y) = y
-          $
-        ]
-        por lo tanto $x #s y = y$, entonces por definición de $<=$ tenemos que $x <= y$. \
-    ]
-    Usando el resultado anterior podemos probar que $inf({x, y}) = x #i y$ de forma análoga a como probamos que $sup({x, y}) = x #s y$.  #fin_demo
-  ],
-)
+  #combo_title(2)
 
-#proofStructure(
-  2,
-  [*Lema*],
-  [
-    Supongamos que $arrow(a), arrow(b)$ son asignaciones tales que si $x_i in "Li"(phi)$, entonces $a_i = b_i$. \
-    Entonces $bold(A) |= phi[arrow(a)]$ sii $bold(A) |= phi[arrow(b)]$.
-  ],
-  [
-    Sea $bold(A)$ una estructura de tipo $tau$. Probaremos por inducción $k$ que vale el _Lema_ para cada $phi in F_k^tau$. \
-    *Caso Base $(k=0)$:* \
-    Sea $phi in F_0^tau$. Ademas sean  $arrow(a), arrow(b)$ asignaciones tales que si $x_i in "Li"(phi)$, entonces $a_i = b_i$. \
-    Entonces tenemos dos casos para $phi$ \
-    #box(width: 100%)[
-      #set enum(numbering: "(1)(a)", indent: 12.8pt)
-      #let lema_análogo_para_términos = [
-        #counter(<lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>).step()
-        #link(
-          <lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>,
-        )[_Lema análogo para Términos_]
-      ]
-      + $phi = (t equiv s)", con " t,s in T^tau$. Notar que todas las variables que ocurren en $phi$ son libres, entonces sabemos por el #lema_análogo_para_términos que $t^bold(A)[arrow(a)] = t^bold(A)[arrow(b)]$ y $s^bold(A)[arrow(a)] = s^bold(A)[arrow(b)]$. \ Ahora por definición y remplazando obtenemos que: \
-        #box(width: 100%)[
-          $
-            bold(A) |= (t equiv s)[arrow(a)]
-            " sii "
-            t^bold(A)[arrow(a)] = s^bold(A)[arrow(a)]
-            "sii"
-            t^bold(A)[arrow(b)] = s^bold(A)[arrow(b)]
-            " sii "
-            bold(A) |= (t equiv s)[arrow(b)]
-          $
-        ] \
-      + $phi = r(t_1,...,t_n)", con " r in R_n^tau " y " t_1,...,t_n in T^tau$, es análogo #footnote[
-          Nuevamente todas las variables que ocurren en $phi$ son libres, entonces sabemos por el #lema_análogo_para_términos que $t_i^bold(A)[arrow(a)] = t_i^bold(A)[arrow(b)]$ con $i=1,...,n$.
-          Ahora por definición y remplazando obtenemos que: \
-          #box(width: 100%)[
-            $ bold(A) |= r(t_1,...,t_n)[arrow(a)]
-            " sii "
-            (t_1^bold(A)[arrow(a)],...,t_n^bold(A)[arrow(a)]) in r^bold(A)
-            "sii"
-            (t_1^bold(A)[arrow(b)],...,t_n^bold(A)[arrow(b)]) in r^bold(A)
-            " sii "
-            bold(A) |= r(t_1,...,t_n)[arrow(b)] $
-          ]
-        ].
-    ]
-    *Caso Inductivo:* \
-    Supongamos que el lema vale para todo $phi in F_k^tau$ y probaremos que vale para todo $phi in F_(k+1)^tau$. \
-    Sea $phi in F_(k+1)^tau - F_k^tau$, ya que si $phi in F_k^tau$ sale directo. \
-    Ademas sean  $arrow(a), arrow(b)$ asignaciones tales que si $x_i in "Li"(phi)$, entonces $a_i = b_i$. \
-    Entonces tenemos varios casos para $phi$, veremos algunos: \
-    #set list(indent: 0pt)
-    - Si $phi = (phi_1 and phi_2)$.
-      Notar que $"Li"(phi_i) c= "Li"(phi), i = 1,2$, por _H.I_ tenemos que $bold(A) |= phi_i[arrow(a)] " sii " bold(A) |= phi_i[arrow(b)]$. \
-      Entonces por definición y remplazando obtenemos que \
+  #proofStructure(
+    1,
+    [*Teorema* (Teorema de Dedekind) <teo-Dedekind>],
+    link_apunte: "https://granlogico.com/apunteweb/5.3-reticulados-terna.html#teorema%20de%20Dedekind",
+    [
+      \
+      Sea $(L, #s, #i)$ un reticulado terna.
+      La relación binaria definida por: \
       #box(width: 100%)[
         $
-          bold(A) |= phi[arrow(a)]
-          " sii "
-          bold(A) |= phi_1[arrow(a)]
-          med "y" med
-          bold(A) |= phi_2[arrow(a)]
-          " sii "
-          bold(A) |= phi_1[arrow(b)]
-          med "y" med
-          bold(A) |= phi_2[arrow(b)]
-          " sii "
-          bold(A) |= phi[arrow(b)]
+          #v(16pt)
+          x <= y " sii " x #s y = y
         $
       ] \
-    - Los casos para $phi = (phi_1 or phi_2)$, $phi = (phi_1 -> phi_2)$, $phi = (phi_1 <-> phi_2)$ y $phi = not phi_1$ son análogos. \
-    - Si $phi = forall x_j phi_1$. Supongamos $bold(A) |= phi[arrow(a)]$, por definición vale que $"para todo" a in A, bold(A) |= phi_1[arrow.b ""_j^a (arrow(a))]$.
-      Notar que $arrow.b ""_j^a (arrow(a))$ y $arrow.b ""_j^a (arrow(b))$ coinciden en toda $x_i in "Li"(phi_1)$ ya que $"Li"(phi_1) c= "Li"(phi) union {x_j}$. Entonces por _H.I_ tenemos que $bold(A) |= phi_1[arrow.b ""_j^a (arrow(b))]$ para todo $a in A$, por lo que $bold(A) |= phi[arrow(b)]$. \ Luego $bold(A) |= phi[arrow(b)]$ implica $bold(A) |= phi[arrow(a)]$ es análogo, por lo que concluimos que $bold(A) |= phi[arrow(a)]$ sii $bold(A) |= phi[arrow(b)]$. \
-    - El caso para $phi = exists x_j phi_1$ es análogo.
+      es un orden parcial sobre $L$ para el cual se cumple que: \
+      #box(width: 100%)[
+        $
+          #v(16pt)
+          sup({x, y}) = x #s y quad quad quad quad
+          inf({x, y}) = x #i y
+        $
+      ] \
+      cualesquiera sean $x, y in L$.
+    ],
+    [
+      *Probemos que $<=$ es reflexiva* #comentario([(es decir $x <= x$ para cada $x in L$)]). \
+      Sea $x in L$. Por propiedad de $(L, #s, #i)$ tenemos que $x #s x = x$, entonces por definición de $<=$, se da $x <= x$. \
+      *Probemos que $<=$ es antisimétrica *#comentario([(es decir si $x <= y$ y $y <= x$ entonces $x = y$)]). \
+      Sean $x, y in L$ tales que $x <= y$ y $y <= x$.
+      Es decir por definición de $<=$ tenemos que $x #s y = y$ e $y #s x = x$. \
+      Entonces aplicando propiedad de $(L, #s, #i)$ tenemos que \
+      #box(width: 100%)[
+        $
+          x = y #s x = x #s y = y
+        $
+      ]
+      por lo tanto $x = y$. \
+      * Probemos que $<=$ es transitiva* #comentario([(es decir si $x <= y$ y $y <= z$ entonces $x <= z$)]). \
+      Sean $x, y, z in L$ tales que $x <= y$ y $y <= z$.
+      Es decir por definición de $<=$ tenemos que $x #s y = y$ e $y #s z = z$. \
+      Entonces aplicando propiedad de $(L, #s, #i)$ tenemos que \
+      #box(width: 100%)[
+        $
+          x #s z = x #s (y #s z) = (x #s y) #s z = y #s z = z
+        $
+      ]
+      por lo tanto $x <= z$. \
+      Osea que probamos que $(L, <=)$ es un poset.\
+      *Probemos que $sup({x, y}) = x #s y$*. Primero debemos ver que $x #s y$ es cota superior de ${x, y}$, es decir \
+      #box(width: 100%)[
+        $
+          #v(16pt)
+          x <= x #s y quad med "y" med quad y <= x #s y
+        $
+      ]
+      que por definición de $<=$ es equivalente a ver\
+      #box(width: 100%)[
+        $
+          #v(16pt)
+          x #s (x #s y) = x #s y quad med "y" med quad y #s (x #s y) = x #s y
+        $
+      ]
+      Notar que usando propiedad de $(L, #s, #i)$ tenemos que \
+      #box(width: 100%)[
+        $
+          #v(16pt)
+          x #s (x #s y) = (x #s x) #s y = x #s y \
+          y #s (x #s y) = y #s (y #s x) = (y #s y) #s x = y #s x = x #s y
+        $
+      ] \
+      entonces listo.
+      Falta ver que $x #s y$ es menor o igual que cualquier otra cota superior de ${x, y}$. \
+      Para ello supongamos $x,y <= z$ con $z in L$. Por definición de $<=$ tenemos que \
+      #box(width: 100%)[
+        $
+          #v(16pt)
+          x #s z = z quad med "y" med quad y #s z = z
+        $
+      ] \
+      Entonces usando propiedad de $(L, #s, #i)$ tenemos que \
+      #box(width: 100%)[
+        $
+          (x #s y) #s z = x #s (y #s z) = x #s z = z
+        $
+      ] \
+      por lo tanto por definición de $<=$ tenemos que $x #s y <= z$, lo que nos dice que $x #s y$ es la menor cota superior. \ Entonces probamos que $sup({x, y}) = x #s y$. \
+      \ \ \ \ \ \ \
+      *Probemos que $inf({x, y}) = x #i y$*. \
+      Para ello vamos a probar para todo $x,y in L$ vale #h(50pt) $x <= y " sii " x #i y = x$ \
+      #box(width: 100%)[
+        #set list(indent: 10pt)
+        - Supongamos $x <= y$. Por definición de $<=$ tenemos que $x #s y = y$. \
+          Entonces usando propiedad de $(L, #s, #i)$ tenemos que \
+          #box(width: 100%)[
+            $
+              x #i y = x #i (x #s y) = x
+            $
+          ]
+          por lo tanto $x #i y = x$. \
+        - Supongamos $x #i y = x$.
+          Entonces usando propiedad de $(L, #s, #i)$ tenemos que \
+          #box(width: 100%)[
+            $
+              x #s y = (x #i y) #s y = y #s (x #i y) = y
+            $
+          ]
+          por lo tanto $x #s y = y$, entonces por definición de $<=$ tenemos que $x <= y$. \
+      ]
+      Usando lo anterior podemos probar que $inf({x, y}) = x #i y$ similar a como vimos $sup({x, y}) = x #s y$.  #fin_demo
+    ],
+  )
 
-    Finalmente probamos el lema por inducción. #fin_demo
-  ],
-)
+  #proofStructure(
+    2,
+    [*Lema*],
+    [
+      Supongamos que $arrow(a), arrow(b)$ son asignaciones tales que si $x_i in "Li"(phi)$, entonces $a_i = b_i$. \
+      Entonces $bold(A) |= phi[arrow(a)]$ sii $bold(A) |= phi[arrow(b)]$.
+    ],
+    [
+      Sea $bold(A)$ una estructura de tipo $tau$. Probaremos por inducción $k$ que vale el _Lema_ para cada $phi in F_k^tau$. \
+      *Caso Base $(k=0)$:* \
+      Sea $phi in F_0^tau$. Ademas sean  $arrow(a), arrow(b)$ asignaciones tales que si $x_i in "Li"(phi)$, entonces $a_i = b_i$. \
+      Entonces tenemos dos casos para $phi$ \
+      #box(width: 100%)[
+        #set enum(numbering: "(1)(a)", indent: 12.8pt)
+        #let lema_análogo_para_términos = [#underline([_Lema análogo para Términos_])]
+        + $phi = (t equiv s)", con " t,s in T^tau$. Notar que todas las variables que ocurren en $phi$ son libres, entonces sabemos por el #lema_análogo_para_términos que $t^bold(A)[arrow(a)] = t^bold(A)[arrow(b)]$ y $s^bold(A)[arrow(a)] = s^bold(A)[arrow(b)]$. \ Ahora por definición y remplazando obtenemos que: \
+          #box(width: 100%)[
+            $
+              bold(A) |= (t equiv s)[arrow(a)]
+              " sii "
+              t^bold(A)[arrow(a)] = s^bold(A)[arrow(a)]
+              "sii"
+              t^bold(A)[arrow(b)] = s^bold(A)[arrow(b)]
+              " sii "
+              bold(A) |= (t equiv s)[arrow(b)]
+            $
+          ] \
+        + $phi = r(t_1,...,t_n)", con " r in R_n^tau " y " t_1,...,t_n in T^tau$, es análogo #footnote[
+            Nuevamente todas las variables que ocurren en $phi$ son libres, entonces sabemos por el #lema_análogo_para_términos que $t_i^bold(A)[arrow(a)] = t_i^bold(A)[arrow(b)]$ con $i=1,...,n$.
+            Ahora por definición y remplazando obtenemos que: \
+            #box(width: 100%)[
+              $ bold(A) |= r(t_1,...,t_n)[arrow(a)]
+              " sii "
+              (t_1^bold(A)[arrow(a)],...,t_n^bold(A)[arrow(a)]) in r^bold(A)
+              "sii"
+              (t_1^bold(A)[arrow(b)],...,t_n^bold(A)[arrow(b)]) in r^bold(A)
+              " sii "
+              bold(A) |= r(t_1,...,t_n)[arrow(b)] $
+            ]
+          ].
+      ]
+      *Caso Inductivo:* \
+      Supongamos que el lema vale para todo $phi in F_k^tau$ y probaremos que vale para todo $phi in F_(k+1)^tau$. \
+      Sea $phi in F_(k+1)^tau - F_k^tau$, ya que si $phi in F_k^tau$ sale directo. \
+      Ademas sean  $arrow(a), arrow(b)$ asignaciones tales que si $x_i in "Li"(phi)$, entonces $a_i = b_i$. \
+      Entonces tenemos varios casos para $phi$, veremos algunos: \
+      #set list(indent: 0pt)
+      - Si $phi = (phi_1 and phi_2)$.
+        Notar que $"Li"(phi_i) c= "Li"(phi), i = 1,2$, por _H.I_ tenemos que $bold(A) |= phi_i[arrow(a)] " sii " bold(A) |= phi_i[arrow(b)]$. \
+        Entonces por definición y remplazando obtenemos que \
+        #box(width: 100%)[
+          $
+            bold(A) |= phi[arrow(a)]
+            " sii "
+            bold(A) |= phi_1[arrow(a)]
+            med "y" med
+            bold(A) |= phi_2[arrow(a)]
+            " sii "
+            bold(A) |= phi_1[arrow(b)]
+            med "y" med
+            bold(A) |= phi_2[arrow(b)]
+            " sii "
+            bold(A) |= phi[arrow(b)]
+          $
+        ] \
+      - Los casos para $phi = (phi_1 or phi_2)$, $phi = (phi_1 -> phi_2)$, $phi = (phi_1 <-> phi_2)$ y $phi = not phi_1$ son análogos. \
+      - Si $phi = forall x_j phi_1$. Supongamos $bold(A) |= phi[arrow(a)]$, por definición vale que $"para todo" a in A, bold(A) |= phi_1[arrow.b ""_j^a (arrow(a))]$.
+        Notar que $arrow.b ""_j^a (arrow(a))$ y $arrow.b ""_j^a (arrow(b))$ coinciden en toda $x_i in "Li"(phi_1)$ ya que $"Li"(phi_1) c= "Li"(phi) union {x_j}$. Entonces por _H.I_ tenemos que $bold(A) |= phi_1[arrow.b ""_j^a (arrow(b))]$ para todo $a in A$, por lo que $bold(A) |= phi[arrow(b)]$. \ Luego $bold(A) |= phi[arrow(b)]$ implica $bold(A) |= phi[arrow(a)]$ es análogo, por lo que concluimos que $bold(A) |= phi[arrow(a)]$ sii $bold(A) |= phi[arrow(b)]$. \
+      - El caso para $phi = exists x_j phi_1$ es análogo.  #fin_demo
+
+      #linea_dashed
+
+      _Lema análogo para Términos_ : \
+      Sea *$A$* una estructura de tipo *$tau$* y sea $t in T^tau$. Supongamos que $arrow(a), arrow(b)$ son asignaciones tales que  $a_i = b_i$, cada vez que $x_i$ ocurre en $t$.
+      Entonces $t^bold(A)[arrow(a)] = t^bold(A)[arrow(b)]$.
+    ],
+  )
+
+]
 
 #pagebreak()
 
@@ -1228,7 +1221,7 @@
   ],
   [
     // Guía 9
-    Por el #lema_menu_para_términos tenemos que se dan (1) o (2) y obviamente no pueden darse ambas a la vez. Veamos que vale le unicidad de (2). Supongamos que \
+    Por el #underline([_Lema Menu para términos_]) tenemos que se dan (1) o (2) y obviamente no pueden darse ambas a la vez. Veamos que vale le unicidad de (2). Supongamos que \
     #box(width: 100%)[
       $
         t = f(t_1,...,t_n) = g(s_1,...,s_m)
@@ -1236,7 +1229,21 @@
     ]
     con $n,m >= 1$, $f in F_n^tau$, $g in F_m^tau$, $t_1,...,t_n in T^tau$ y $s_1,...,s_m in T^tau$. \
     Claramente $f = g$. Osea que $n = m$. \
-    Notar que si $t_1$ es tramo inicial de $s_1$ o $s_1$ es tramo inicial de $t_1$ el #lema_mordisqueo_de_términos nos dice que $t_1 = s_1$. Con el mismo razonamiento, podemos probar que $t_i = s_i$ para cada $i = 1,...,n$. #fin_demo
+    Notar que si $t_1$ es tramo inicial de $s_1$ o $s_1$ es tramo inicial de $t_1$ el #underline([_Lema Mordisqueo de Términos_]) nos dice que $t_1 = s_1$. Con el mismo razonamiento, podemos probar que $t_i = s_i$ para cada $i = 1,...,n$. #fin_demo
+
+    #linea_dashed
+
+    _Lema Menu para términos_ :
+    Supongamos $t in T_(k+1)^tau$, con $k >= 0$. Entonces se da alguna de las siguientes: \
+    #box(width: 100%, inset: (left: 120pt))[
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + $t in "Var" union ~C~$.
+      + $t = f(t_1,...,t_n)$, con $n >= 1$, $f in F_n^tau$ y $t_1,...,t_n in T_k^tau$.
+    ]
+
+    _Lema Mordisqueo de Términos_ :  Sean $s, t in T^tau$ y supongamos que hay palabras $x, y, z$, con $y != epsilon$ tales que $s = x y$ y $t = y z$.
+    Entonces $x = z = epsilon$ o $s, t in ~C~$.  \
+    _"En particular si un término es tramo inicial o final de otro término, entonces dichos términos son iguales"_.
   ],
 )
 
@@ -1504,7 +1511,9 @@
       $
     ]
     es una prueba formal de $(phi -> psi)$ en $(Sigma, tau)$. #fin_demo
+    
     #linea_dashed
+
     _Lema (Cambio de indice de hipótesis)_ : Sea $(bold(phi), bold(J))$ una prueba formal de $phi$ en $(Sigma, tau)$. Sea $m in NN$ tal que  $J_i != #(JUST.HIPOTESIS)("m")$, para cada $i=1,...,n(bold(phi))$. Supongamos que $bold(J)_i = #(JUST.HIPOTESIS)("k")$ y que $bold(J)_j = #(JUST.TESIS)("k") alpha$, con $[alpha]_1 in.not "Num"$. Sea $tilde(bold(J))$ el resultado de remplazar en $bold(J)$ la justificación $bold(J)_i$ por $#(JUST.HIPOTESIS)("m")$ y la justificación $bold(J)_j$ por $#(JUST.TESIS)("m") alpha$. Entonces $(bold(phi), tilde(bold(J)))$ es una prueba formal de $phi$ en $(Sigma, tau)$. #REVISAR \
 
     _Lema (Cambio de nombres de constante auxiliares)_ :
@@ -2218,100 +2227,6 @@
       Como $a = "sup"(S)$, se da que $a <= b$ y como $F$ un isomorfismo, $F(a) <=' F(b)$, es decir $F(a) <=' b'$. \
       Pero como $b'$ era una cota superior arbitraria de $F(S)$, probamos que $F(a)$ es la menor cota superior. \
       Entonces $F(a) = "sup"(F(S))$, por lo tanto existe $"sup"(F(S))$. \
-    - Si existe $"sup"(F(S))$ entonces existe $"sup"(S)$, es análogo al anterior. \
+    - Si existe $"sup"(F(S))$ entonces existe $"sup"(S)$, es análogo al anterior. #fin_demo \
   ],
 )
-
-
-#pagebreak()
-
-#page(margin: (top: 1.45cm, bottom: 0pt, left: 1.2cm, right: 1.2cm))[
-
-  == Resultados Muy Usados en las Demostraciones
-
-  #text(
-    size: 10.2pt,
-  )[
-    Las *$(star)$* indican que son un combo y el *[ n ]* es la cantidad de veces que se mencionó el resultado (incluso en una misma demo).
-  ]
-
-  #statementsStructure(
-    is_combo: true,
-    padding_left: 5pt,
-    padding_bottom: -10pt,
-    [Lema (Propiedades básica de  $|-$) <lema-prop-básicas-del-enchufe-simple>],
-    frequency: [
-      #counter(<lema-prop-básicas-del-enchufe-simple>).update(c => c - 1)
-      #context { counter(<lema-prop-básicas-del-enchufe-simple>).display() }
-    ],
-    [
-      #set enum(numbering: "(1)", indent: 12.8pt)
-      Sea $(Sigma, tau)$ una teoría.
-      + (Uso de Teoremas) Si $(Sigma, tau) |- phi_1,...,phi_n$ y $(Sigma union {phi_1,...,phi_n}, tau) |- phi$, entonces $(Sigma, tau) |- phi$.
-      + Supongamos $(Sigma, tau) |- phi_1,...,phi_n$. Si *R* s una regla distinta de GENERALIZACION y ELECCION y $phi$ se deduce de $phi_1,...,phi_n$ por la regla *R*, entonces $(Sigma, tau) |- phi$.
-      + $(Sigma, tau) |- (phi -> psi)$ sii $(Sigma union {phi}, tau) |- psi$.
-    ],
-  )
-
-  #statementsStructure(
-    padding_left: 5pt,
-    padding_bottom: -10pt,
-    [Lema de Zorn <lema-Zorn>],
-    frequency: [
-      #counter(<lema-Zorn>).update(c => c - 1)
-      #context { counter(<lema-Zorn>).display() }
-    ],
-    [
-      Sea $(P, <=)$ un poset y supongamos que toda cadena en $P$ tiene al menos una cota superior. \
-      Entonces hay un elemento maximal en $(P, <=)$.
-    ],
-  )
-
-  #statementsStructure(
-    padding_left: 5pt,
-    padding_bottom: -10pt,
-    [Lema (Igualdad de valor en términos para asignaciones compartidas) <lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>],
-    frequency: [
-      #counter(<lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>).update(c => c - 1)
-      #context { counter(<lema-igualdad-de-valor-en-términos-para-asignaciones-compartidas>).display() }
-    ],
-    [
-      Sea *$A$* una estructura de tipo *$tau$* y sea $t in T^tau$. Supongamos que $arrow(a), arrow(b)$ son asignaciones tales que  $a_i = b_i$, cada vez que $x_i$ ocurre en $t$.
-      Entonces $t^bold(A)[arrow(a)] = t^bold(A)[arrow(b)]$.
-    ],
-  )
-
-  #statementsStructure(
-    padding_left: 5pt,
-    padding_bottom: -10pt,
-    [Lema (Menú para Términos) <lema-menu-para-términos>],
-    frequency: [
-      #counter(<lema-menu-para-términos>).update(c => c - 1)
-      #context { counter(<lema-menu-para-términos>).display() }
-    ],
-    [
-      Supongamos $t in T_(k+1)^tau$, con $k >= 0$. Entonces se da alguna de las siguientes: \
-      #box(width: 100%)[
-        #set enum(numbering: "(1)", indent: 12.8pt)
-        + $t in "Var" union ~C~$.
-        + $t = f(t_1,...,t_n)$, con $n >= 1$, $f in F_n^tau$ y $t_1,...,t_n in T_k^tau$.
-      ]
-    ],
-  )
-
-  #statementsStructure(
-    padding_left: 5pt,
-    padding_bottom: -10pt,
-    [Lema (Mordisqueo de Términos) <lema-mordisqueo-de-términos>],
-    frequency: [
-      #counter(<lema-mordisqueo-de-términos>).update(c => c - 1)
-      #context { counter(<lema-mordisqueo-de-términos>).display() }
-    ],
-    [
-      Sean $s, t in T^tau$ y supongamos que hay palabras $x, y, z$, con $y != epsilon$ tales que $s = x y$ y $t = y z$.
-      Entonces $x = z = epsilon$ o $s, t in ~C~$.
-      _"En particular si un término es tramo inicial o final de otro término, entonces dichos términos son iguales"_.
-    ],
-  )
-]
-
