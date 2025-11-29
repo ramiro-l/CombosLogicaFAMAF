@@ -1046,7 +1046,7 @@
       *Probemos que $<=$ es antisimétrica *#comentario([(es decir si $x <= y$ y $y <= x$ entonces $x = y$)]). \
       Sean $x, y in L$ tales que $x <= y$ y $y <= x$.
       Es decir por definición de $<=$ tenemos que $x #s y = y$ e $y #s x = x$. \
-      Entonces aplicando propiedad de $(L, #s, #i)$ tenemos que \
+      Entonces aplicando propiedades de $(L, #s, #i)$ tenemos que \
       #box(width: 100%)[
         $
           x = y #s x = x #s y = y
@@ -1056,7 +1056,7 @@
       * Probemos que $<=$ es transitiva* #comentario([(es decir si $x <= y$ y $y <= z$ entonces $x <= z$)]). \
       Sean $x, y, z in L$ tales que $x <= y$ y $y <= z$.
       Es decir por definición de $<=$ tenemos que $x #s y = y$ e $y #s z = z$. \
-      Entonces aplicando propiedad de $(L, #s, #i)$ tenemos que \
+      Entonces aplicando propiedades de $(L, #s, #i)$ tenemos que \
       #box(width: 100%)[
         $
           x #s z = x #s (y #s z) = (x #s y) #s z = y #s z = z
@@ -1317,9 +1317,9 @@
         #box(width: 100%)[
           $
             bold(A) |= phi[a->] & " sii para todo" a in A", se da" bold(A) |= phi_1[arrow.b ""_j^a (a->)] #h(40pt) ("def. de" |=) \
-            & " sii para todo" a in A", se da" bold(B) |= phi_1[F(arrow.b. ""_j^a (a->))] #h(22pt) ("Teo"_k) \
+            & " sii para todo" a in A", se da" bold(B) |= phi_1[F(arrow.b. ""_j^a (a->))] #h(18pt) ("Teo"_k) \
             & " sii para todo" a in A", se da" bold(B) |= phi_1[arrow.b ""_j^F(a) (F(a->))] #h(10pt) ("deducción inteligente") \
-            & " sii para todo" a in A", se da" bold(B) |= phi_1[arrow.b ""_j^F(a) (F(a->))] #h(10pt) ("F sobre" #comentario("ya que es iso")) \
+            & " sii para todo" b in B", se da" bold(B) |= phi_1[arrow.b ""_j^b (F(a->))] #h(26pt) ("F sobre" #comentario("ya que es iso")) \
             & " sii " bold(B) |= phi[F(a->)] #h(165pt) ("def. de" |=)
           $
         ]
@@ -1518,14 +1518,19 @@
 
     #linea_dashed
 
-    _Lema (Cambio de indice de hipótesis)_ : Sea $(bold(phi), bold(J))$ una prueba formal de $phi$ en $(Sigma, tau)$. Sea $m in NN$ tal que  $J_i != #(JUST.HIPOTESIS)("m")$, para cada $i=1,...,n(bold(phi))$. Supongamos que $bold(J)_i = #(JUST.HIPOTESIS)("k")$ y que $bold(J)_j = #(JUST.TESIS)("k") alpha$, con $[alpha]_1 in.not "Num"$. Sea $tilde(bold(J))$ el resultado de remplazar en $bold(J)$ la justificación $bold(J)_i$ por $#(JUST.HIPOTESIS)("m")$ y la justificación $bold(J)_j$ por $#(JUST.TESIS)("m") alpha$. Entonces $(bold(phi), tilde(bold(J)))$ es una prueba formal de $phi$ en $(Sigma, tau)$. #REVISAR \
-
-    _Lema (Cambio de nombres de constante auxiliares)_ :
+    _Lema (Cambio de indice de hipótesis)_ : \
     Sea $(bold(phi), bold(J))$ una prueba formal de $phi$ en $(Sigma, tau)$.
-    Sea $C_1$ el conjunto de nombres de constante auxiliares de $(bold(phi), bold(J))$.
-    Sea $e in C_1$. Sea $tilde(e) in.not C union C_1$ tal que $(C union (C_1 - {e}) union {tilde(e)}, F, R, a)$ es un tipo.
-    Sea $tilde(phi)_i =$ resultado de remplazar en $phi_i$ cada ocurrencia de $e$ por $tilde(e)$.
-    Entonces $(tilde(phi)_1...tilde(phi)_n(bold(phi)), bold(J))$ es una prueba formal de $phi$ en $(Sigma, tau)$. #REVISAR \
+    Sea $m in NN$ tal que $J_i != #(JUST.HIPOTESIS)("m")$, para cada \ $i=1,...,n(bold(phi))$.
+    Supongamos que $bold(J)_i = #(JUST.HIPOTESIS)("k")$ y que $bold(J)_j = #(JUST.TESIS)("k") alpha$, con $[alpha]_1 in.not "Num"$. \
+    Sea $tilde(bold(J))$ el resultado de remplazar en $bold(J)$ la justificación $bold(J)_i$ por $#(JUST.HIPOTESIS)("m")$ y la justificació $bold(J)_j$ por $#(JUST.TESIS)("m") alpha$. \
+    Entonces $(bold(phi), tilde(bold(J)))$ es una prueba formal de $phi$ en $(Sigma, tau)$. \
+
+    _Lema (Cambio de nombres de constante auxiliares)_ : \
+    Sea $(bold(phi), bold(J))$ una prueba formal de $phi$ en $(Sigma, tau)$.
+    Sea $C_1$ el conjunto de nombres de constante auxiliares de $(bold(phi), bold(J))$. \
+    Sea $e in C_1$. Sea $tilde(e) in.not C union C_1$ tal que  $(C union (C_1 - {e}) union {tilde(e)}, F, R, a)$ es un tipo. \
+    Sea $tilde(phi)_i =$ resultado de remplazar en $phi_i$ cada ocurrencia de $e$ por $tilde(e)$. \
+    Entonces $(tilde(phi)_1...tilde(phi)_n(bold(phi)), bold(J))$ es una prueba formal de $phi$ en $(Sigma, tau)$. \
   ],
 )
 
@@ -1874,7 +1879,7 @@
           #box(width: 100%)[
             $
               #AA_U |= phi [t_1 \/ join ,..., t_n \/ join ]
-              & " sii " t^#AA_U [t_1 \/ join ,..., t_n \/ join ] = s^#AA_U [t_1 \/ join ,..., t_n \/ join ] &("def." |=)\
+              & " sii " t^#AA_U [t_1 \/ join ,..., t_n \/ join ] = s^#AA_U [t_1 \/ join ,..., t_n \/ join ] \
               & " sii " t(t_1,...,t_n) \/ join = s(t_1,...,t_n) \/ join & ("por" 4) \
               & " sii " t(t_1,...,t_n) join s(t_1,...,t_n) & ("def. clase equiv") \
               & " sii " [ (t(t_1,...,t_n) equiv s(t_1,...,t_n)) ]_T in ~U~ &("def" join) \
@@ -1885,7 +1890,7 @@
           #box(width: 100%)[
             $
               #AA_U |= phi [t_1 \/ join ,..., t_n \/ join ]
-              & " sii " ( s_1^#AA_U [t_1 \/ join ,..., t_n \/ join ],..., s_m^#AA_U [t_1 \/ join ,..., t_n \/ join ] ) in r^#AA_U &("def." |=) \
+              & " sii " ( s_1^#AA_U [t_1 \/ join ,..., t_n \/ join ],..., s_m^#AA_U [t_1 \/ join ,..., t_n \/ join ] ) in r^#AA_U \
               & " sii " ( s_1 (t_1,...,t_n) \/ join ,..., s_m (t_1,...,t_n) \/ join ) in r^#AA_U &("por" 4) \
               & " sii " [ r(s_1(t_1,...,t_n),..., s_m(t_1,...,t_n)) ]_T in ~U~ &("def" r^#AA_U) \
               & " sii " [ phi(t_1, ..., t_n) ]_T in ~U~
@@ -1900,16 +1905,40 @@
           #box(width: 100%)[
             $
               #AA_U |= phi [t_1 \/ join ,..., t_n \/ join ]
-              & " sii " #AA_U |= phi_1 [t_1 \/ join ,..., t_n \/ join ] med "y" med #AA_U |= phi_2 [t_1 \/ join ,..., t_n \/ join ] &("def." |=) \
+              & " sii " #AA_U |= phi_1 [t_1 \/ join ,..., t_n \/ join ] med "y" med #AA_U |= phi_2 [t_1 \/ join ,..., t_n \/ join ]\
               & " sii " [phi_1(t_1, ..., t_n)]_T in ~U~ med "y" med [phi_2(t_1, ..., t_n)]_T in ~U~ &("por" "HI") \
               & " sii " [phi_1(t_1, ..., t_n) med bold(i)^T med phi_2(t_1, ..., t_n)]_T in ~U~ &(#box(fill: red)[#text(fill: white)[??????]]) \
               & " sii " [phi_1(t_1, ..., t_n) and phi_2(t_1, ..., t_n)]_T in ~U~ &("def." bold(i)^T) \
               & " sii " [phi(t_1, ..., t_n)]_T in ~U~
             $
           ]
-        - RESTO DE CASOS: #COMPLETAR \
+        - Si $phi = forall v phi_1$, con $v in "Var" - {v_1,...,v_n}$. Por convención notacional $phi_1 =_d phi_1 (v_1,...,v_n)$. \
+          #box(width: 100%)[
+            $
+              #AA_U |= phi [t_1 \/ join ,..., t_n \/ join ]
+              & " sii " #AA_U |= phi_1 [t_1 \/ join ,..., t_n \/ join, t \/ join ] quad "para todo" t in T_c^tau \
+              & " sii " [phi_1(t_1, ..., t_n,t)]_T in ~U~ quad "para todo" t in T_c^tau &("por" "HI") \
+              & " sii " [forall v_1 phi_1 (t_1, ..., t_n, t)]_T in ~U~ \
+              & " sii " [phi(t_1, ..., t_n, t)]_T in ~U~
+            $
+          ]
+        - Si $phi = exists v phi_1$, con $v in "Var" - {v_1,...,v_n}$. \
+          Por convención notacional $phi_1 =_d phi_1 (v_1,...,v_n)$. \
+          #box(width: 100%)[
+            $
+              #AA_U |= phi [t_1 \/ join ,..., t_n \/ join ]
+              & " sii " #AA_U |= phi_1 [t_1 \/ join ,..., t_n \/ join, t \/ join ] quad "para algún" t in T_c^tau \
+              & " sii " [phi_1(t_1, ..., t_n,t)]_T in ~U~ quad "para algún" t in T_c^tau &("por" "HI") \
+              & " sii " ([phi_1(t_1, ..., t_n,t)]_T)^c^T in.not ~U~ quad "para algún" t in T_c^tau \
+              & " sii " [not phi_1(t_1, ..., t_n,t)]_T in.not ~U~ quad "para algún" t in T_c^tau \
+              & " sii " [forall v not phi_1(t_1, ..., t_n,t)]_T in.not ~U~ quad "para algún" t in T_c^tau \
+              & " sii " ([forall v not phi_1(t_1, ..., t_n,t)]_T)^c^T in ~U~ quad "para algún" t in T_c^tau \
+              & " sii " [not forall v not phi_1(t_1, ..., t_n,t)]_T in ~U~ quad "para algún" t in T_c^tau \
+              & " sii " [exists v_1 phi_1 (t_1, ..., t_n, t)]_T in ~U~ \
+              & " sii " [phi(t_1, ..., t_n, t)]_T in ~U~
+            $
+          ]
       ]
-
 
       Pero ahora notar que (5) en particular nos dice que, #h(20pt) $#AA_U |= psi " sii " [psi]_T in ~U~ quad "para cada" psi in S^tau$. \
       De esta forma llegamos que $#AA_U |= Sigma$ y $#AA_U |= not phi_0$, lo cual contradice la suposición de que $T |= phi_0$. #REVISAR #fin_demo \
