@@ -239,7 +239,7 @@
     Definimos $bold(J)$ es _balanceada_ si se dan las siguientes condiciones:\
     #box(width: 100%)[
       #set enum(numbering: "(1)", indent: 12.8pt)
-      + Por cada $k in NN$ a lo sumo hay un $i$ tal que $bold(J)_i = "HIPk"$ y a lo sumo hay un $i$ tal que \ $bold(J)_i = "TESISk"alpha$, con $alpha in "JustBas"$. \
+      + Por cada $k in NN$ a lo sumo hay un $i$ tal que $bold(J)_i = "HIPk"$ y a lo sumo hay un $j$ tal que \ $bold(J)_j = "TESISk"alpha$, con $alpha in "JustBas"$. \
       + Si $bold(J)_i = "HIPk"$, entonces hay un  $l > i$ tal que $bold(J)_l = "TESISk"alpha$ con $alpha in "JustBas"$. \
       + Si $bold(J)_i = "TESISk"alpha$ con $alpha in "JustBas"$, entonces hay un  $l < i$ tal que $bold(J)_l = "HIPk"$. \
       + Si $B_1, B_2 in ~B~^(bold(J))$, entonces $B_1 inter B_2 = emptyset med med$  o $med med B_1 c= B_2 med med$ o $med med B_2 c= B_1 med$.
@@ -458,7 +458,7 @@
       + Si #box(width: size_cond)[#align(center)[$phi = Q v phi_1$]] #centro().
       + Si #box(width: size_cond)[#align(center)[$phi = Q w phi_1$ y $v in "Li"(phi_1)$]] #centro(no: true).
       + Si #box(width: size_cond)[#align(center)[$phi = Q w phi_1$ y $v in.not "Li"(phi_1)$]] #centro().
-      + Si #box(width: size_cond)[#align(center)[$phi = Q v phi_1$ y $u !=,v,w$]] #centro() #sii _$v$ es sustituible por $w$ en $phi_1$_.
+      + Si #box(width: size_cond)[#align(center)[$phi = Q u phi_1$ y $u !=,v,w$]] #centro() #sii _$v$ es sustituible por $w$ en $phi_1$_.
     ]
   ],
 )
