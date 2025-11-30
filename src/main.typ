@@ -796,6 +796,7 @@
 
 #combo_title(1)
 
+
 #proofStructure(
   1,
   [*Teorema* (Teorema del Filtro Primo)],
@@ -853,7 +854,7 @@
     Asi hemos probado que cada cadena en $(~F~, c=)$ tiene al menos una cota superior. \
 
     Por el #underline([_Lema de Zorn_]), $(~F~, c=)$ tiene un elemento maximal $P$.
-    Veamos que $P$ es un filtro primo. \ \ \
+    Veamos que $P$ es un filtro primo. \  \
     Claramente $P$ es un filtro ya que $P in ~F~$. \
     Para terminar de ver que sea _primo_ debemos ver que cumpla las siguientes propiedad: \
     #box(width: 100%)[
@@ -863,8 +864,8 @@
         Supongamos que $x #s y in P$.
         Vamos a probar que $x in P$ o $y in P$ por el absurdo.
         Supongamos $x,y in.not P$.\
-        Notar que $[P union {x})$ es un filtro el cual contiene a $P$. \
-        Pero como $P$ es un elemento maximal de $(~F~, c=)$, tenemos que $x_0 in [P union {x})$. \
+        Usando el _Lema para $[S)$_. Como $emptyset != P union {x} c= L$ entonces $[P union {x})$ es un filtro. \
+        Ademas $P subset P union {x} c= [P union {x})$, pero como $P$ es un elemento maximal de $(~F~, c=)$, tenemos que $[P union {x}) in.not ~F~$, por lo que $x_0 in [P union {x})$ #comentario[ya que es filtro y $F c= P c=[P union {x})$]. \
         Análogamente $x_0 in [P union {y})$. \
         Como $x_0 in [P union {x})$ tenemos que hay $p_1,...,p_k in P union {x}$, tales que \
         #box(width: 100%)[
@@ -938,6 +939,15 @@
     _Lema de Zorn_ :
     Sea $(P, <=)$ un poset y supongamos que toda cadena en $P$ tiene al menos una cota superior. \
     Entonces hay un elemento maximal en $(P, <=)$.
+
+    _Lema para $[S)$_ : Sea $(L, #s, #i)$ un reticulado terna. Supongamos $S c= L$ es no vacío. \
+    #box(width: 100%, inset: (left: 74pt))[
+      Entonces $[S)$ es un filtro de $(L, #s, #i)$.
+      //   #set enum(numbering: "(a)", indent: 12.8pt)
+      //   + Entonces $[S)$ es un filtro de $(L, #s, #i)$.
+      //   + Si $F$ es un filtro de $(L, #s, #i)$ tal que $S c= F$, entonces $[S) c= F$.\
+      //     Es decir $[S)$ es el menor filtro de $(L, #s, #i)$ que contiene a $S$.
+    ]
   ],
 )
 
@@ -1708,7 +1718,7 @@
         - Si $|"Li"(gamma)| <= 1$, entonces $gamma = gamma_j$, para algún $j in NN$.
       ] \
       Para cada $j in NN$, defino $w_j in "Var"$ tal que $"Li"(gamma_j) c= {w_j}$. Ahora, para cada $j in NN$ declaremos $gamma_j =_d gamma_j (w_j)$. \
-      Notar que por el #underline([_Lema del ínfimo_]) tenemos que $"inf"([gamma_j (t)]_T : t in T_c^tau) = [forall w_j gamma_j (w_j)]_T$ para cada $j in NN$. \
+      Notar que por el #underline([_Lema del ínfimo_]) tenemos que $"inf"({[gamma_j (t)]_T : t in T_c^tau}) = [forall w_j gamma_j (w_j)]_T$ para cada $j in NN$. \
       Por el #underline([_Teorema de Rasiova Y Sikorski_]) tenemos que hay un filtro primo $~U~$ de $~A~_T$, el cual cumple: \
       #box(width: 100%)[
         #set enum(numbering: "(a)", indent: 12.8pt)
@@ -1951,9 +1961,9 @@
         - Si $|"Li"(gamma)| <= 1$, entonces $gamma = gamma_j$, para algún $j in NN$. \
       ]
 
-      _Lema del ínfimo_ : Sea $T = (Sigma, tau)$ una teoría y supongamos que $tau$ tiene una cantidad infinita de nombres de cte que no ocurren en las sentencias de $Sigma$. Entonces para cada formula $phi =_d phi(v)$, se tiene que en el algebra de Lindenbaum $~A~_T$, se cumple $quad [forall v phi]_T = inf({[phi(t)]_T} : t in T_c^tau)$ \
+      _Lema del ínfimo_ : Sea $T = (Sigma, tau)$ una teoría y supongamos que $tau$ tiene una cantidad infinita de nombres de cte que no ocurren en las sentencias de $Sigma$. Entonces para cada formula $phi =_d phi(v)$, se tiene que en el algebra de Lindenbaum $~A~_T$, se cumple $quad [forall v phi]_T = inf({[phi(t)]_T : t in T_c^tau})$ \
 
-      _Teorema de Rasiova Y Sikorski_ : Sea $B, #s, #i,^c, 0,1)$ un algebra de Boole. Sea $a in B, a != 0$. Supongamos que (A_1, A_2,...) es una infinitupla de subconjuntos de $B$ tal que existe $inf(A_j)$ para cada $j=1,2,...$. Entonces hay un filtro primo $P$ el cual cumple: \
+      _Teorema de Rasiova Y Sikorski_ : Sea $(B, #s, #i,^c, 0,1)$ un algebra de Boole. Sea $a in B, a != 0$. Supongamos que (A_1, A_2,...) es una infinitupla de subconjuntos de $B$ tal que existe $inf(A_j)$ para cada $j=1,2,...$. Entonces hay un filtro primo $P$ el cual cumple: \
       #box(width: 100%)[
         #set enum(numbering: "(a)", indent: 12.8pt)
         + $a in P$.
