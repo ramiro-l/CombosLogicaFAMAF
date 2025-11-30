@@ -864,7 +864,7 @@
         Supongamos que $x #s y in P$.
         Vamos a probar que $x in P$ o $y in P$ por el absurdo.
         Supongamos $x,y in.not P$.\
-        Usando el _Lema para $[S)$_. Como $emptyset != P union {x} c= L$ entonces $[P union {x})$ es un filtro. \
+        Pero como $emptyset != P union {x} c= L$, por el _Lema para $[S)$_ tengo que $[P union {x})$ es un filtro. \
         Ademas $P subset P union {x} c= [P union {x})$, pero como $P$ es un elemento maximal de $(~F~, c=)$, tenemos que $[P union {x}) in.not ~F~$, por lo que $x_0 in [P union {x})$ #comentario[ya que es filtro y $F c= P c=[P union {x})$]. \
         Análogamente $x_0 in [P union {y})$. \
         Como $x_0 in [P union {x})$ tenemos que hay $p_1,...,p_k in P union {x}$, tales que \
@@ -1186,7 +1186,7 @@
       Entonces tenemos varios casos para $phi$, veremos algunos: \
       #set list(indent: 0pt)
       - Si $phi = (phi_1 and phi_2)$.
-        Notar que $"Li"(phi_i) c= "Li"(phi), i = 1,2$, por _H.I_ tenemos que $bold(A) |= phi_i[arrow(a)] " sii " bold(A) |= phi_i[arrow(b)]$. \
+        Notar que $"Li"(phi_i) c= "Li"(phi), i = 1,2$, por _H.I_ tenemos que $bold(A) |= phi_i [arrow(a)] " sii " bold(A) |= phi_i [arrow(b)]$. \
         Entonces por definición y remplazando obtenemos que \
         #box(width: 100%)[
           $
@@ -1481,13 +1481,13 @@
   [
     *(1)* Notar que basta con hacer el caso $n=1$. Para $n>=2$ sale aplicando $n$ veces el caso $n=1$. \
     Supongamos que $(Sigma, tau) |- phi_1$ y $(Sigma union {phi_1}, tau) |- phi$. \
-    Sea $(alpha_1,...,alpha_n,I_h,...,I_j)$ una prueba formal de $phi_1$ en $(Sigma, tau)$. \
-    Sea $(psi_1,...,psi_m,J_h,...,J_m)$ una prueba formal de $phi$ en $(Sigma union {phi_1}, tau)$. \
+    Sea $(alpha_1,...,alpha_h,I_1,...,I_h)$ una prueba formal de $phi_1$ en $(Sigma, tau)$. \
+    Sea $(psi_1,...,psi_m,J_1,...,J_m)$ una prueba formal de $phi$ en $(Sigma union {phi_1}, tau)$. \
     Notar que por el #underline([ _Lema (Cambio de indice de hipótesis)_]) y el #underline([_Lema (Cambio de nombres de constante auxiliares)_]) podemos suponer que estas dos pruebas no comparten ningún nombre de constante auxiliar y que tampoco comparten números asociados a hipótesis o tesis.
     Para cada $i=1,...,m$, definamos $tilde(J)_i$ de la siguiente manera\
     #box(width: 100%)[
       #h(25pt) Sea $alpha in {epsilon} union { #(JUST.TESIS)("k"): k in NN}$
-      - Si $psi_i = phi_i$ y $J_i = alpha#JUST.AXIOMAPROPIO$ entonces $tilde(J)_i = alpha#(JUST.EVOCACION)("h")$.
+      - Si $psi_i = phi_i$ y $J_i = alpha#JUST.AXIOMAPROPIO$ entonces $tilde(J)_i = alpha#(JUST.EVOCACION)(overline("h"))$.
       - Si $psi_i != phi_i$ y $J_i = alpha#JUST.AXIOMAPROPIO$, entonces $tilde(J)_i = J_i$.
       - Si $J_i in {alpha#JUST.AXIOMALOGICO, alpha#JUST.CONCLUSION, alpha#(JUST.HIPOTESIS)("k")}$, entonces $tilde(J)_i = J_i$.
       - Si $J_i = alpha R (overline(l_1),...,overline(l_k))$ y $R$ alguna regla, entonces $tilde(J)_i = alpha R (overline(l_1 + h),...,overline(l_k + h))$.
