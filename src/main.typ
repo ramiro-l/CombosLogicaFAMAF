@@ -1506,7 +1506,7 @@
     ]
     es una prueba formal de $phi$ en $(Sigma union {phi_1,...,phi_n}, tau)$, entonces por (1) tenemos que $(Sigma, tau) |- phi$. \
     *(3)* \
-    *($->$)* Si $(Sigma, tau) |- (phi -> psi)$, entonces $(Sigma union {phi}, tau) |- (phi -> psi), phi$ y por (2) esto implica que
+    *($->$)* Si $(Sigma, tau) |- (phi -> psi)$, entonces $(Sigma union {phi}, tau) |- (phi -> psi), phi$ y por (2) #footnote[usando $R = "MODUSPONENS"$.] esto implica que
     $(Sigma union {phi}, tau) |- psi$. \
     *($<-$)* Si $(Sigma union {phi}, tau) |- psi$. Sea $(alpha_1,...,alpha_n,J_1,...,J_n)$ una prueba formal de $psi$ en $(Sigma union {phi}, tau)$. \
     Entonces para cada $i = 1,...,n$, definamos $tilde(J)_i$ de la siguiente manera.\
@@ -2021,7 +2021,7 @@
         x\/theta tilde(#i) y\/theta = (x #i y) \/ theta
       $
     ]
-    *(1)* Veamos entonces que $(L\/theta, tilde(#s), tilde(#i))$ cumple las I1-I7 propiedades para ser un reticulado terna. \
+    *(1)* Veamos entonces que $(L\/theta, tilde(#s), tilde(#i))$ cumple las (I1)-(I7) propiedades para ser un reticulado terna. \
     Sean $x\/theta, y\/theta, z\/theta in L\/theta$ elementos arbitrarios. \
     #let th = $\/theta$
     #let xth = $x th$
@@ -2055,7 +2055,7 @@
       $
     ] \
     y como no es difícil ver que vale $yth = (x #s y) th "sii " y theta (x #s y)$ #footnote[
-      Dada una una relación de equivalencia $R$ sobre un conjunto $A$. \ Sea $a in A$ arbitrario, como R es reflexiva, tengo que $a R a$, entonces $a in a\/R$.
+      Dada una una relación de equivalencia $R$ sobre un conjunto $A$. \ Sea $a in A$ arbitrario, como R es reflexiva, tengo que $a R a$, entonces $a in a\/R$. \
       Sean $a,b in A$ arbitrarios. \
       *($->$)* Si *$a \/ R = b \/ R$* tenemos que $b in a \/ R$ entonces *$a R b$*. \
       *($<-$)* Si *$a R b$*. Tomamos $c in a \/ R$, entonces $a R c$, por simetría $b R a$ y por transitividad $b R c$, luego $c in b \/ R$. Por lo tanto $a \/ R c= b \/ R$.\
@@ -2247,7 +2247,7 @@
   [*Lema*],
   [
     Sea $(P, <=)$ y $(P', <=')$ posets. Supongamos $F$ es un isomorfismo de $(P, <=)$ en $(P', <=')$. \
-    #box(width: 100%)[
+    #box(width: 96%)[
       #set enum(numbering: "(a)", indent: 12.8pt)
       + Para cada $S c= P$ y para cada $a in P$, se tiene que $a$ es cota superior (resp. inferior) de $S$ sii $F(a)$ es cota superior (resp. inferior) de $F(S)$.
       + Para cada $S c= P$, se tiene que existe $"sup"(S)$ sii existe $"sup"(F(S))$ y en ese caso de que existan tales elementos se tiene que $F("sup"(S)) = "sup"(F(S))$.
