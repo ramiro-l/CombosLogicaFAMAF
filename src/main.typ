@@ -1503,7 +1503,7 @@
       - Si $J_i in {alpha#JUST.AXIOMALOGICO, alpha#JUST.CONCLUSION, alpha#(JUST.HIPOTESIS)("k")}$, entonces $tilde(J)_i = J_i$.
       - Si $J_i = alpha R (overline(l_1),...,overline(l_k))$ y $R$ alguna regla, entonces $tilde(J)_i = alpha R (overline(l_1 + h),...,overline(l_k + h))$.
     ]
-    Es fácil chequear que $(alpha_1...alpha_h phi_1...phi_m,I_1...I_n tilde(J_1)...tilde(J_m))$ es una prueba formal de $phi$ en $(Sigma, tau)$. \
+    Es fácil chequear que $(alpha_1...alpha_h phi_1...phi_m,I_1...I_h tilde(J_1)...tilde(J_m))$ es una prueba formal de $phi$ en $(Sigma, tau)$. \
     *(2)*
     Notar que \
     #box(width: 100%, inset: (top: -12pt))[
