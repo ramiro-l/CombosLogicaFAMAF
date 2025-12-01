@@ -760,7 +760,7 @@
 
 #definitionStructure(
   1,
-  [Defina el concepto de *función* y desarrolle las tres *Convenciones Notacionales* asociadas a dicho concepto (i.e en la Guía 0).],
+  [Defina el concepto de *función* y desarrolle las tres *Convenciones Notacionales* asociadas a dicho concepto (Guía 0).],
   link_apunte: "https://granlogico.com/apunteweb/1.7-el-concepto-de-funcion.html",
   [
     #set enum(numbering: "(1)", indent: 12.8pt)
@@ -777,7 +777,7 @@
     + Escribimos $f: S c= A -> B$ para expresar que $f$ es una función tal que $D_f = S c= A$ y $I_f c= B$. \
       Escribimos $f: A -> B$ para expresar que $f$ es una función tal que $D_f = A$ y $I_f c= B$. \
       En ese contexto llamaremos a $B$ _conjunto de llegada_ ($B$ no está determinado por $f$, ya que $I_f c= B$).
-    + Muchas veces, para definir una función $f$, lo que haremos es dar su dominio y su regla de asignación. Básicamente daremos precisamente el conjunto que es $D_f$ y quién es $f(x)$ para cada $x in D_f$. Esto determina por completo a $f$, ya que $f = {(x,f(x)): x in D_f}$. Algunos ejemplos son
+    + Muchas veces, para definir una función $f$, lo que haremos es dar su dominio y su regla de asignación. Básicamente daremos precisamente el conjunto que es $D_f$ y quién es $f(x)$ para cada $x in D_f$. \ Esto determina por completo a $f$, ya que $f = {(x,f(x)): x in D_f}$. Algunos ejemplos son:
       #align(center)[
         #table(
           columns: 3,
