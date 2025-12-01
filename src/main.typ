@@ -273,7 +273,7 @@
   [Defina $A |= phi[a->]$ (versión absoluta, no dependiente de una declaración previa, i.e. $a-> in A^NN$).],
   note: [No hace falta definir $t^A [a->]$.],
   [
-    Definamos recursivamente la relación $A |= phi[a->]$, donde *A* es una estructura de tipo $tau$, $phi in F^tau$ y $a->$ una asignación de *A* como: \
+    Definamos recursivamente la relación $bold(A) |= phi[a->]$, donde *A* es una estructura de tipo $tau$, $phi in F^tau$ y $a->$ una asignación de *A* como: \
     #box(width: 100%)[
       #let size_phi = 80pt
       #let centro = [
@@ -360,58 +360,100 @@
 
 #pagebreak()
 
-#page(margin: (bottom: 0cm))[
+#combo_title(5)
 
-  #combo_title(5)
+#definitionStructure(
+  1,
+  [Explique la notación declaratoria para *términos* con sus 3 convenciones notacionales. <combo-def-5>],
+  [
+    _Lema (Lectura única de términos declarados)_ : Sea $tau$ un tipo cualquier y supongamos $t in T^tau$. Si $phi =_d t(v_1,...,v_n)$, entonces se da una y solo una de las siguientes: \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + $t = c$, para algún $c in ~C~$.
+      + $t = v_j$, para algún $j in {1,...,n}$.
+      + $t = f(t_1,...,t_m)$, para algún $f in F_m, m>=1$ y $t_1,...,t_m in T_k^tau$ únicos.
+    ]
 
-  #definitionStructure(
-    1,
-    [Explique la notación declaratoria para *términos* con sus 3 convenciones notacionales. <combo-def-5>],
-    [
-      Supongamos $v_1, ..., v_n in "Var"$ y  $t$ un termino de tipo $tau$. Entonces escribimos $t =_d t(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que toda variable que ocurre en $t$ pertenecen a ${v_1,...,v_n}$. \
-      Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
-      #h(7pt) #text([*Convención notacional 1*], size: 12pt):
-      Si hemos declarado $t =_d t(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $t(P_1,...,P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de  $v_1$ en $t$ por $P_1$, cada ocurrencia de $v_2$ en $t$ por $P_2$, etc. \
-      #h(7pt) #text([*Convención notacional 2*], size: 12pt):
-      Si hemos declarado $t =_d t(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces con $t^A [a_1, ..., a_n]$ denotaremos al elemento $t^bold(A)[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$. \
-      #h(7pt) #text([*Convención notacional 5*], size: 12pt):
-      Si hemos declarado $t =_d t(v_1, ..., v_n)$ y se da que $t = f(t_1,...,t_m)$, con $f in F_m, m>=1$ y $t_1,...,t_m in T_k^tau$, supondremos tácitamente que también hemos echo las declaraciones $t_1 =_d t_1(v_1,...,v_k), ..., t_m =_d t_m (v_1,...,v_k)$. Esto lo podemos hacer ya que obviamente las variables que ocurren en los $t_1,...,t_m$ están en ${v_1,...,v_k}$. #REVISAR
-    ],
-  )
+    Supongamos $v_1, ..., v_n in "Var"$ y  $t$ un termino de tipo $tau$. Entonces escribimos $t =_d t(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que toda variable que ocurre en $t$ pertenecen a ${v_1,...,v_n}$. \
+    Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
+    #h(7pt) #text([*Convención notacional 1*], size: 12pt):
+    Si hemos declarado $t =_d t(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $t(P_1,...,P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de  $v_1$ en $t$ por $P_1$, cada ocurrencia de $v_2$ en $t$ por $P_2$, etc. \
+    #h(7pt) #text([*Convención notacional 2*], size: 12pt):
+    Si hemos declarado $t =_d t(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces con $t^A [a_1, ..., a_n]$ denotaremos al elemento $t^bold(A)[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$. \
+    #h(7pt) #text([*Convención notacional 5*], size: 12pt):
+    Si hemos declarado $t =_d t(v_1, ..., v_n)$ y se da el caso (3) del lema mencionado, supondremos tácitamente que también hemos echo las declaraciones $t_1 =_d t_1(v_1,...,v_k), ..., t_m =_d t_m (v_1,...,v_k)$. Esto lo podemos hacer ya que obviamente las variables que ocurren en los $t_1,...,t_m$ están en ${v_1,...,v_k}$.
+  ],
+)
 
-  #combo_title(6)
+#pagebreak()
 
-  #definitionStructure(
-    1,
-    [Explique la notación declaratoria para *fórmulas* con sus 3 convenciones notacionales. <combo-def-6>],
-    note: [Puede asumir la notación declaratoria para términos.],
-    [
-      Supongamos $v_1, ..., v_n in "Var"$ y  $phi$ es una formula de tipo $tau$. Entonces escribimos $phi =_d phi(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que $"Li"(phi) c= {v_1,...,v_n}$. \
-      Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
-      #h(7pt) #text([*Convención notacional 3*], size: 12pt):
-      Si hemos declarado $phi =_d phi(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $phi(P_1, ..., P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de $v_1$ en $phi$ por $P_1$, cada ocurrencia de $v_2$ en $phi$ por $P_2$, etc. \
-      #h(7pt) #text([*Convención notacional 4*], size: 12pt):
-      Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces $bold(A) |= phi [a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.
-      En general $bold(A) tack.r.double.not phi[arrow(b)]$ significara que no sucede $bold(A) |= phi[a_1,...,a_n]$. \
-      #h(7pt) #text([*Convención notacional 6*], size: 12pt):
-      Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, entonces: \
-      #box(width: 100%)[
-        #set list(indent: 0pt, body-indent: 0.4em)
-        - Si $phi = (t equiv s)$, con $t, s in T_k^tau$
-          \ supondremos tácitamente que hemos hecho las declaraciones $t =_d t(v_1,...,v_n)$ y $s =_d s(v_1,...,v_n)$.
-        - Si $phi = r(t_1,...,t_m)$, con $r in R_m$ y $t_1,...,t_m in T^tau$
-          \ supondremos tácitamente que hemos hecho las declaraciones $t_1 =_d t_1(v_1,...,v_n), ..., t_m =_d t_m (v_1,...,v_n)$.
-        - Si $phi = (phi_1 eta phi_2)$ con $eta in {and, or, ->, <->}$ y $phi_1, phi_2 in F^tau$
-          \ supondremos tácitamente que hemos hecho las declaraciones $phi_1 =_d phi_1(v_1,...,v_n)$ y $phi_2 =_d phi_2(v_1,...,v_n)$.
-        - Si $med med phi = not phi_1 med med$ o $med med phi = Q v_j phi_1 med med$ con $Q in {forall, exists}$, $j in {1,...,n}$ y $phi_1 in F^tau$
-          \ supondremos tácitamente que hemos hecho la declaración $phi_1 =_d phi_1(v_1,...,v_n)$.
-        - Si $phi = Q v phi_1$ con $Q in {forall, exists}$, $v in "Var"-{v_1,...,v_n}$ y $phi_1 in F^tau$
-          \ supondremos tácitamente que hemos hecho la declaración $phi_1 =_d phi_1(v_1,...,v_n, v)$.
-      ] #REVISAR
-    ],
-  )
+#combo_title(6)
 
-]
+#definitionStructure(
+  1,
+  [Explique la notación declaratoria para *fórmulas* con sus 3 convenciones notacionales. <combo-def-6>],
+  note: [Puede asumir la notación declaratoria para términos.],
+  [
+    Supongamos $v_1, ..., v_n in "Var"$ y  $phi$ es una formula de tipo $tau$. Entonces escribimos $phi =_d phi(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que $"Li"(phi) c= {v_1,...,v_n}$. \
+    Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
+    #h(7pt) #text([*Convención notacional 3*], size: 12pt):
+    Si hemos declarado $phi =_d phi(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $phi(P_1, ..., P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de $v_1$ en $phi$ por $P_1$, cada ocurrencia de $v_2$ en $phi$ por $P_2$, etc. \
+    #h(7pt) #text([*Convención notacional 4*], size: 12pt):
+    Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces $bold(A) |= phi [a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.
+    En general $bold(A) tack.r.double.not phi[arrow(b)]$ significara que no sucede $bold(A) |= phi[a_1,...,a_n]$. \
+
+    _Lema (Lectura única de fórmulas declaradas)_ : Sea $tau$ un tipo cualquier y $phi in F^tau$. \
+    Supongamos $phi =_d phi(v_1, ..., v_n)$. Entonces se de una y solo una de las siguientes. \
+    #box(width: 100%)[
+      #grid(
+        columns: 2,
+        [
+          #set enum(numbering: "(1)", indent: 12.8pt)
+          + $phi = (t equiv s)$ con $t,s in T^tau$.
+          + $phi = r(t_1,...,t_m)$ con $r in ~R~_m$ y $t_1,...,t_m in T^tau$.
+          + $phi = (phi_1 eta phi_2)$ con $phi_i in F^tau$.
+        ],
+        [
+          #set enum(numbering: "(1)", indent: 12.8pt, start: 4)
+          + $phi = not phi_1$ con $phi_1 in F^tau$.
+          + $phi = Q v_j phi_1$ con $phi_1 in F^tau$
+          + $phi = Q v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi_1 in F^tau$.
+        ],
+      )
+    ]
+    con $eta in {and, or, ->, <->}$ y $Q in {forall, exists}$.
+
+    Ahora notar que según el caso del Lema anterior, si declaramos $phi =_d phi(v_1, ..., v_n)$ tenemos que: \
+    #box(width: 100%)[
+      #set enum(numbering: "(1)", indent: 12.8pt)
+      + Caso (1), entonces las variables que ocurren en $t$ y $s$ están en ${v_1,...,v_n}$.
+      + Caso (2), entonces las variables que ocurren en $t_1,...,t_m$ están en ${v_1,...,v_n}$.
+      + Caso (3), entonces $"Li"(phi_1) union "Li"(phi_2) c= {v_1,...,v_n}$.
+      + Caso (4) o (5), entonces $"Li"(phi_1) c= {v_1,...,v_n}$.
+      + Caso (6), entonces $"Li"(phi_1) c= {v_1,...,v_n, v}$.
+    ]
+
+    esto ultimo nos permite hacer la siguiente convención notacional: \
+
+    #h(7pt) #text([*Convención notacional 6*], size: 12pt):
+    Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, entonces según el caso del Lema mencionado antes, tenderemos que: \
+    #box(width: 100%)[
+      #set list(indent: 0pt, body-indent: 0.4em)
+      - Caso (1) #comentario[, $med phi = (t equiv s)$, con $t, s in T_k^tau$]
+        \ supondremos tácitamente que hemos hecho las declaraciones $t =_d t(v_1,...,v_n)$ y $s =_d s(v_1,...,v_n)$.
+      - Caso (2) #comentario[, $med phi = r(t_1,...,t_m)$, con $r in R_m$ y $t_1,...,t_m in T^tau$]
+        \ supondremos tácitamente que hemos hecho las declaraciones $t_1 =_d t_1(v_1,...,v_n), ..., t_m =_d t_m (v_1,...,v_n)$.
+      - Caso (3) #comentario[, $med phi = (phi_1 eta phi_2)$ con $eta in {and, or, ->, <->}$ y $phi_1, phi_2 in F^tau$]
+        \ supondremos tácitamente que hemos hecho las declaraciones $phi_1 =_d phi_1(v_1,...,v_n)$ y $phi_2 =_d phi_2(v_1,...,v_n)$.
+      - Caso (4) o (5) #comentario[, $med med phi = not phi_1 med med$ o $med med phi = Q v_j phi_1 med med$ con $Q in {forall, exists}$, $j in {1,...,n}$ y $phi_1 in F^tau$]
+        \ supondremos tácitamente que hemos hecho la declaración $phi_1 =_d phi_1(v_1,...,v_n)$.
+      - Caso (6) #comentario[, $med phi = Q v phi_1$ con $Q in {forall, exists}$, $v in "Var"-{v_1,...,v_n}$ y $phi_1 in F^tau$]
+        \ supondremos tácitamente que hemos hecho la declaración $phi_1 =_d phi_1(v_1,...,v_n, v)$.
+    ]
+  ],
+)
+
+
 
 #pagebreak()
 
@@ -597,7 +639,7 @@
       #box(width: 100%)[
         $
           #v(15pt)
-          [phi]_T bold("s")^T [psi]_T = [ (phi or psi) ]_T med  ^""^#footnote[
+          [phi]_T bold("s")^T [psi]_T = [ (phi or psi) ]_T med^""^#footnote[
             $[phi]_T$ denota la clase de $phi$ respecto a la relación de equivalencia $-||-_T$.
           ]
         $
@@ -670,7 +712,7 @@
       $
         ~B~^(bold(J)) = {
           <<i, j>> : exists k med med bold(J)_i = "HIPk" med med y med bold(J)_j = "TESISk"alpha "para algún" alpha in "JustBas"
-        } med  ^#footnote[Definimos $<<i, j>>$ para $i, j in NN$ con $i < j$ como el conjunto ${i, i+1, ..., j}$.]
+        } med^#footnote[Definimos $<<i, j>>$ para $i, j in NN$ con $i < j$ como el conjunto ${i, i+1, ..., j}$.]
       $
     ]
 
@@ -2237,14 +2279,10 @@
           + $phi = (phi_1 eta phi_2)$ con $phi_i in F^tau$.
         ],
         [
-          #set enum(numbering: "(1)", indent: 12.8pt, start: 5)
+          #set enum(numbering: "(1)", indent: 12.8pt, start: 4)
           + $phi = not phi_1$ con $phi_1 in F^tau$.
           + $phi = Q v_j phi_1$ con $phi_1 in F^tau$
           + $phi = Q v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi_1 in F^tau$.
-          //   + $phi = forall v_j phi_1$ con $phi_1 in F^tau$.
-          //   + $phi = forall v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi_1 in F^tau$.
-          //   + $phi = exists v_j phi_1$ con $phi_1 in F^tau$.
-          //   + $phi = exists v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi_1 in F^tau$.
         ],
       )
     ]
