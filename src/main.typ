@@ -597,7 +597,9 @@
       #box(width: 100%)[
         $
           #v(15pt)
-          [phi]_T bold("s")^T [psi]_T = [ (phi or psi) ]_T
+          [phi]_T bold("s")^T [psi]_T = [ (phi or psi) ]_T med  ^""^#footnote[
+            $[phi]_T$ denota la clase de $phi$ respecto a la relación de equivalencia $-||-_T$.
+          ]
         $
       ] \
       Finalmente la definición anterior es inambigua ya que vale la siguiente propiedad:\
@@ -663,6 +665,15 @@
   1,
   [Defina "tesis del bloque $<<i, j>>$ en $(phi, bold(J))$".],
   [
+    Definimos $~B~^(bold(J))$ para cada $bold(J) in "Just"^+$ como \
+    #box(width: 100%)[
+      $
+        ~B~^(bold(J)) = {
+          <<i, j>> : exists k med med bold(J)_i = "HIPk" med med y med bold(J)_j = "TESISk"alpha "para algún" alpha in "JustBas"
+        } med  ^#footnote[Definimos $<<i, j>>$ para $i, j in NN$ con $i < j$ como el conjunto ${i, i+1, ..., j}$.]
+      $
+    ]
+
     Sea $(bold(phi), bold(J))$ un par adecuado de tipo $tau$. Si $<<i,j>> in ~B~^(bold(J))$, entonces $bold(phi)_j$ es la _tesis del bloque_ $<<i, j>>$ en $(bold(phi), bold(J))$.
   ],
 )
