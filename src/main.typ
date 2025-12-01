@@ -1581,7 +1581,7 @@
         $
           & quad (a #i b) #s (a^c #s b^c) \
           & = (a^c #s b^c) #s (a #i b)                    &      quad "(I2)" \
-          & = ((a^c #s b^c) #s a ) #i ((a^c #s b^c) #s b) &   quad ("Dis"_1) \
+          & = ((a^c #s b^c) #s a ) #i ((a^c #s b^c) #s b) &   quad ("Dis"_2) \
           & = ((a #s a^c) #s b^c ) #i ((b #s b^c) #s a^c) & quad ("I4 e I2") \
           & = (1 #s b^c ) #i (1 #s a^c)                   &      quad ("I9") \
           & = 1 #i 1                                      &      quad ("I1") \
@@ -1591,7 +1591,7 @@
       box(width: 50%)[
         $
           & quad (a #i b) #i (a^c #s b^c) \
-          & = ((a #i b) #i a^c) #s ((a #i b) #i b^c)     &   quad ("Dis"_2) \
+          & = ((a #i b) #i a^c) #s ((a #i b) #i b^c)     &   quad ("Dis"_1) \
           & = ( (a #i a^c) #i b ) #s ( (b #i b^c) #i a ) & quad ("I5 e I3") \
           & = (0 #i b ) #s ( 0 #i a )                    &      quad ("I8") \
           & = 0 #s 0                                     &      quad ("I1") \
@@ -1602,7 +1602,7 @@
     Entonces $a^c #s b^c$ es un complemento de $(a #i b)$ pero el #underline([_Lema (Unicidad del Complemento)_]) aplicado a $(B, #s, #i, 0 ,1)$, nos dice que es único, por lo tanto $(a #i b)^c = a^c #s b^c$. \
     *(2)* \
     *($->$)* Supongamos que $a #i b = 0$. Entonces \
-    #box(width: 100%)[
+    #box(width: 100%, inset: (left: 200pt, top: -16pt))[
       $
         b & = (b #i a) #s (b #i a^c) quad (italic("Lema útil")) \
           & = (a #i b) #s (b #i a^c) \
@@ -1617,7 +1617,8 @@
 
     _Lema (Unicidad del Complemento)_ : Sea $(L, #s, #i, 0 ,1)$ un reticulado acotado. Si $(L, #s, #i, 0 ,1)$ es distributivo, \ #h(158pt) entonces todo elemento tiene a lo sumo un complemento. \
     _Lema (útil)_ : Sea $(B, #s, #i, ""^c, 0 ,1)$ un álgebra de Boole. Entonces para cualquiera $x,y in B$ se tiene que \ #h(60pt) $y = (y #i x) #s (y #i x^c)$. \
-    _Lema (Monotonía)_ : Sea $(L, <=)$ un reticulado par y sean $x,y,z,w in L$ tales que $x <= z$ e $y <= w$. \ #h(90pt) Entonces $x #i y <= z #i w$.
+    _Lema (Monotonía)_ : Sea $(L, <=)$ un reticulado par y sean $x,y,z,w in L$ tales que $x <= z$ e $y <= w$. \ #h(90pt) Entonces $x #i y <= z #i w$. \
+    _Lema_ : Sea $(L, #s, #i)$ un reticulado terna. Entonces, $(L, #s, #i)$ satisface $"Dis"_1 <=>$ $(L, #s, #i)$ satisface $"Dis"_2$.
   ],
 )
 
