@@ -1182,7 +1182,7 @@
           Entonces usando propiedad de $(L, #s, #i)$ tenemos que \
           #box(width: 100%)[
             $
-              x #s y = (x #i y) #s y = y #s (x #i y) = y
+              x #s y = (x #i y) #s y = y #s (x #i y) = y #s (y #i x) = y
             $
           ]
           por lo tanto $x #s y = y$, entonces por definición de $<=$ tenemos que $x <= y$. \
@@ -1540,8 +1540,8 @@
     Para cada $i=1,...,m$, definamos $tilde(J)_i$ de la siguiente manera\
     #box(width: 100%)[
       #h(25pt) Sea $alpha in {epsilon} union { #(JUST.TESIS)("k"): k in NN}$
-      - Si $psi_i = phi_i$ y $J_i = alpha#JUST.AXIOMAPROPIO$ entonces $tilde(J)_i = alpha#(JUST.EVOCACION)(overline("h"))$.
-      - Si $psi_i != phi_i$ y $J_i = alpha#JUST.AXIOMAPROPIO$, entonces $tilde(J)_i = J_i$.
+      - Si $psi_i = phi_1$ y $J_i = alpha#JUST.AXIOMAPROPIO$ entonces $tilde(J)_i = alpha#(JUST.EVOCACION)(overline("h"))$.
+      - Si $psi_i != phi_1$ y $J_i = alpha#JUST.AXIOMAPROPIO$, entonces $tilde(J)_i = J_i$.
       - Si $J_i in {alpha#JUST.AXIOMALOGICO, alpha#JUST.CONCLUSION, alpha#(JUST.HIPOTESIS)("k")}$, entonces $tilde(J)_i = J_i$.
       - Si $J_i = alpha R (overline(l_1),...,overline(l_k))$ y $R$ alguna regla, entonces $tilde(J)_i = alpha R (overline(l_1 + h),...,overline(l_k + h))$.
     ]
