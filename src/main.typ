@@ -564,7 +564,7 @@
   [Dados $phi =_d phi(v_1, ..., v_n)$, *A* una estructura de tipo $tau$ y $a_1, ..., a_n in A$, defina qué significa \ $bold(A) |= phi[a_1, ..., a_n]$ (i.e. Convención notacional 4 y parte del #link(<combo-def-6>)[Combo 6]).],
   [
     Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces $bold(A) |= phi [a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.  \
-    En general $bold(A) |= phi[a_1,...,a_n]$ significara que no sucede $bold(A) tack.r.double.not phi[arrow(b)]$.
+    En general $bold(A) tack.r.double.not phi[a_1,...,a_n]$ significara que no sucede $bold(A) tack.r.double.not phi[arrow(b)]$.
   ],
 )
 
