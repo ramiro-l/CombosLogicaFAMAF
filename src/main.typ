@@ -273,7 +273,7 @@
   [Defina $A |= phi[a->]$ (versión absoluta, no dependiente de una declaración previa, i.e. $a-> in A^NN$).],
   note: [No hace falta definir $t^A [a->]$.],
   [
-    Sea $bold(A) = (A, i)$ es una estructura de tipo $tau$, $phi in F^tau$ y
+    Sea $bold(A) = (A, i)$ una estructura de tipo $tau$, $phi in F^tau$ y
     $a-> in A^NN$ una asignación.  \
     Definamos recursivamente la relación $bold(A) |= phi[a->]$ como: \
     #box(width: 100%)[
@@ -304,7 +304,7 @@
       + Si #box(width: size_phi)[#align(center)[$phi = exists x_1 phi_1$]] #centro #sii hay un $a in A$ tal que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]$
     ] \
     aclarar que $bold(A) tack.r.double.not phi$ denota que no se cumple lo anterior. Ademas dados $a-> in A^NN$ y $a in A$ usamos \
-    $arrow.b ""_i^a (arrow(a))$ para denota la asignación que resulta de reemplazar en $arrow(a)$ el i-ésimo elemento por $a$. 
+    $arrow.b ""_i^a (arrow(a))$ para denota la asignación que resulta de reemplazar en $arrow(a)$ el i-ésimo elemento por $a$.
     #footnote[\
       Cuando se de $bold(A) |= phi[a->]$ diremos que \
       _la estructura $A$ satisface $phi$ en la asignación $a->$_ $quad quad$ y en tal caso diremos $quad quad$ _$phi$ es *verdadera* en $A$ para la asignación $a->$_. \
@@ -339,9 +339,9 @@
       ]
       #set enum(numbering: "(1)(a)", indent: 12.8pt)
       + Si #box(width: size_phi)[#align(center)[$phi$ es atómica]] #centro #sii $v$ ocurre en $phi$ a partir de $i$.
-      + Si #box(width: size_phi)[#align(center)[$phi = phi_1 eta phi_2$]] #centro #sii se da alguna de las siguientes:
+      + Si #box(width: size_phi)[#align(center)[$phi = (phi_1 eta phi_2)$]] #centro #sii se da alguna de las siguientes:
         + $v$ ocurre libremente en $phi_1$ a partir de $i-1$.
-        + $v$ ocurre libremente en $phi_2$ a partir de $i- |phi_1eta|$.
+        + $v$ ocurre libremente en $phi_2$ a partir de $i- |(phi_1eta|$.
       + Si #box(width: size_phi)[#align(center)[$phi = not phi_1$]] #centro #sii  $v$ ocurre libremente en $phi_1$ a \ #h(318pt) partir de $i-1$.
       + Si #box(width: size_phi)[#align(center)[$phi = Q w phi_1$]] #centro #sii  $v != w$ y $v$ ocurre libremente \ #h(318pt) en $phi_1$ a partir de $i - |Q w|$.
     ]
@@ -387,11 +387,11 @@
       #set enum(numbering: "(1)", indent: 12.8pt)
       + $t = c$, para algún $c in ~C~$.
       + $t = v_j$, para algún $j in {1,...,n}$.
-      + $t = f(t_1,...,t_m)$, para algún $f in F_m, m>=1$ y $t_1,...,t_m in T_k^tau$ únicos.
+      + $t = f(t_1,...,t_m)$, para algún $f in F_m, m>=1$ y $t_1,...,t_m in T^tau$ únicos.
     ]
 
     #h(7pt) #text([*Convención notacional 5*], size: 12pt):
-    Si hemos declarado $t =_d t(v_1, ..., v_n)$ y se da el caso (3) del Lema anterior, supondremos tácitamente que también hemos echo las declaraciones $t_1 =_d t_1(v_1,...,v_k), ..., t_m =_d t_m (v_1,...,v_k)$. Esto lo podemos hacer ya que obviamente las variables que ocurren en los $t_1,...,t_m$ están en ${v_1,...,v_k}$.
+    Si hemos declarado $t =_d t(v_1, ..., v_n)$ y se da el caso (3) del Lema anterior, supondremos tácitamente que también hemos echo las declaraciones $t_1 =_d t_1(v_1,...,v_n), ..., t_m =_d t_m (v_1,...,v_n)$. Esto lo podemos hacer ya que obviamente las variables que ocurren en los $t_1,...,t_m$ están en ${v_1,...,v_n}$.
   ],
 )
 
@@ -407,7 +407,7 @@
     Supongamos $v_1, ..., v_n in "Var"$ y  $phi$ es una formula de tipo $tau$. Entonces escribimos $phi =_d phi(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que $"Li"(phi) c= {v_1,...,v_n}$. \
     Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
     #h(7pt) #text([*Convención notacional 3*], size: 12pt):
-    Si hemos declarado $phi =_d phi(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $phi(P_1, ..., P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de $v_1$ en $phi$ por $P_1$, cada ocurrencia de $v_2$ en $phi$ por $P_2$, etc. \
+    Si hemos declarado $phi =_d phi(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $phi(P_1, ..., P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia libre de $v_1$ en $phi$ por $P_1$, cada ocurrencia libre de $v_2$ en $phi$ por $P_2$, etc. \
     #h(7pt) #text([*Convención notacional 4*], size: 12pt):
     Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces $bold(A) |= phi [a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.
     En general $bold(A) tack.r.double.not phi[a_1,...,a_n]$ significara que no cumple $bold(A) |= phi[a_1,...,a_n]$. \
@@ -503,7 +503,7 @@
       ]
       #set enum(numbering: "(1)(a)", indent: 12.8pt)
       + Si #box(width: size_cond)[#align(center)[$phi$ es atómica]] #centro().
-      + Si #box(width: size_cond)[#align(center)[$phi = phi_1 eta phi_2$]] #centro() #sii
+      + Si #box(width: size_cond)[#align(center)[$phi = (phi_1 eta phi_2)$]] #centro() #sii
         \ #h(188pt)_$v$ es sustituible por $w$ en $phi_1$_ y _$v$ es sustituible por $w$ en $phi_2$_.
       + Si #box(width: size_cond)[#align(center)[$phi = not phi_1$]] #centro() #sii _$v$ es sustituible por $w$ en $phi_1$_.
       + Si #box(width: size_cond)[#align(center)[$phi = Q v phi_1$]] #centro().
