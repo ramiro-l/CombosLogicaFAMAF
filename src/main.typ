@@ -273,7 +273,9 @@
   [Defina $A |= phi[a->]$ (versión absoluta, no dependiente de una declaración previa, i.e. $a-> in A^NN$).],
   note: [No hace falta definir $t^A [a->]$.],
   [
-    Definamos recursivamente la relación $bold(A) |= phi[a->]$, donde *A* es una estructura de tipo $tau$, $phi in F^tau$ y $a->$ una asignación de *A* como: \
+    Sea $bold(A) = (A, i)$ es una estructura de tipo $tau$, $phi in F^tau$ y
+    $a-> in A^NN$ una asignación.  \
+    Definamos recursivamente la relación $bold(A) |= phi[a->]$ como: \
     #box(width: 100%)[
       #let size_phi = 80pt
       #let centro = [
@@ -301,8 +303,14 @@
       + Si #box(width: size_phi)[#align(center)[$phi = forall x_1 phi_1$]] #centro #sii para cada $a in A$, se da que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]$
       + Si #box(width: size_phi)[#align(center)[$phi = exists x_1 phi_1$]] #centro #sii hay un $a in A$ tal que $bold(A) |= phi_1[arrow.b ""_i^a (arrow(a))]$
     ] \
-    aclarar que $bold(A) tack.r.double.not phi$ denota que no se cumple lo anterior y ademas usamos \
-    $arrow.b ""_i^a (arrow(a))$ para denota la asignación que resulta de reemplazar en $arrow(a)$ el i-ésimo elemento por $a$.
+    aclarar que $bold(A) tack.r.double.not phi$ denota que no se cumple lo anterior. Ademas dados $a-> in A^NN$ y $a in A$ usamos \
+    $arrow.b ""_i^a (arrow(a))$ para denota la asignación que resulta de reemplazar en $arrow(a)$ el i-ésimo elemento por $a$. 
+    #footnote[\
+      Cuando se de $bold(A) |= phi[a->]$ diremos que \
+      _la estructura $A$ satisface $phi$ en la asignación $a->$_ $quad quad$ y en tal caso diremos $quad quad$ _$phi$ es *verdadera* en $A$ para la asignación $a->$_. \
+      Cuando *no* se de $bold(A) |= phi[a->]$ diremos que \
+      _la estructura $A$ *no* satisface $phi$ en la asignación $a->$_ $quad quad$ y en tal caso diremos $quad quad$ _$phi$ es *falsa* en $A$ para la asignación $a->$_. \
+    ]
   ],
 )
 
@@ -366,6 +374,14 @@
   1,
   [Explique la notación declaratoria para *términos* con sus 3 convenciones notacionales. <combo-def-5>],
   [
+    Supongamos $v_1, ..., v_n in "Var"$ y  $t$ un termino de tipo $tau$. Entonces escribimos $t =_d t(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que toda variable que ocurre en $t$ pertenecen a ${v_1,...,v_n}$. \
+
+    Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
+    #h(7pt) #text([*Convención notacional 1*], size: 12pt):
+    Si hemos declarado $t =_d t(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $t(P_1,...,P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de  $v_1$ en $t$ por $P_1$, cada ocurrencia de $v_2$ en $t$ por $P_2$, etc. \
+    #h(7pt) #text([*Convención notacional 2*], size: 12pt):
+    Si hemos declarado $t =_d t(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces con $t^A [a_1, ..., a_n]$ denotaremos al elemento $t^bold(A)[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$. \
+
     _Lema (Lectura única de términos declarados)_ : Sea $tau$ un tipo cualquier y supongamos $t in T^tau$. Si $phi =_d t(v_1,...,v_n)$, entonces se da una y solo una de las siguientes: \
     #box(width: 100%)[
       #set enum(numbering: "(1)", indent: 12.8pt)
@@ -374,14 +390,8 @@
       + $t = f(t_1,...,t_m)$, para algún $f in F_m, m>=1$ y $t_1,...,t_m in T_k^tau$ únicos.
     ]
 
-    Supongamos $v_1, ..., v_n in "Var"$ y  $t$ un termino de tipo $tau$. Entonces escribimos $t =_d t(v_1, ..., v_n)$ para declarar que $v_1,...,v_n$ son variables distintas y tales que toda variable que ocurre en $t$ pertenecen a ${v_1,...,v_n}$. \
-    Esta notación declaratoria es muy útil cuando se combina con las siguientes convenciones notacionales: \
-    #h(7pt) #text([*Convención notacional 1*], size: 12pt):
-    Si hemos declarado $t =_d t(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $t(P_1,...,P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de  $v_1$ en $t$ por $P_1$, cada ocurrencia de $v_2$ en $t$ por $P_2$, etc. \
-    #h(7pt) #text([*Convención notacional 2*], size: 12pt):
-    Si hemos declarado $t =_d t(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces con $t^A [a_1, ..., a_n]$ denotaremos al elemento $t^bold(A)[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$. \
     #h(7pt) #text([*Convención notacional 5*], size: 12pt):
-    Si hemos declarado $t =_d t(v_1, ..., v_n)$ y se da el caso (3) del lema mencionado, supondremos tácitamente que también hemos echo las declaraciones $t_1 =_d t_1(v_1,...,v_k), ..., t_m =_d t_m (v_1,...,v_k)$. Esto lo podemos hacer ya que obviamente las variables que ocurren en los $t_1,...,t_m$ están en ${v_1,...,v_k}$.
+    Si hemos declarado $t =_d t(v_1, ..., v_n)$ y se da el caso (3) del Lema anterior, supondremos tácitamente que también hemos echo las declaraciones $t_1 =_d t_1(v_1,...,v_k), ..., t_m =_d t_m (v_1,...,v_k)$. Esto lo podemos hacer ya que obviamente las variables que ocurren en los $t_1,...,t_m$ están en ${v_1,...,v_k}$.
   ],
 )
 
@@ -425,12 +435,12 @@
 
     Ahora notar que según el caso del Lema anterior, si declaramos $phi =_d phi(v_1, ..., v_n)$ tenemos que: \
     #box(width: 100%)[
-      #set enum(numbering: "(1)", indent: 12.8pt)
-      + Caso (1), entonces las variables que ocurren en $t$ y $s$ están en ${v_1,...,v_n}$.
-      + Caso (2), entonces las variables que ocurren en $t_1,...,t_m$ están en ${v_1,...,v_n}$.
-      + Caso (3), entonces $"Li"(phi_1) union "Li"(phi_2) c= {v_1,...,v_n}$.
-      + Caso (4) o (5), entonces $"Li"(phi_1) c= {v_1,...,v_n}$.
-      + Caso (6), entonces $"Li"(phi_1) c= {v_1,...,v_n, v}$.
+      #set list(indent: 0pt, body-indent: 0.4em)
+      - Caso (1), entonces las variables que ocurren en $t$ y $s$ están en ${v_1,...,v_n}$.
+      - Caso (2), entonces las variables que ocurren en $t_1,...,t_m$ están en ${v_1,...,v_n}$.
+      - Caso (3), entonces $"Li"(phi_1) union "Li"(phi_2) c= {v_1,...,v_n}$.
+      - Caso (4) o (5), entonces $"Li"(phi_1) c= {v_1,...,v_n}$.
+      - Caso (6), entonces $"Li"(phi_1) c= {v_1,...,v_n, v}$.
     ]
 
     esto ultimo nos permite hacer la siguiente convención notacional: \
@@ -1654,6 +1664,13 @@
     ]
     Dado que $b #i a^c$ es cota inferior de $a^c$ tenemos que $b #i a^c <= a^c$, remplazando por lo anterior sale que $b <= a^c$. \
     *($<-$)* Supongamos que $b <= a^c$. Por reflexividad $a<=a$ y el #underline([_Lema (Monotonía)_]) aplicado al reticulado par $(B, <=)$ nos dice que $a #i b <= a #i a^c = 0$, pero $0$ es mínimo, entonces $0 <= a #i b$. Entonces por antisimetría $a #i b = 0$. #fin_demo
+    // *($<-$)* Supongamos que $b <= a^c$. Por _Teorema de Dedekind_, tenemos que $b #s a^c = a^c$. Entonces \
+    // #box(width: 100%)[
+    //     $
+    //     0 = a #i a^c = a #i (b #s a^c) = (a #i b) #s (a #i a^c) = (a #i b) #s 0 = a #i b
+    //     $
+    // ]
+
 
     #linea_dashed
 
