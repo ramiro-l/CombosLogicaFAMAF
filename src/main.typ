@@ -410,7 +410,7 @@
     Si hemos declarado $phi =_d phi(v_1, ..., v_n)$ y $P_1,...,P_n$ son palabras cualquieras, entonces $phi(P_1, ..., P_n)$ denotará la palabra que resulta de reemplazar simultáneamente cada ocurrencia de $v_1$ en $phi$ por $P_1$, cada ocurrencia de $v_2$ en $phi$ por $P_2$, etc. \
     #h(7pt) #text([*Convención notacional 4*], size: 12pt):
     Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces $bold(A) |= phi [a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.
-    En general $bold(A) tack.r.double.not phi[a_1,...,a_n]$ significara que no sucede $bold(A) |= phi[arrow(b)]$. \
+    En general $bold(A) tack.r.double.not phi[a_1,...,a_n]$ significara que no cumple $bold(A) |= phi[a_1,...,a_n]$. \
 
     _Lema (Lectura única de fórmulas declaradas)_ : Sea $tau$ un tipo cualquier y $phi in F^tau$. \
     Supongamos $phi =_d phi(v_1, ..., v_n)$. Entonces se de una y solo una de las siguientes. \
@@ -564,7 +564,7 @@
   [Dados $phi =_d phi(v_1, ..., v_n)$, *A* una estructura de tipo $tau$ y $a_1, ..., a_n in A$, defina qué significa \ $bold(A) |= phi[a_1, ..., a_n]$ (i.e. Convención notacional 4 y parte del #link(<combo-def-6>)[Combo 6]).],
   [
     Si hemos declarado $phi =_d phi(v_1, ..., v_n)$, *A* es un modelo de tipo $tau$ y $a_1, ..., a_n in A$, entonces $bold(A) |= phi [a_1, ..., a_n]$ significara que $bold(A) |= phi[arrow(b)]$, donde $arrow(b)$ es una asignación tal que a cada $v_i$ le asigna el valor de $a_i$.  \
-    En general $bold(A) tack.r.double.not phi[a_1,...,a_n]$ significara que no sucede $bold(A) tack.r.double.not phi[arrow(b)]$.
+    En general $bold(A) tack.r.double.not phi[a_1,...,a_n]$ significara que no se cumple $bold(A) |= phi[a_1,...,a_n]$.
   ],
 )
 
