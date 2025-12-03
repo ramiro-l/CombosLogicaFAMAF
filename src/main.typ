@@ -419,19 +419,18 @@
         columns: 2,
         [
           #set enum(numbering: "(1)", indent: 12.8pt)
-          + $phi = (t equiv s)$ con $t,s in T^tau$.
-          + $phi = r(t_1,...,t_m)$ con $r in ~R~_m$ y $t_1,...,t_m in T^tau$.
-          + $phi = (phi_1 eta phi_2)$ con $phi_i in F^tau$.
+          + $phi = (t equiv s)$ con $t,s in T^tau$ únicos.
+          + $phi = r(t_1,...,t_m)$ con $r in ~R~_m$ y \ #h(80pt) $t_1,...,t_m in T^tau$ únicos.
+          + $phi = (phi_1 eta phi_2)$, con $eta in {and, or, ->, <->}$, \  #h(70pt) $phi_1,phi_2 in F^tau$ únicas.
         ],
         [
-          #set enum(numbering: "(1)", indent: 12.8pt, start: 4)
-          + $phi = not phi_1$ con $phi_1 in F^tau$.
-          + $phi = Q v_j phi_1$ con $phi_1 in F^tau$
-          + $phi = Q v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi_1 in F^tau$.
+          #set enum(numbering: "(1)", indent: 32.8pt, start: 4)
+          + $phi = not phi_1$ con $phi_1 in F^tau$, única.
+          + $phi = Q v_j phi_1$, con $Q in {forall, exists}, j in {1,...,n}$ \ #h(60pt) y $phi_1 in F^tau$, únicas.
+          + $phi = Q v phi_1$ , con $Q in {forall, exists}, v in.not {v_1,...,v_n}$ \ #h(60pt) y $phi_1 in F^tau$, únicas.
         ],
       )
     ]
-    con $eta in {and, or, ->, <->}$ y $Q in {forall, exists}$.
 
     Ahora notar que según el caso del Lema anterior, si declaramos $phi =_d phi(v_1, ..., v_n)$ tenemos que: \
     #box(width: 100%)[
@@ -2291,19 +2290,19 @@
         columns: 2,
         [
           #set enum(numbering: "(1)", indent: 12.8pt)
-          + $phi = (t equiv s)$ con $t,s in T^tau$.
-          + $phi = r(t_1,...,t_m)$ con $r in ~R~_m$ y $t_1,...,t_m in T^tau$.
-          + $phi = (phi_1 eta phi_2)$ con $phi_i in F^tau$.
+          + $phi = (t equiv s)$ con $t,s in T^tau$ únicos.
+          + $phi = r(t_1,...,t_m)$ con $r in ~R~_m$ y \ #h(80pt) $t_1,...,t_m in T^tau$ únicos.
+          + $phi = (phi_1 eta phi_2)$, con $eta in {and, or, ->, <->}$, \  #h(70pt) $phi_1,phi_2 in F^tau$ únicas.
         ],
         [
-          #set enum(numbering: "(1)", indent: 12.8pt, start: 4)
-          + $phi = not phi_1$ con $phi_1 in F^tau$.
-          + $phi = Q v_j phi_1$ con $phi_1 in F^tau$
-          + $phi = Q v phi_1$ con $v in.not {v_1,...,v_n}$ y $phi_1 in F^tau$.
+          #set enum(numbering: "(1)", indent: 32.8pt, start: 4)
+          + $phi = not phi_1$ con $phi_1 in F^tau$, única.
+          + $phi = Q v_j phi_1$, con $Q in {forall, exists}, j in {1,...,n}$ \ #h(60pt) y $phi_1 in F^tau$, únicas.
+          + $phi = Q v phi_1$ , con $Q in {forall, exists}, v in.not {v_1,...,v_n}$ \ #h(60pt) y $phi_1 in F^tau$, únicas.
         ],
       )
     ]
-    y $eta in {and, or, ->, <->}$ y $Q in {forall, exists}$.Mas aún, si $phi in F^tau_(k+1)$, cuando se da (3), (4), (5) o (6), se tiene que $phi_i in F^tau_k$.
+    Mas aún, si $phi in F^tau_(k+1)$, cuando se da (3), (4), (5) o (6), se tiene que $phi_i in F^tau_k$.
   ],
 )
 
