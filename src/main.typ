@@ -1570,7 +1570,7 @@
     *(3)* \
     *($->$)* Si $(Sigma, tau) |- (phi -> psi)$, entonces $(Sigma union {phi}, tau) |- (phi -> psi), phi$ y por (2) #footnote[usando $R = "MODUSPONENS"$.] esto implica que
     $(Sigma union {phi}, tau) |- psi$. \
-    *($<-$)* Si $(Sigma union {phi}, tau) |- psi$. Sea $(alpha_1,...,alpha_n,J_1,...,J_n)$ una prueba formal de $psi$ en $(Sigma union {phi}, tau)$. \
+    *($<-$)* Si $(Sigma union {phi}, tau) |- psi$. Sea $(phi_1,...,phi_n,J_1,...,J_n)$ una prueba formal de $psi$ en $(Sigma union {phi}, tau)$. \
     Entonces para cada $i = 1,...,n$, definamos $tilde(J)_i$ de la siguiente manera.\
     #box(width: 100%)[
       #h(25pt) Sea $alpha in {epsilon} union { #(JUST.TESIS)("k"): k in NN}$
@@ -1583,7 +1583,7 @@
     Sea $m$ tal que ninguna $J_i$ es igual a $#(JUST.HIPOTESIS)("m")$. Es fácil chequear que \
     #box(width: 100%)[
       $
-        (phi phi_1,...,phi_n, #(JUST.HIPOTESIS)("m") tilde(J)_1...tilde(J)_(n-1) #(JUST.TESIS)("m") tilde(J)_n#(JUST.CONCLUSION))
+        (phi phi_1,...,phi_n (phi -> psi), #(JUST.HIPOTESIS)("m") tilde(J)_1...tilde(J)_(n-1) #(JUST.TESIS)("m") tilde(J)_n#(JUST.CONCLUSION))
       $
     ]
     es una prueba formal de $(phi -> psi)$ en $(Sigma, tau)$. #fin_demo
